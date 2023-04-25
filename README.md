@@ -10,11 +10,11 @@
 
 | Student Name         | Student ID | Contribution Score |
 |:---------------------|:-----------|:------------------:|
-| Do Le Long An        | S-3963207  |                    |
-| Truong Hong Van      | S-3957034  |                    |
-| Pham Le Quynh Anh    | S-3927427  |                    |
-| Bui Tuan Anh         | S-3970375  |                    |
-| Lao Vinh Khang       | S-3891925  |                    |
+| Do Le Long An        | S-3963207  |          20        |
+| Truong Hong Van      | S-3957034  |           20       |          
+| Pham Le Quynh Anh    | S-3927427  |           20       |          
+| Bui Tuan Anh         | S-3970375  |           20       |          
+| Lao Vinh Khang       | S-3891925  |            20      |
 
 ## Project Structure
 
