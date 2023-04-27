@@ -1,6 +1,6 @@
 # Group9 E-commerce Website
 
-#### Link to the website:
+#### Link to the website: https://adorable-frangipane-aaab96.netlify.app/
 #### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
 
 #### Project start date: 24/04/2023
