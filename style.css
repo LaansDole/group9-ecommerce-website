@@ -9,8 +9,8 @@
     --background-color: #DFE3E8;
     --hover-color: #F52A85;
     --footer-background-color: #919EAB;
-    --heading-bottom-border-color: 5px solid #0203AC
-    --nav-bar-bottom-border-color: 5px solid #637381;
+    --heading-bottom-border: 5px solid #0203AC
+    --nav-bar-bottom-border: 5px solid #637381;
     --montserrat: 'Montserrat', sans-serif;
     --poppins: 'Poppins', sans-serif;
     --open-sans: 'Open Sans', sans-serif;
@@ -46,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 32px;
+  border: var(--heading-bottom-border);
 }
 
 h2 {
