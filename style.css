@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #4343DE;
+    --secondary-color: #2D2D2D;
+    --price-color: #ED7100;
+    --background-color: #DFE3E8;
+    --hover-color: #F52A85;
+    --footer-background-color: #919EAB;
+    --heading-bottom-border: 5px solid #0203AC
+    --nav-bar-bottom-border: 5px solid #637381;
+    --montserrat: 'Montserrat', sans-serif;
+    --poppins: 'Poppins', sans-serif;
+    --open-sans: 'Open Sans', sans-serif;
+}
+
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+    scroll-behavior: smooth;
+    scrollbar-color: transparent transparent; /* thumb and track color */
+    scrollbar-width: 0px;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--background-color);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+}
+
+h1 {
+  font-size: 32px;
+  border: var(--heading-bottom-border);
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
