@@ -67,13 +67,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Container Styling */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 /* Buttons */
 .button {
   display: inline-block;
