@@ -1,0 +1,157 @@
+@keyframes wave {
+    from, to {
+        transform: translate(-50%, 0%);
+    }
+
+    50% {
+        transform: translate(-50%, -20%);
+    }
+}
+
+#bubble-wrapper {
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+    bottom: 0px;
+
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.bubble {
+    height: max(300px, 30vw);
+    width: max(300px, 30vw);
+
+    background-color: var(--background-color);  
+    border-radius: 100%;
+
+    position: absolute;
+    left: 50%;
+    top: 100%;
+
+    animation: wave 2s ease-in-out infinite;
+}
+
+@media(prefers-reduced-motion) {
+    .bubble {
+        animation: none;
+        display: none;
+    }
+}
+
+/* -- Footer styles -- */
+
+#footer {
+    background-color: var(--footer-background-color);
+    bottom: 0px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#footer-content-1,
+#footer-content-2 {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#footer-content-2 {
+    padding: 2rem 2rem 5rem 2rem;
+}
+
+.footer-section {  
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.footer-about-us {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 0.5rem;
+    background-color: var(--background-color);
+}
+
+.footer-section-title {
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.footer-section-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 160px;
+}
+
+.footer-section-links > a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.footer-section-links > a:hover {
+    text-decoration: underline;
+}
+
+#footer .footer-section .footer-copyright {
+    padding: 0 2rem 2rem;
+    position: relative;
+    z-index: 9999;
+    color: var(--background-color);
+}
+
+@media(max-width: 900px) {
+#footer-content-1,
+#footer-content-2 {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-section-title {    
+    flex-shrink: 0;
+    width: 120px;
+}
+}
+
+@media(max-width: 600px) {
+    #footer {
+        position: relative;  
+        /* margin-top: 90vh; */
+    }
+
+    #footer-content-1,
+    #footer-content-2 {
+        padding: 2rem;
+    }
+
+    .footer-section-title {    
+        font-size: 18px;
+        width: 0;
+        
+    }
+
+    .footer-section-links > a {
+        font-size: 0.8rem;
+        margin-left: 50px;
+    }
+
+    .footer-section p {
+        font-size: 0.7rem;
+        margin-left: 30px;
+    }
+}
+
