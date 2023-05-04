@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="/style2.css" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -38,25 +38,33 @@
         <section id="main">
           <div class="login-container">
             <p class="title">Register as Customer</p>
+            <button></button>
+
             <div class="seperator"></div>
-            <form class="login-form">
+            <form class="login-form" action="" method="post">
                 <div class="form-control">
-                  <input type="text" placeholder="Username">
+                  <label>Username</label> 
+                  <input type="text" placeholder="Enter username" name="userName"required>
                  </div> 
                  <div class="form-control"> 
-                  <input type="password" placeholder="Enter password">
+                  <label>Password</label> 
+                  <input type="password" placeholder="Enter password" name="password" required>
                  </div>
-                 <button class="submit">Sign in</button>
+                 <div class="form-control">
+                  <label>Profile picture</label> 
+                  <input type="file" id="image_input" accept="image/png, image/jpg" name="avatar">
+                  <div id="display-img"></div>
+                 </div>
+                 <div class="form-control"> 
+                  <label>Full name</label>
+                  <input type="text" placeholder="Enter your name" name="name"required>
+                 </div>
+                 <div class="form-control"> 
+                  <label>Address</label> 
+                  <input type="text" placeholder="Enter address" name="address" required>
+                 </div>
+                 <button class="submit">Register</button>
             </form>
-            <div class="sub-login">
-              <input type="checkbox" id="remmeber_me" class="toggle">
-              <label for="remmeber_me" style="color: black;"> Remember Me</label>
-              <a href="#">Forgot password?</a>
-            </div>
-            <br>
-            <p>
-              Don't have an account? <span style="color: #0203ac">Get Started</span>
-            </p>
           </div>
         </section>
     </seciton>

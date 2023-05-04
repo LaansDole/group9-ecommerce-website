@@ -155,6 +155,7 @@ hr {
     width: 100%;
     position: relative;
     margin-bottom: 24px;
+
 }
 
 input,
@@ -268,3 +269,21 @@ input[type="checkbox"].toggle:checked + label::after{
         display: none;
     }
  }
+
+
+
+ /*Sign up */
+
+
+/* .form-control label{
+    text-align:start;
+    margin-bottom: 10px;
+}
+#display-img{
+    margin: 10px 10px ;
+    width: 100%;
+    height: 200px;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+} */
