@@ -32,6 +32,8 @@ Group9_E-commerce_Website/
 |   |   ├── pages/
 |   ├── images/
 
+#TODO: Change the folder structure
+
 ```
 
 
@@ -53,9 +55,9 @@ In this project, with Lazada's permission, you are working on a simplified and s
 
 **MEN Stack**
 - Frontend: HTML, Bootstrap CSS, JavaScript
-- Backend: NodeJS, ExpressJS
+- Backend: NodeJS, ExpressJS, EJS
 - Database: MongoDB
-- Hosting: GitHub Page
+- Hosting: Heroku
 
 ### Supporting tools used
 
