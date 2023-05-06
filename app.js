@@ -27,7 +27,7 @@ app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
-const routes = require('./server/routes/recipeRoutes.js')
+const routes = require('./server/routes/productRoutes.js')
 app.use('/', routes);
 
 app.listen(port, ()=> console.log(`Listening to port ${port}`));
