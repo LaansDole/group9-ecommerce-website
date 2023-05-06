@@ -30,4 +30,4 @@ app.set('view engine', 'ejs');
 const routes = require('./server/routes/productRoutes.js')
 app.use('/', routes);
 
-app.listen(port, ()=> console.log(`Listening to port ${port}`));
+app.listen(port, ()=> console.log(`Listening to port http://localhost:${port}`));
