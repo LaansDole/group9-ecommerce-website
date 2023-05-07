@@ -165,7 +165,7 @@ exports.submitProductOnPost = async (req, res) => {
     const newProduct = new Product({
       name: req.body.name,
       description: req.body.description,
-      email: req.body.email,
+      price: req.body.price,
       productNotes: req.body.productNotes,
       category: req.body.category,
       image: newImageName
@@ -255,7 +255,7 @@ async function insertDymmyProductData() {
       {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
-        "email": "productemail@raddy.co.uk",
+        "price": 18,
         "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",
@@ -267,7 +267,7 @@ async function insertDymmyProductData() {
       {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
-        "email": "productemail@raddy.co.uk",
+        "price": 18,
         "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",

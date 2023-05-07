@@ -9,8 +9,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: 'This field is required.'
   },
-  email: {
-    type: String,
+  price: {
+    type: Number,
     required: 'This field is required.'
   },
   productNotes: {
