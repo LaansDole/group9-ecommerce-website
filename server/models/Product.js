@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Thai', 'American', 'Chinese', 'Mexican', 'Indian'],
+    enum: ['Tablet', 'Laptop', 'Phone', 'Sound', 'Keyboard'],
     required: 'This field is required.'
   },
   image: {

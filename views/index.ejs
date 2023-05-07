@@ -57,8 +57,8 @@
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
 
-    <% if(food != '') { %>
-      <% food.latest.forEach(function(product, index){ %>
+    <% if(productCategory != '') { %>
+      <% productCategory.latest.forEach(function(product, index){ %>
       <a href="/product/<%= product._id %>" class="text-center category__link">
         <div class="category__img category__img--large shadow mt-5">
           <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
@@ -74,16 +74,16 @@
 </section>
 <!-- Latest End -->
 
-<!-- Thai Start -->
+<!-- Tablet Start -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Thai Products</h2>
-    <a href="/categories/Thai" class="ms-auto">View More</a>
+    <h2>Tablet Products</h2>
+    <a href="/categories/Tablet" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(typeof food.thai !== 'undefined' && food.thai.length > 0) { %>
-      <% food.thai.forEach(function(product, index){ %>
+    <% if(typeof productCategory.tablet !== 'undefined' && productCategory.tablet.length > 0) { %>
+      <% productCategory.tablet.forEach(function(product, index){ %>
       <a href="/product/<%= product._id %>" class="text-center category__link">
         <div class="category__img category__img--large shadow mt-5">
           <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
@@ -96,18 +96,18 @@
     <% } %>
   </div>
 </section>
-<!-- Thai End -->
+<!-- Tablet End -->
 
-<!-- American Start -->
+<!-- Laptop Start -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>American Products</h2>
-    <a href="/categories/American" class="ms-auto">View More</a>
+    <h2>Laptop Products</h2>
+    <a href="/categories/Laptop" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.american != '') { %>
-      <% food.american.forEach(function(product, index){ %>
+    <% if(productCategory.laptop != '') { %>
+      <% productCategory.laptop.forEach(function(product, index){ %>
       <a href="/product/<%= product._id %>" class="text-center category__link">
         <div class="category__img category__img--large shadow mt-5">
           <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
@@ -120,18 +120,18 @@
     <% } %>
   </div>
 </section>
-<!-- American End -->
+<!-- Laptop End -->
 
-<!-- Chinese Products -->
+<!-- Phone Products -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Chinese Products</h2>
-    <a href="/categories/Chinese" class="ms-auto">View More</a>
+    <h2>Phone Products</h2>
+    <a href="/categories/Phone" class="ms-auto">View More</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.chinese != '') { %>
-      <% food.chinese.forEach(function(product, index){ %>
+    <% if(productCategory.phone != '') { %>
+      <% productCategory.phone.forEach(function(product, index){ %>
       <a href="/product/<%= product._id %>" class="text-center category__link">
         <div class="category__img category__img--large shadow mt-5">
           <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
@@ -144,7 +144,7 @@
     <% } %>
   </div>
 </section>
-<!-- Chinese End -->
+<!-- Phone End -->
 
 
 

@@ -11,13 +11,13 @@ exports.homepage = async (req, res) => {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
     const latest = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
-    const thai = await Product.find({ 'category': 'Thai' }).limit(limitNumber);
-    const american = await Product.find({ 'category': 'American' }).limit(limitNumber);
-    const chinese = await Product.find({ 'category': 'Chinese' }).limit(limitNumber);
+    const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
+    const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
+    const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
 
-    const food = { latest, thai, american, chinese };
+    const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('index', { title: 'E-Commerce - Home', categories, food });
+    res.render('index', { title: 'E-Commerce - Home', categories, productCategory });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -217,27 +217,27 @@ async function insertDymmyCategoryData() {
   try {
     await Category.insertMany([
       {
-        "name": "Thai",
+        "name": "Tablet",
         "image": "thai-food.jpg"
       },
       {
-        "name": "American",
+        "name": "Laptop",
         "image": "american-food.jpg"
       },
       {
-        "name": "Chinese",
+        "name": "Phone",
         "image": "chinese-food.jpg"
       },
       {
-        "name": "Mexican",
+        "name": "Sound",
         "image": "mexican-food.jpg"
       },
       {
-        "name": "Indian",
+        "name": "Keyboard",
         "image": "indian-food.jpg"
       },
       {
-        "name": "Spanish",
+        "name": "Screen",
         "image": "spanish-food.jpg"
       }
     ]);
@@ -261,7 +261,7 @@ async function insertDymmyProductData() {
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
         ],
-        "category": "American",
+        "category": "Laptop",
         "image": "southern-friend-chicken.jpg"
       },
       {
@@ -273,7 +273,7 @@ async function insertDymmyProductData() {
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
         ],
-        "category": "American",
+        "category": "Laptop",
         "image": "southern-friend-chicken.jpg"
       },
     ]);
