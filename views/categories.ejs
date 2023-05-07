@@ -11,7 +11,7 @@
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
   <% if(typeof categories !== 'undefined' && categories.length > 0) { %>
     <% categories.forEach(function(category, index) { %>
-      <a href="/categories/<%- category.name %>" class="col text-center category__link">
+      <a href="/categories/<%- category.name %>" class="text-center category__link mt-5">
         <div class="category__img shadow">
           <img src="/img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
         </div>
@@ -25,7 +25,7 @@
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
   <% if(typeof categoryById !== 'undefined' && categoryById.length > 0) { %>
     <% categoryById.forEach(function(product, index){ %>
-    <a href="/product/<%= product._id %>" class="col text-center category__link">
+    <a href="/product/<%= product._id %>" class="text-center category__link">
       <div class="category__img category__img--large shadow">
         <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
       </div>
