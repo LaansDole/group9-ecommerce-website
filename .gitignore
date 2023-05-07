@@ -1,4 +1,3 @@
 node_modules/
 .vscode
-public/js/api/unsplashAPI
 .env
