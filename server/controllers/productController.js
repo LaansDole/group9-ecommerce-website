@@ -20,6 +20,7 @@ exports.homepage = async (req, res) => {
     res.render('index', { title: 'Cooking Blog - Home', categories, food });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
   }
 }
 
@@ -34,6 +35,8 @@ exports.exploreCategories = async (req, res) => {
     res.render('categories', { title: 'Cooking Blog - Categoreis', categories });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -50,6 +53,8 @@ exports.exploreCategoriesById = async (req, res) => {
     res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -64,6 +69,8 @@ exports.exploreProduct = async (req, res) => {
     res.render('product', { title: 'Cooking Blog - Product', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -79,6 +86,8 @@ exports.searchProduct = async (req, res) => {
     res.render('search', { title: 'Cooking Blog - Search', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 
 }
@@ -94,6 +103,8 @@ exports.exploreLatest = async (req, res) => {
     res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
