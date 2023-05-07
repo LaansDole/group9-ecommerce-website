@@ -35,7 +35,7 @@ html {
 
 body {
   background-image: url("/img/i-like-food.svg");
-  background-color: rgb(243,243,243);
+  background-color: var(--background-color);
 }
 
 /* Headings */
