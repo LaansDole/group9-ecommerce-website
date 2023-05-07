@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: 'This field is required.'
   },
-  ingredients: {
+  productNotes: {
     type: Array,
     required: 'This field is required.'
   },

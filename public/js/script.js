@@ -1,10 +1,10 @@
-let addIngredientsBtn = document.getElementById('addIngredientsBtn');
-let ingredientList = document.querySelector('.ingredientList');
+let addProductNotesBtn = document.getElementById('addProductNotesBtn');
+let noteList = document.querySelector('.noteList');
 let ingredeintDiv = document.querySelectorAll('.ingredeintDiv')[0];
 
-addIngredientsBtn.addEventListener('click', function(){
-  let newIngredients = ingredeintDiv.cloneNode(true);
-  let input = newIngredients.getElementsByTagName('input')[0];
+addProductNotesBtn.addEventListener('click', function () {
+  let newProductNotes = ingredeintDiv.cloneNode(true);
+  let input = newProductNotes.getElementsByTagName('input')[0];
   input.value = '';
-  ingredientList.appendChild(newIngredients);
+  noteList.appendChild(newProductNotes);
 });

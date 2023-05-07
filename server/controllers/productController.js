@@ -166,7 +166,7 @@ exports.submitProductOnPost = async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       email: req.body.email,
-      ingredients: req.body.ingredients,
+      productNotes: req.body.productNotes,
       category: req.body.category,
       image: newImageName
     });
@@ -256,7 +256,7 @@ async function insertDymmyProductData() {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
         "email": "productemail@raddy.co.uk",
-        "ingredients": [
+        "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
@@ -268,7 +268,7 @@ async function insertDymmyProductData() {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
         "email": "productemail@raddy.co.uk",
-        "ingredients": [
+        "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
