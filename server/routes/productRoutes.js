@@ -15,5 +15,4 @@ router.get('/explore-latest', productController.exploreLatest);
 router.get('/submit-product', productController.submitProduct);
 router.post('/submit-product', productController.submitProductOnPost);
 
-
 module.exports = router;

@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 require('dotenv').config();
 
-app.use(express.urlencoded( { extended: true } ));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(expressLayouts);
 
@@ -30,4 +30,9 @@ app.set('view engine', 'ejs');
 const routes = require('./server/routes/productRoutes.js')
 app.use('/', routes);
 
-app.listen(port, ()=> console.log(`Listening to port http://localhost:${port}`));
+// Handling non matching request from the client
+app.use((req, res, next) => {
+  res.status(404).render('./layouts/404.ejs')
+})
+
+app.listen(port, () => console.log(`Listening to port http://localhost:${port}`));

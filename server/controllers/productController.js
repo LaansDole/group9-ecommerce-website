@@ -29,7 +29,7 @@ exports.homepage = async (req, res) => {
 */
 exports.exploreCategories = async (req, res) => {
   try {
-    const limitNumber = 20;
+    const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
     res.render('categories', { title: 'Cooking Blog - Categoreis', categories });
   } catch (error) {
