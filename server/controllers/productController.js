@@ -103,16 +103,16 @@ exports.exploreLatest = async (req, res) => {
  * GET /explore-random
  * Explore Random as JSON
 */
-exports.exploreRandom = async (req, res) => {
-  try {
-    let count = await Product.find().countDocuments();
-    let random = Math.floor(Math.random() * count);
-    let product = await Product.findOne().skip(random).exec();
-    res.render('explore-random', { title: 'Cooking Blog - Explore Latest', product });
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-  }
-}
+// exports.exploreRandom = async (req, res) => {
+//   try {
+//     let count = await Product.find().countDocuments();
+//     let random = Math.floor(Math.random() * count);
+//     let product = await Product.findOne().skip(random).exec();
+//     res.render('explore-random', { title: 'Cooking Blog - Explore Latest', product });
+//   } catch (error) {
+//     res.satus(500).send({ message: error.message || "Error Occured" });
+//   }
+// }
 
 
 /**

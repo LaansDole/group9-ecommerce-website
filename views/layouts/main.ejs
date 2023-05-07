@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/404.css">
 </head>
 <body>
   
@@ -40,12 +41,45 @@
     </main>
 
     <footer class="py-5">
-      <p>Build by Raddy</p>
+      <div class="page">
+        <div class="image-container col">
+          <div class="time middle">
+            <span
+              ><div id="days"></div>
+              Days</span
+            >
+            <span
+              ><div id="hours"></div>
+              Hours</span
+            >
+            <span
+              ><div id="minutes"></div>
+              Minutes</span
+            >
+            <span
+              ><div id="seconds"></div>
+              Seconds</span
+            >
+          </div>
+        </div>
+        <div class="newsletter-col col">
+          <div class="newslatter middle">
+            <h2>We will fix this soon</h2>
+            <h4>Subscribe to get notification it is done</h4>
+            <form>
+              <input type="text" placeholder="Enter Your Email" />
+              <button type="button" class="newslatter-button">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </footer>
 
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   <script src="/js/script.js"></script>
+  <script src="/js/404.js"></script>
+  <script src="/js/api/unsplashAPI.js"></script>
 </body>
 </html>
