@@ -1,5 +1,4 @@
 node_modules/
 .vscode
-public/js/api/unsplashAPI.js
-# TODO: Uncomment once done
-# .env
+public/js/api/unsplashAPI
+.env
