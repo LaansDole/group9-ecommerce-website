@@ -5,16 +5,17 @@
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
+#### Disclaimer: All client access keys are stored inside .env (dotenv) file, which is hidden in .gitignore to protect personal data
 
 ## Contribution
 
-| Student Name         | Student ID | Contribution Score |
-|:---------------------|:-----------|:------------------:|
-| Do Le Long An        | S-3963207  |                    |
-| Truong Hong Van      | S-3957034  |                    |
-| Pham Le Quynh Anh    | S-3927427  |                    |
-| Bui Tuan Anh         | S-3970375  |                    |
-| Lao Vinh Khang       | S-3891925  |                    |
+| Student Name      | Student ID | Contribution Score |
+| :---------------- | :--------- | :----------------: |
+| Do Le Long An     | S-3963207  |                    |
+| Truong Hong Van   | S-3957034  |                    |
+| Pham Le Quynh Anh | S-3927427  |                    |
+| Bui Tuan Anh      | S-3970375  |                    |
+| Lao Vinh Khang    | S-3891925  |                    |
 
 ## Project Structure
 
@@ -62,8 +63,8 @@ In this project, with Lazada's permission, you are working on a simplified and s
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
-- Other resources: MDN Web Docs, RMIT Canvas
-- All acknowledged in the source code
+- Other resources: MDN Web Docs, RMIT Canvas, NPM Package
+- Packages: Refer to package.json and package-lock.json
 
 ## Build
 
@@ -74,7 +75,7 @@ To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.
 $ git clone https://github.com/
 
 # Go into the repository
-$ cd uikit-ecommerce-template
+$ cd Group9_E-commerce_Website
 
 # Install dependencies
 $ npm install
