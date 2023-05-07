@@ -1,8 +1,5 @@
-// Load the environment variables from the .env file
-require('dotenv').config();
-
-// Access your access key value from the environment variable
-const accessKey = process.env.ACCESS_KEY;
+// Your Unsplash client access key
+const accessKey = "1Oa35brxfgWj8k9QlOyicMABwD5I23D-jr-Djwxm-EM";
 
 // Function to set random image as the background of the image-container div
 function setRandomBackground() {
