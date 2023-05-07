@@ -17,7 +17,7 @@ exports.homepage = async (req, res) => {
 
     const food = { latest, thai, american, chinese };
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food });
+    res.render('index', { title: 'E-Commerce - Home', categories, food });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -32,7 +32,7 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categories });
+    res.render('categories', { title: 'E-Commerce - Categoreis', categories });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -50,7 +50,7 @@ exports.exploreCategoriesById = async (req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 20;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById });
+    res.render('categories', { title: 'E-Commerce - Categoreis', categoryById });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -66,7 +66,7 @@ exports.exploreProduct = async (req, res) => {
   try {
     let productId = req.params.id;
     const product = await Product.findById(productId);
-    res.render('product', { title: 'Cooking Blog - Product', product });
+    res.render('product', { title: 'E-Commerce - Product', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -83,7 +83,7 @@ exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'Cooking Blog - Search', product });
+    res.render('search', { title: 'E-Commerce - Search', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -100,7 +100,7 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const product = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', product });
+    res.render('explore-latest', { title: 'E-Commerce - Explore Latest', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
     res.render('./404.ejs')
@@ -119,7 +119,7 @@ exports.exploreLatest = async (req, res) => {
 //     let count = await Product.find().countDocuments();
 //     let random = Math.floor(Math.random() * count);
 //     let product = await Product.findOne().skip(random).exec();
-//     res.render('explore-random', { title: 'Cooking Blog - Explore Latest', product });
+//     res.render('explore-random', { title: 'E-Commerce - Explore Latest', product });
 //   } catch (error) {
 //     res.satus(500).send({ message: error.message || "Error Occured" });
 //   }
@@ -133,7 +133,7 @@ exports.exploreLatest = async (req, res) => {
 exports.submitProduct = async (req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'Cooking Blog - Submit Product', infoErrorsObj, infoSubmitObj });
+  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj });
 }
 
 /**
