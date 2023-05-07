@@ -32,7 +32,7 @@ app.use('/', routes);
 
 // Handling non matching request from the client
 app.use((req, res, next) => {
-  res.status(404).render('./layouts/404.ejs')
+  res.status(404).render('./404.ejs')
 })
 
 app.listen(port, () => console.log(`Listening to port http://localhost:${port}`));
