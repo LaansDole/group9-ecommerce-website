@@ -11,15 +11,16 @@ exports.homepage = async (req, res) => {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
     const latest = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
-    const thai = await Product.find({ 'category': 'Thai' }).limit(limitNumber);
-    const american = await Product.find({ 'category': 'American' }).limit(limitNumber);
-    const chinese = await Product.find({ 'category': 'Chinese' }).limit(limitNumber);
+    const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
+    const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
+    const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
 
-    const food = { latest, thai, american, chinese };
+    const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food });
+    res.render('index', { title: 'E-Commerce - Home', categories, productCategory });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
   }
 }
 
@@ -31,9 +32,11 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categories });
+    res.render('categories', { title: 'E-Commerce - Categoreis', categories });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -47,9 +50,11 @@ exports.exploreCategoriesById = async (req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 20;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById });
+    res.render('categories', { title: 'E-Commerce - Categoreis', categoryById });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -61,9 +66,11 @@ exports.exploreProduct = async (req, res) => {
   try {
     let productId = req.params.id;
     const product = await Product.findById(productId);
-    res.render('product', { title: 'Cooking Blog - Product', product });
+    res.render('product', { title: 'E-Commerce - Product', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -76,9 +83,11 @@ exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'Cooking Blog - Search', product });
+    res.render('search', { title: 'E-Commerce - Search', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 
 }
@@ -91,9 +100,11 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const product = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', product });
+    res.render('explore-latest', { title: 'E-Commerce - Explore Latest', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
   }
 }
 
@@ -108,7 +119,7 @@ exports.exploreLatest = async (req, res) => {
 //     let count = await Product.find().countDocuments();
 //     let random = Math.floor(Math.random() * count);
 //     let product = await Product.findOne().skip(random).exec();
-//     res.render('explore-random', { title: 'Cooking Blog - Explore Latest', product });
+//     res.render('explore-random', { title: 'E-Commerce - Explore Latest', product });
 //   } catch (error) {
 //     res.satus(500).send({ message: error.message || "Error Occured" });
 //   }
@@ -122,7 +133,7 @@ exports.exploreLatest = async (req, res) => {
 exports.submitProduct = async (req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'Cooking Blog - Submit Product', infoErrorsObj, infoSubmitObj });
+  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj });
 }
 
 /**
@@ -154,8 +165,8 @@ exports.submitProductOnPost = async (req, res) => {
     const newProduct = new Product({
       name: req.body.name,
       description: req.body.description,
-      email: req.body.email,
-      ingredients: req.body.ingredients,
+      price: req.body.price,
+      productNotes: req.body.productNotes,
       category: req.body.category,
       image: newImageName
     });
@@ -206,27 +217,27 @@ async function insertDymmyCategoryData() {
   try {
     await Category.insertMany([
       {
-        "name": "Thai",
+        "name": "Tablet",
         "image": "thai-food.jpg"
       },
       {
-        "name": "American",
+        "name": "Laptop",
         "image": "american-food.jpg"
       },
       {
-        "name": "Chinese",
+        "name": "Phone",
         "image": "chinese-food.jpg"
       },
       {
-        "name": "Mexican",
+        "name": "Sound",
         "image": "mexican-food.jpg"
       },
       {
-        "name": "Indian",
+        "name": "Keyboard",
         "image": "indian-food.jpg"
       },
       {
-        "name": "Spanish",
+        "name": "Screen",
         "image": "spanish-food.jpg"
       }
     ]);
@@ -244,25 +255,25 @@ async function insertDymmyProductData() {
       {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
-        "email": "productemail@raddy.co.uk",
-        "ingredients": [
+        "price": 18,
+        "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
         ],
-        "category": "American",
+        "category": "Laptop",
         "image": "southern-friend-chicken.jpg"
       },
       {
         "name": "Product Name Goes Here",
         "description": `Product Description Goes Here`,
-        "email": "productemail@raddy.co.uk",
-        "ingredients": [
+        "price": 18,
+        "productNotes": [
           "1 level teaspoon baking powder",
           "1 level teaspoon cayenne pepper",
           "1 level teaspoon hot smoked paprika",
         ],
-        "category": "American",
+        "category": "Laptop",
         "image": "southern-friend-chicken.jpg"
       },
     ]);

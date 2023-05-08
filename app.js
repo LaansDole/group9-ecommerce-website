@@ -35,4 +35,14 @@ app.use((req, res, next) => {
   res.status(404).render('./404.ejs')
 })
 
+// app.use([
+//   (req, res, next) => {
+//     res.status(404).render('./404.ejs');
+//   },
+//   (err, req, res, next) => {
+//     console.error(err.stack);
+//     res.status(500).render('./500.ejs');
+//   }
+// ]);
+
 app.listen(port, () => console.log(`Listening to port http://localhost:${port}`));

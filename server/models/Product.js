@@ -9,17 +9,17 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: 'This field is required.'
   },
-  email: {
-    type: String,
+  price: {
+    type: Number,
     required: 'This field is required.'
   },
-  ingredients: {
+  productNotes: {
     type: Array,
     required: 'This field is required.'
   },
   category: {
     type: String,
-    enum: ['Thai', 'American', 'Chinese', 'Mexican', 'Indian'],
+    enum: ['Tablet', 'Laptop', 'Phone', 'Sound', 'Keyboard'],
     required: 'This field is required.'
   },
   image: {

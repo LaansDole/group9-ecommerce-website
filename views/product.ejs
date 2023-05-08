@@ -33,7 +33,7 @@
                             <label for="star1" title="text">1 star</label>
                           </div>
                     </div>
-                    <div class="product-price-discount"><span>$39.00</span><span class="line-through">$29.00</span></div>
+                    <div class="product-price-discount"><span>$<%- product.price %></span></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -52,7 +52,7 @@
                         <input type="text" name="quantity" value="1" class="qty">
                         <div class="qtyplus">+</div>
                     </form>
-                    <a href="#" class="round-black-btn">Add to Cart</a>
+                    <a href="#" class="round-black-btn text-decoration-none">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -117,17 +117,17 @@
         <div class="col-12"><h1><%- product.name %></h1></div>
         <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- product.category %></div>
         <div class="col-12" style="white-space: pre-line;">
-          <h4>Cooking Instructions</h4>
+          <h4>E-Commerce Instructions</h4>
           <%- product.description %>
         </div>
       </div>
 
       <div class="row pt-4">
         <div class="col-12">
-          <h4>Ingredients</h4>
+          <h4>Product Notes</h4>
           <ul class="list-group list-group-flush">
-            <% product.ingredients.forEach(function(ingredients, index){ %>
-              <li class="list-group-item"><%= ingredients %></li>
+            <% product.productNotes.forEach(function(productNotes, index){ %>
+              <li class="list-group-item"><%= productNotes %></li>
             <% }) %>
           </ul> 
         </div>

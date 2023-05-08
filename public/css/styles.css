@@ -3,43 +3,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary-color: #4343DE;
-    --secondary-color: #2D2D2D;
-    --price-color: #ED7100;
-    --background-color: #DFE3E8;
-    --hover-color: #F52A85;
-    --footer-background-color: #919EAB;
-    --heading-bottom-border: 5px solid #0203AC
-    --nav-bar-bottom-border: 5px solid #637381;
-    --montserrat: 'Montserrat', sans-serif;
-    --poppins: 'Poppins', sans-serif;
-    --open-sans: 'Open Sans', sans-serif;
-    --bs-font-sans-serif: 'Rubik', sans-serif;
+  --primary-color: #4343DE;
+  --secondary-color: #2D2D2D;
+  --price-color: #ED7100;
+  --background-color: #DFE3E8;
+  --hover-color: #F52A85;
+  --footer-background-color: #919EAB;
+  --heading-bottom-border: 5px solid #0203AC --nav-bar-bottom-border: 5px solid #637381;
+  --montserrat: 'Montserrat', sans-serif;
+  --poppins: 'Poppins', sans-serif;
+  --open-sans: 'Open Sans', sans-serif;
+  --bs-font-sans-serif: 'Rubik', sans-serif;
 }
 
-*, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overscroll-behavior: none;
-    scroll-behavior: smooth;
-    scrollbar-color: transparent transparent; /* thumb and track color */
-    scrollbar-width: 0px;
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+  scrollbar-color: transparent transparent;
+  /* thumb and track color */
+  scrollbar-width: 0px;
 }
 
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
-.container-xxl { max-width: 1530px; }
+.container-xxl {
+  max-width: 1530px;
+}
 
 body {
   background-image: url("/img/i-like-food.svg");
   background-color: var(--background-color);
 }
 
+img {
+  object-fit: contain;
+}
+
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: bold;
   letter-spacing: 0.2em;
@@ -58,7 +70,9 @@ h3 {
   font-size: 24px;
 }
 
-a { color: var(--bs-dark); }
+a {
+  color: var(--bs-dark);
+}
 
 
 /* Category Card */
@@ -79,7 +93,7 @@ a { color: var(--bs-dark); }
   align-items: center;
   height: 100px;
   margin-bottom: 10px;
-  box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
   overflow: hidden;
   border-radius: 8px;
 }
