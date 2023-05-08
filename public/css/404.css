@@ -1,47 +1,37 @@
 .page {
-    background: var(--background-color);
+  background: var(--background-color);
 }
 
-#newsletter input {
-    border-radius: 30px;
+#newsletter input, #newsletter button {
+  border-radius: 30px;
 }
 
-
-.newsletter-button {
-    background: var(--secondary-color);
-    color: #fff;
-    cursor: pointer;
-    transition: 0.4s;
+.btn:hover {
+  opacity: 0.7;
 }
-
-
-.newslatter-button:hover {
-    opacity: 0.7;
-}
-
 
 @media screen and (max-width: 1023px) {
-    .page {
-        display: flex;
-        flex-flow: column wrap;
-    }
+  .page {
+    display: flex;
+    flex-flow: column wrap;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .time {
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: center;
-    }
-    #days {
-        padding-left: 0.3rem;
-    }
-    #hours {
-        padding-left: 1.5rem;
-    }
-    #minutes, #seconds {
-        padding-left: 2rem;
-    }
-    
+  .time {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 50px;
+  }
+  #days {
+    padding-left: 0.3rem;
+  }
+  #hours {
+    padding-left: 1.5rem;
+  }
+  #minutes,
+  #seconds {
+    padding-left: 2rem;
+  }
 }
