@@ -2,9 +2,6 @@
   background: var(--background-color);
 }
 
-#newsletter input, #newsletter button {
-  border-radius: 30px;
-}
 
 .btn:hover {
   opacity: 0.7;
