@@ -9,8 +9,19 @@ const { errorHandler, notFound } = require('./middlewares/errorHandler.js');
 const cookiesParser = require('cookie-parser');
 const { authMiddleware, checkUserRole, authUser, checkCustomerRole } = require('./middlewares/authMiddleware.js');
 
-//Connect to MongoDB database, Dir: config/MongoDB.js
+// //Connect to MongoDB database, Dir: config/MongoDB.js
 dbConnect();
+// const mongoose = require('mongoose');
+// mongoose.connect(process.env.MONGODB_URI, { 
+//   useNewUrlParser: true, 
+//   useUnifiedTopology: true 
+// });
+
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function(){
+//   console.log('Connected')
+// });
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
