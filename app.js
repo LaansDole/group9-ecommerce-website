@@ -24,7 +24,7 @@ app.use(session({
 app.use(flash());
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
-app.set('layout', './layouts/main');
+app.set('layout', './layouts/login');
 app.set('view engine', 'ejs');
 
 const routes = require('./server/routes/productRoutes.js')
