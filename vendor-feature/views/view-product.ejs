@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Read Products</title>
+  </head>
+  <body>
+    <h1>Products</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Categories</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <% products.forEach(function(product) { %>
+        <tr>
+          <td><%= product.title %></td>
+          <td><%= product.price %></td>
+          <td><%= product.description %></td>
+          <td><%= product.category %></td>
+          <td><a href="/product/<%= product.id %>/update">Click here</a> </td>
+          <td><a href="/product/<%= product.id %>/delete">Click here</a></td>
+        </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
