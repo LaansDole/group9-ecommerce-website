@@ -38,7 +38,7 @@ html {
 
 body {
   background-image: url("/img/i-like-food.svg");
-  background-color: var(--background-color);
+  background-color:  var(--background-color);
 }
 
 img {
