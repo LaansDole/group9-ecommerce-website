@@ -63,12 +63,8 @@ In this project, with Lazada's permission, you are working on a simplified and s
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
-<<<<<<< HEAD
 - Other resources: MDN Web Docs, RMIT Canvas, NPM Package
 - Packages: Refer to package.json and package-lock.json
-=======
-- Packages: Refer to `package.json` and `package-lock.json`
->>>>>>> 03111b5883f7efdebcb7a025941a7b8928ff30d8
 
 ## Build
 
