@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <base href="/"> 
+    <script
+      src="https://kit.fontawesome.com/625c7efa43.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" ></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include ('partials/navbar') %>
+    <seciton id="main">
+      <secion id="side">
+          <img src="/imgs/side.png" alt="shopping-illustrate">
+      </secion>
+
+      <section id="main">
+        <div class="login-container">
+          <p class="title">Sign Up as</p>
+          
+          <div class="button-box">
+            <div class="btn">
+              <a href="/register-customer"><button type="button" class="toggle-btn" onclick="leftClick()">Customer</button></a>
+              <a href="/register-vendor"><button type="button" class="toggle-btn" onclick="leftClick()">Vendor</button></a>
+              <a href="/register-shipper"><button type="button" class="toggle-btn" onclick="leftClick()">Shipper</button></a>
+            </div>
+          </div>
+
+          <div class="seperator"></div>
+          <form class="login-form" action="/api/user/register-vendor" method="post" enctype="multipart/form-data">
+            <div class="form-control">
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="Enter username"
+                name="userName"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                id="password"
+                onkeyup="checkPassword(this.value)"
+                required
+              />
+              <span id="toggleEye"></span>
+              <div class="validation">
+                <ul>
+                  <li id="lower">At least one lowercase character</li>
+                  <li id="upper">At least one uppercase character</li>
+                  <li id="number">At least one number</li>
+                  <li id="special">At least one special character</li>
+                  <li id="length">At least 8 chracters</li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-control">
+              <label>Profile picture</label>
+              <input
+                type="file"
+                id="image_input"
+                accept="image/png, image/jpg"
+                name="profilePicture"
+              />
+              <div id="display-img"></div>
+            </div>
+            <div class="form-control">
+              <label>Business name</label>
+              <input
+                type="text"
+                placeholder="Enter Business name"
+                name="businessName"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label>Business Address</label>
+              <input
+                type="text"
+                placeholder="Enter Business address"
+                name="businessAddress"
+                required
+              />
+            </div>
+            <button class="submit">Register</button>
+          </form>
+        </div>
+      </section>
+  </seciton>
+  <script src="/js/script.js"></script>
+  <script src="/js/scripts.js"></script>
+  </body>
+</html>

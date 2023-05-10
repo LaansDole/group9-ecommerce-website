@@ -39,10 +39,10 @@ app.get('/register-customer', (req, res) => {
     res.render('signup-customer');
 });
 app.get('/register-vendor', (req, res) => {
-    res.render('signup-vendor');
+    res.render('vendor-signup');
 });
 app.get('/register-shipper', (req, res) => {
-    res.render('signup-shipper');
+    res.render('shipper-signup');
 });
 app.get('/login', (req, res) => {
     res.render('login');

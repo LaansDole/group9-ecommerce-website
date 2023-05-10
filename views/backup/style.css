@@ -130,7 +130,7 @@ h3 {
     display:flex;
     justify-content: space-around;
     align-items: center;
-    padding: 50px 50px;
+    padding: 120px 120px;
 }
 
 .side img{
@@ -156,34 +156,12 @@ h3 {
     text-align: center;
     letter-spacing: 1px;
 }
-.button-box{
-    width: 320px;
-    margin: 5px 10px;
-    position: relative;
-    border-radius: 30px;
-    background: #ffffff;
-}
-
-.toggle-btn{
-    cursor: pointer;
-    padding: 10px 12px;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-weight: 500;
-    /* background: var(--primary-color); */
-    border: 1px solid var(--primary-color);
-}
-
 
 .seperator{
     width: 150px;
-    height: 4px;    
+    height: 4px;
     background-color: #0203AC;
-    margin: 14px;
+    margin: 24px;
 }
 
 .login-form{

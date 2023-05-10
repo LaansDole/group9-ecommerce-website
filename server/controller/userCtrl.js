@@ -142,13 +142,16 @@ const createCustomer = asyncHandler(async (req, res) => {
   });
 });
 
+
+
+
 const createShipper = asyncHandler(async (req, res) => {
   upload(req, res, async function (err) {
     if (err) {
       return res.status(400).json({ error: err.message });
     }
 
-    const {  userName, password, hubName, hubAddress } = req.body;
+    const {  userName, password, hubName, hubAddress, name } = req.body;
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
@@ -177,6 +180,7 @@ const createShipper = asyncHandler(async (req, res) => {
 
         const newUser = await User.create({
           hubName: hubName,
+          name: name,
           userName: userName,
           hubAddress: hubAddress,
           password: password,
@@ -189,10 +193,13 @@ const createShipper = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
       }
     } catch (err) {
-      next(err);
+      res.status(500).json({ error: err.message });
     }
   });
 });
+
+
+
 
 
 
