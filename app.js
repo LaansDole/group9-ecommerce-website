@@ -5,15 +5,29 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
+const {dbConnect} = require('./utils/dbConnect');
+const bodyParser = require("body-parser");
+const PORT = process.env.PORT || 9000;
+
+const authRouter = require("./server/routes/authRoute");
+const { errorHandler, notFound } = require('./middlewares/errorHandler.js');
+const cookiesParser = require('cookie-parser');
+const { authMiddleware, checkUserRole, authUser, checkCustomerRole } = require('./middlewares/authMiddleware.js');
+
+// //Connect to MongoDB database, Dir: config/MongoDB.js
+dbConnect();
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 require('dotenv').config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(expressLayouts);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookiesParser());
 
 app.use(cookieParser('eCommerceSecure'));
 app.use(session({
@@ -24,11 +38,15 @@ app.use(session({
 app.use(flash());
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
 
-app.set('layout', './layouts/main');
+app.set('layout', './layouts/login');
 app.set('view engine', 'ejs');
 
+app.get('', (req, res) => {
+  res.render()
+})
+
 const routes = require('./server/routes/productRoutes.js')
-app.use('/', routes);
+app.use('/main', routes);
 
 // Handling non matching request from the client
 app.use((req, res, next) => {
@@ -45,4 +63,4 @@ app.use((req, res, next) => {
 //   }
 // ]);
 
-app.listen(port, () => console.log(`Listening to port http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening to port http://localhost:${PORT}`));
