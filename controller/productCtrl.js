@@ -25,7 +25,7 @@ const createProduct = async(req,res) => {
 const createProductpost = async(req,res) => {
     console.log(req.body);
     const newProduct = new Product(req.body);
-    Product.vendor = User.
+    Product.v_id = User.businessName;
     newProduct.save()
       .then(() => {res.redirect('/products')})
       .catch(error => res.send(error))
