@@ -1,9 +1,0 @@
-
-
-POST http://localhost:8000/api/auth/login
-Content-Type: application/json
-
-{
-    "userName": "admin",
-    "password": "admin"
-}

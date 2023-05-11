@@ -1,6 +1,0 @@
-Password requiremen
-Picture:
-
-register: 3 role
-vendor register => role = vender
-chnage action link
