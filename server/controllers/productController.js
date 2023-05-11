@@ -1,6 +1,6 @@
-require('../models/database');
-const Category = require('../models/Category');
-const Product = require('../models/Product');
+require('../model/database');
+const Category = require('../model/Category');
+const Product = require('../model/Product');
 
 /**
  * GET /

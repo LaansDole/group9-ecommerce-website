@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+  v_id: {
+    type: String,
+    require: true,
+    unique: true
+  },
   name: {
     type: String,
     required: 'This field is required.'

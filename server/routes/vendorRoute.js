@@ -1,9 +1,9 @@
-const {vendor,createProduct,createProductpost, deleteProductform,viewProduct, updateProductform, updateproduct, deleteproductbyID} = require("../controller/productCtrl");
+const {vendor,createProduct,createProductpost, deleteProductform,viewProduct, updateProductform, updateproduct, deleteproductbyID} = require("../controllers/vendorController");
 const express = require("express");
 const route = express.Router();
 
 
-//create path this route to productCtrl
+//create path this route to vendorController
 route.get("/vendorpage",vendor);
 route.get("/products",viewProduct);
 route.get("/product/new",createProduct);

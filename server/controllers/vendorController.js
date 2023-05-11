@@ -1,9 +1,9 @@
-const Product = require("../model/productModel");
+const Product = require("../model/Product");
 const asyncHandler = require("express-async-handler");
 //slugify to cut space between words
 const slugify = require("slugify");
 const express = require("express");
-//call asyncHandler is middleware to resolve all errors inside path between productModel and productCtrl
+//call asyncHandler is middleware to resolve all errors inside path between Product and vendorController
 //create new product in 'create product'
 const User = require("../model/userModel");
 
