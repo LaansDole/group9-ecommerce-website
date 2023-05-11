@@ -38,7 +38,7 @@ html {
 
 body {
   background-image: url("/img/i-like-food.svg");
-  background-color: var(--background-color);
+  background-color:  var(--background-color);
 }
 
 img {
@@ -64,6 +64,7 @@ h1 {
 
 h2 {
   font-size: 28px;
+  color: var(--primary-color);
 }
 
 h3 {
@@ -74,6 +75,9 @@ a {
   color: var(--bs-dark);
 }
 
+a:hover {
+  color: var(--hover-color);
+}
 
 /* Category Card */
 .category__link {
