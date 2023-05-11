@@ -4,7 +4,8 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const express = require("express");
 //call asyncHandler is middleware to resolve all errors inside path between productModel and productCtrl
-//create new product in 'create product' 
+//create new product in 'create product'
+const User = require("../model/userModel");
 
 
 const vendor = async(req,res) => {
@@ -24,6 +25,7 @@ const createProduct = async(req,res) => {
 const createProductpost = async(req,res) => {
     console.log(req.body);
     const newProduct = new Product(req.body);
+    Product.vendor = User.
     newProduct.save()
       .then(() => {res.redirect('/products')})
       .catch(error => res.send(error))

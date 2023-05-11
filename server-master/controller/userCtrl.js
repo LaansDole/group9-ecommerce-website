@@ -256,6 +256,18 @@ const vendor = (req, res) => {
     res.render('vendor-private.ejs',{ user: req.user });
     
 };
+
+const vendorProduct = async (req, res) => {
+  try {
+    const vendor = await Product.find({ 'v_id': vendorID });
+    res.render('vendor-private.ejs', { title: 'Vendor Dashboard', vendorid });
+  } catch (error) {
+    res.satus(500).send({ message: error.message || "Error Occured" });
+    res.render('./404.ejs')
+
+  }
+}
+
 const shipper = (req, res) => {
     res.render('shipper-private.ejs',{ user: req.user });
     

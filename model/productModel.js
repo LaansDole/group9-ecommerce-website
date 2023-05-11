@@ -2,6 +2,12 @@ const mongoose = require('mongoose'); // Erase if already required
 
 // Declare the Schema of the Mongo model
 const productSchema = new mongoose.Schema({
+    v_id: {
+        type: String,
+        require: true,
+        unique: true
+    },
+    
     title:{
         type:String,
         required:true,
