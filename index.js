@@ -16,8 +16,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const asyncHandler = require("express-async-handler");
 // Middleware
-// const {notFound, errorHandler} = require("./middlewares/errorHandler");
-// const { authMiddleware, checkUserRole, authUser, checkCustomerRole } = require('./middlewares/authMiddleware');
+const {notFound, errorHandler} = require("./middlewares/errorHandler.js");
+const { authMiddleware, checkUserRole, authUser, checkCustomerRole } = require('./middlewares/authMiddleware.js');
+
 // app.use(notFound);
 // app.use(errorHandler);
 
