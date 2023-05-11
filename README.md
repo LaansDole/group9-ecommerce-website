@@ -5,7 +5,12 @@
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
-#### Disclaimer: All client access keys are stored inside .env (dotenv) file, which is hidden in .gitignore to protect personal data
+#### Disclaimer: If you encounter this error: EADDRINUSE, Address already in use, do as below:
+```bash
+$ sudo lsof -i :3000
+# Check for the PID on the screeen
+$ kill -9 <PID>
+```
 
 ## Contribution
 

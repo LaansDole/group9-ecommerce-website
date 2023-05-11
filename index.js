@@ -16,26 +16,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const asyncHandler = require("express-async-handler");
 // Middleware
-const {notFound, errorHandler} = require("./middlewares/errorHandler.js");
 const { authMiddleware, checkUserRole, authUser, checkCustomerRole } = require('./middlewares/authMiddleware.js');
-
-// app.use(notFound);
-// app.use(errorHandler);
-
-// Connect to MongoDB database, Dir: config/MongoDB.js
-// const {dbConnect} = require('./utils/dbConnect');
-// dbConnect();
-// const mongoose = require('mongoose');
-// mongoose.connect(process.env.MONGODB_URI, { 
-//   useNewUrlParser: true, 
-//   useUnifiedTopology: true 
-// });
-
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function(){
-//   console.log('Connected')
-// });
 
 require('dotenv').config();
 
@@ -81,6 +62,7 @@ app.get('/unsucess', (req, res) => {
     res.render('unsuccess.ejs');
 });
 
+
 // morgan checking 'log'
 app.use(morgan("dev"));
 // app.use(bodyParser());
@@ -98,6 +80,12 @@ app.use('/', homeRoute);
 app.use((req, res, next) => {
     res.status(404).render('./404.ejs')
 })
+
+const notFoundMiddleware = require("./middlewares/not-found");
+const errorHandlerMiddleware = require("./middlewares/error-handler");
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 app.listen(PORT,() =>{
     console.log(`Server is listening on port http://localhost:${PORT}`)});
