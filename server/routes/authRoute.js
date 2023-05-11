@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const {  loginUserCtrl, getallUser, getaUser, deleteaUser,  blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controller/userCtrl');
+const {  loginUserCtrl, getallUser, getaUser, deleteaUser,  blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controllersss/userCtrl');
 const { authMiddleware, checkVendorRole, checkCustomerRole, checkShipperRole }  = require("../../middlewares/authMiddleware");
 const router = express.Router();
 const bodyParser = require('body-parser');

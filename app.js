@@ -45,7 +45,7 @@ app.get('', (req, res) => {
   res.render()
 })
 
-const routes = require('./server/routes/productRoutes.js')
+const routes = require('./server/routes/homeRoute.js')
 app.use('/main', routes);
 
 // Handling non matching request from the client

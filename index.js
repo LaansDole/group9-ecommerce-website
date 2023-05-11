@@ -76,7 +76,7 @@ const dbconnection = require("./config/dbconnection.js");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const productRoute = require("./routes/productRoute.js");
+const vendorRoute = require("./routes/vendorRoute.js");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const {notFound, errorHandler} = require("./middlewares/errorHandlers.js");
@@ -97,7 +97,7 @@ app.set("view engine","ejs");
 
 
 
-app.use("/",productRoute);
+app.use("/",vendorRoute);
 app.listen(PORT,() =>{
     console.log(`Server is listening on port http://localhost:${PORT}`)});
 
