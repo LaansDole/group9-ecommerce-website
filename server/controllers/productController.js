@@ -256,7 +256,7 @@ async function insertDymmyProductData() {
           "1 level teaspoon hot smoked paprika",
         ],
         "category": "Laptop",
-        "image": "southern-friend-chicken.jpg"
+        "image": ""
       },
       {
         "name": "Product Name Goes Here",
@@ -268,7 +268,7 @@ async function insertDymmyProductData() {
           "1 level teaspoon hot smoked paprika",
         ],
         "category": "Laptop",
-        "image": "southern-friend-chicken.jpg"
+        "image": ""
       },
     ]);
   } catch (error) {
