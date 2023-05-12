@@ -17,7 +17,7 @@ exports.homepage = async (req, res) => {
 
     const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory });
+    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
@@ -31,7 +31,7 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'E-Commerce - Categoreis', categories });
+    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categories, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -48,7 +48,7 @@ exports.exploreCategoriesById = async (req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 20;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'E-Commerce - Categoreis', categoryById });
+    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -63,7 +63,7 @@ exports.exploreProduct = async (req, res) => {
   try {
     let productId = req.params.id;
     const product = await Product.findById(productId);
-    res.render('product', { title: 'E-Commerce - Product', product });
+    res.render('home-page/product', { title: 'E-Commerce - Product', product, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -79,7 +79,7 @@ exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'E-Commerce - Search', product });
+    res.render('home-page/search', { title: 'E-Commerce - Search', product, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -95,7 +95,7 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const product = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'E-Commerce - Explore Latest', product });
+    res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -127,7 +127,7 @@ exports.exploreLatest = async (req, res) => {
 exports.submitProduct = async (req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj });
+  res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
 }
 
 /**
