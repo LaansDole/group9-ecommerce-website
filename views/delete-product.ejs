@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Delete Product</h1>
-    <form action="/product/<%= product._id %>/delete" method="POST">
+    <form action="/home/product/<%= product._id %>/delete" method="POST">
       <p>Are you sure you want to delete the product "<%= product.title %>"?</p>
       <input type="submit" value="Delete">
     </form>

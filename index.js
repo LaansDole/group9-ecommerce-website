@@ -49,38 +49,38 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 // Set the path to the layouts directory
-app.set('views', path.join(__dirname, 'views/layouts'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Set the layout for the login/signup page
-app.set('layout', 'loginSignupLayout');
+// app.set('layout', './layouts/loginSignupLayout');
 
 // Set the routes for the login/signup page
 const authRoute = require("./server/routes/authRoute.js");
 app.use('/', authRoute);
 
 // Set the layout for the homepage
-app.set('layout', 'homeLayout');
+app.set('layout', './layouts/homeLayout');
 
 // Set the routes for the homepage
 const homeRoute = require('./server/routes/homeRoute.js');
 app.use('/home', homeRoute);
 
 // Set the layout for the vendor dashboard
-app.set('layout', 'vendorLayout');
+// app.set('layout', './layouts/vendorLayout');
 
 // Set the routes for the vendor dashboard
 const vendorRoute = require("./server/routes/vendorRoute.js");
 app.use('/vendor-dashboard', vendorRoute);
 
 // Set the layout for the shipper dashboard
-app.set('layout', 'shipperLayout');
+// app.set('layout', './layouts/shipperLayout');
 
 // Set the routes for the shipper dashboard
 
 
 // Handling non matching request from the client
 app.use((req, res, next) => {
-    res.status(404).render('./home/404.ejs')
+    res.status(404).render('./404.ejs')
 })
 
 const notFoundMiddleware = require("./middlewares/not-found");

@@ -9,7 +9,7 @@
 	<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
 		<% if(product != '') { %>
 		  <% product.forEach(function(product, index){ %>
-		  <a href="/product/<%= product._id %>" class="text-center category__link">
+		  <a href="/home/product/<%= product._id %>" class="text-center category__link">
 			<div class="category__img category__img--large shadow">
 			  <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
 			</div>

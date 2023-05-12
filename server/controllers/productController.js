@@ -17,14 +17,14 @@ exports.homepage = async (req, res) => {
 
     const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('index', { title: 'E-Commerce - Home', categories, productCategory });
+    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
 }
 
 /**
- * GET /categories
+ * GET /home/categories
  * Categories 
 */
 exports.exploreCategories = async (req, res) => {
@@ -40,7 +40,7 @@ exports.exploreCategories = async (req, res) => {
 
 
 /**
- * GET /categories/:id
+ * GET /home/categories/:id
  * Categories By Id
 */
 exports.exploreCategoriesById = async (req, res) => {
@@ -72,7 +72,7 @@ exports.exploreProduct = async (req, res) => {
 
 
 /**
- * POST /search
+ * POST /home/search
  * Search 
 */
 exports.searchProduct = async (req, res) => {
@@ -88,7 +88,7 @@ exports.searchProduct = async (req, res) => {
 }
 
 /**
- * GET /explore-latest
+ * GET /home/explore-latest
  * Explplore Latest 
 */
 exports.exploreLatest = async (req, res) => {
@@ -105,7 +105,7 @@ exports.exploreLatest = async (req, res) => {
 
 
 /**
- * GET /explore-random
+ * GET /home/explore-random
  * Explore Random as JSON
 */
 // exports.exploreRandom = async (req, res) => {
@@ -121,7 +121,7 @@ exports.exploreLatest = async (req, res) => {
 
 
 /**
- * GET /submit-product
+ * GET /home/submit-product
  * Submit Product
 */
 exports.submitProduct = async (req, res) => {
@@ -131,7 +131,7 @@ exports.submitProduct = async (req, res) => {
 }
 
 /**
- * POST /submit-product
+ * POST /home/submit-product
  * Submit Product
 */
 exports.submitProductOnPost = async (req, res) => {
@@ -168,11 +168,11 @@ exports.submitProductOnPost = async (req, res) => {
     await newProduct.save();
 
     req.flash('infoSubmit', 'Product has been added.')
-    res.redirect('/submit-product');
+    res.redirect('/home/submit-product');
   } catch (error) {
     // res.json(error);
     req.flash('infoErrors', error);
-    res.redirect('/submit-product');
+    res.redirect('/home/submit-product');
   }
 }
 
