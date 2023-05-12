@@ -35,8 +35,12 @@ app.use(session({
     saveUninitialized: true,
     resave: true
   }));
-  app.use(flash());
-  app.use(fileUpload({ useTempFiles: true, tempFileDir: "./tmp/holder.txt" }));
+app.use(flash());
+
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+}));
+app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 //Connect authorize user
 app.use("/api/user", authRouter);
@@ -69,8 +73,6 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-// app.use(notFound);
-// app.use(errorHandler);
 app.set('layout', './layouts/main');
 
 const homeRoute = require('./server/routes/homeRoute.js')
