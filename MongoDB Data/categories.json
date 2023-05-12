@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f0514d"
+    },
+    "name": "Laptop",
+    "image": "american-food.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f0514e"
+    },
+    "name": "Phone",
+    "image": "chinese-food.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f0514c"
+    },
+    "name": "Tablet",
+    "image": "thai-food.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f0514f"
+    },
+    "name": "Sound",
+    "image": "mexican-food.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f05150"
+    },
+    "name": "Keyboard",
+    "image": "indian-food.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "614dd75a9693912a00f05151"
+    },
+    "name": "Screen",
+    "image": "spanish-food.jpg",
+    "__v": 0
+  }
+]
