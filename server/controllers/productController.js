@@ -20,7 +20,6 @@ exports.homepage = async (req, res) => {
     res.render('index', { title: 'E-Commerce - Home', categories, productCategory });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
   }
 }
 
@@ -35,7 +34,6 @@ exports.exploreCategories = async (req, res) => {
     res.render('categories', { title: 'E-Commerce - Categoreis', categories });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
 
   }
 }
@@ -53,7 +51,6 @@ exports.exploreCategoriesById = async (req, res) => {
     res.render('categories', { title: 'E-Commerce - Categoreis', categoryById });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
 
   }
 }
@@ -69,7 +66,6 @@ exports.exploreProduct = async (req, res) => {
     res.render('product', { title: 'E-Commerce - Product', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
 
   }
 }
@@ -86,7 +82,6 @@ exports.searchProduct = async (req, res) => {
     res.render('search', { title: 'E-Commerce - Search', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
 
   }
 
@@ -103,7 +98,6 @@ exports.exploreLatest = async (req, res) => {
     res.render('explore-latest', { title: 'E-Commerce - Explore Latest', product });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
-    res.render('./404.ejs')
 
   }
 }

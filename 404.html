@@ -25,38 +25,48 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
   />
   <!-- This part contains internal files -->
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/404.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/product-detail.css" />
+  <link rel="stylesheet" href="./public/css/styles.css">
+  <link rel="stylesheet" href="./public/css/404.css">
+  <link rel="stylesheet" href="./public/css/footer.css">
+  <link rel="stylesheet" href="./public/css/product-detail.css" />
 
 </head>
 <body>
   
-  <div class="container-xxl px-md-5 bg-white shadow-lg">
-
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <img src="/img/logo.png" alt="LAZADA">
-      </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="/about" class="nav-link px-2 link-secondary">About</a></li>
-        <!-- <li><a href="/submit-product" class="nav-link px-2 link-secondary">Submit</a></li> -->
-        <li><a href="/contact" class="nav-link px-2 link-secondary">Contact</a></li>
-        <li><a href="/your-cart" class="nav-link px-2 link-secondary">Your Cart</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <form method="POST" action="/search">
-          <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-      </div>
-    </header>
-
+  <div class="container-xxl bg-white shadow-lg">
     <main>
-      <%- body -%>
+        <div class="page">
+          <div class="image-container col">
+            <div class="time middle">
+              <span
+                ><div id="days"></div>
+                Days</span
+              >
+              <span
+                ><div id="hours"></div>
+                Hours</span
+              >
+              <span
+                ><div id="minutes"></div>
+                Minutes</span
+              >
+              <span
+                ><div id="seconds"></div>
+                Seconds</span
+              >
+            </div>
+          </div>
+          <div class="newsletter-col col">
+            <div class="newslatter middle">
+              <h2>We will fix this soon</h2>
+              <h4>Subscribe to get notification it is done</h4>
+              <form>
+                <input type="text" placeholder="Enter Your Email" />
+                <button type="button" class="newslatter-button">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
     </main>
 
     <footer class="pt-4 mx-lg-auto">
@@ -132,10 +142,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- This part for internal files -->
-  <script src="/js/script.js"></script>
-  <script src="/js/footer.js"></script>
-  <script src="/js/404.js"></script>
-  <script src="/js/productQuantity.js"></script>
-  <script src="/js/api/unsplashAPI.js"></script>
+  <script src="./public/js/script.js"></script>
+  <script src="./public/js/footer.js"></script>
+  <script src="./public/js/404.js"></script>
+  <script src="./public/js/productQuantity.js"></script>
+  <script src="./public/js/api/unsplashAPI.js"></script>
 </body>
 </html>
