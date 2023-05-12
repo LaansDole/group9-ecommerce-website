@@ -1,0 +1,147 @@
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+  <div class="col-12 col-lg-6">
+    <img src="/img/hero-image.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="E-Commerce">
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <h1 class="display-5 fw-bold mb-3">Tagline here</h1>
+    <p class="lead">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.    
+    </p>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Categories Start -->
+
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+
+  <% if(categories != '') { %>
+    <% categories.forEach(function(category, index) { %>
+      <a href="/categories/<%- category.name %>" class="text-center category__link">
+        <div class="category__img shadow mt-5">
+          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%- category.name %></div>
+      </a>
+    <% }) %>
+  <% } %>
+
+  <a href="/categories" class="text-center category__link">
+    <div class="category__img shadow mt-5">
+      <img src="img/view-all.jpg" alt="View All Categories" loading="lazy">
+    </div>
+    <div class="pt-1">View All</div>
+  </a>
+
+</div>
+<!-- Categories End -->
+
+
+
+<!-- Latest Start -->
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Latest Products</h2>
+    <a href="/explore-latest" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+    <% if(productCategory != '') { %>
+      <% productCategory.latest.forEach(function(product, index){ %>
+      <a href="/product/<%= product._id %>" class="text-center category__link">
+        <div class="category__img category__img--large shadow mt-5">
+          <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= product.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+
+</section>
+<!-- Latest End -->
+
+<!-- Tablet Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Tablet Products</h2>
+    <a href="/categories/Tablet" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof productCategory.tablet !== 'undefined' && productCategory.tablet.length > 0) { %>
+      <% productCategory.tablet.forEach(function(product, index){ %>
+      <a href="/product/<%= product._id %>" class="text-center category__link">
+        <div class="category__img category__img--large shadow mt-5">
+          <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= product.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Tablet End -->
+
+<!-- Laptop Start -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Laptop Products</h2>
+    <a href="/categories/Laptop" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(productCategory.laptop != '') { %>
+      <% productCategory.laptop.forEach(function(product, index){ %>
+      <a href="/product/<%= product._id %>" class="text-center category__link">
+        <div class="category__img category__img--large shadow mt-5">
+          <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= product.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Laptop End -->
+
+<!-- Phone Products -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Phone Products</h2>
+    <a href="/categories/Phone" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(productCategory.phone != '') { %>
+      <% productCategory.phone.forEach(function(product, index){ %>
+      <a href="/product/<%= product._id %>" class="text-center category__link">
+        <div class="category__img category__img--large shadow mt-5">
+          <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= product.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- Phone End -->

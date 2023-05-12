@@ -73,11 +73,17 @@
 }
 
 .footer-about-us {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 2rem;
-    gap: 0.5rem;
+    padding: 0 2rem 2rem 2rem;
     background-color: var(--background-color);
+}
+
+.footer-about-us h6 {
+    color: #0203AC;
+}
+
+.footer-about-us img {
+   width: 30rem;
+   height: 20rem; 
 }
 
 .footer-section-title {
@@ -108,7 +114,14 @@
     color: white;
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1023px) {
+.about-us-content {
+    flex-flow: column wrap;
+}
+
+.footer-about-us img {
+    margin-left: 0;
+}
 #footer-content{
     flex-direction: column;
     gap: 2rem;
@@ -127,10 +140,15 @@
 }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 767px) {
     #footer {
         position: relative;  
         /* margin-top: 90vh; */
+    }
+
+    .footer-about-us img {
+        width: 20rem;
+        height: 10rem;
     }
 
     #footer-content {
