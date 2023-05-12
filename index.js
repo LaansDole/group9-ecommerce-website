@@ -4,12 +4,13 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
 const cookiesParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3000;
+const path = require('path');
+
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const asyncHandler = require("express-async-handler");
@@ -20,9 +21,6 @@ require('dotenv').config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(expressLayouts);
-
-app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,19 +44,43 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('layout', './layouts/main');
+// Set the view engine to EJS and use express-ejs-layouts
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
 
-const homeRoute = require('./server/routes/homeRoute.js');
-const vendorRoute = require("./server/routes/vendorRoute.js");
+// Set the path to the layouts directory
+app.set('views', path.join(__dirname, 'views/layouts'));
+
+// Set the layout for the login/signup page
+app.set('layout', 'loginSignupLayout');
+
+// Set the routes for the login/signup page
 const authRoute = require("./server/routes/authRoute.js");
-
-app.use('/home', homeRoute);
-app.use('/vendor', vendorRoute);
 app.use('/', authRoute);
+
+// Set the layout for the homepage
+app.set('layout', 'homeLayout');
+
+// Set the routes for the homepage
+const homeRoute = require('./server/routes/homeRoute.js');
+app.use('/home', homeRoute);
+
+// Set the layout for the vendor dashboard
+app.set('layout', 'vendorLayout');
+
+// Set the routes for the vendor dashboard
+const vendorRoute = require("./server/routes/vendorRoute.js");
+app.use('/vendor-dashboard', vendorRoute);
+
+// Set the layout for the shipper dashboard
+app.set('layout', 'shipperLayout');
+
+// Set the routes for the shipper dashboard
+
 
 // Handling non matching request from the client
 app.use((req, res, next) => {
-    res.status(404).render('./404.ejs')
+    res.status(404).render('./home/404.ejs')
 })
 
 const notFoundMiddleware = require("./middlewares/not-found");

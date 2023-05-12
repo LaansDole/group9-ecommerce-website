@@ -24,17 +24,4 @@ choosing what pages will be in the <%- body %> of the main section. Which is the
 ### - For the server/model folder:
 It will act as the database for `server/controller (req)`. Once created, import to controller to use its `data`.
 
-## Website Layout
-### - In layout/: login.ejs
-In login.ejs <%- body %>:
-    - login-form
-    - signup-user-form
-    - signup-shipper-form
-    - signup-vendor-form
-
-### - In layout/: main.ejs
-In main.ejs <$- body %>:
-- index (homepage) 
-- ...
-
 
