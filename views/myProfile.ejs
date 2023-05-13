@@ -20,23 +20,29 @@
     <link rel="stylesheet" href="/css/login-signup.css" />
   </head>
   <body>
-    <%- include ('partials/navbar') %>
+    
     <seciton id="main">
       <secion id="side">
           <img src="/img/side.png" alt="shopping-illustrate">
       </secion>
       <h1>Profile</h1>
   </seciton>
-  <h1>Welcome, <%= userName %>!</h1>
-      <p>Your role is <%= role %></p>
+  <button onclick="window.location.href='/myProfileUpdate'">Update Profile</button>
+  <h1>Welcome, <%= name %>!</h1>
+      <p><h3>ROLE:</h3> <%= role %></p>
+
       <% if (role === 'vendor') { %>
-        <p>Your business name is <%= businessName %> and your address is <%= businessAddress %></p>
+        <p><h3>Your business name :</h3> <%= businessName %></p>  
+        <p><h3>Your business address :</h3> <%= businessAddress %></p>
       <% } else if (role === 'customer') { %>
-        <p>Your name is <%= name %> and your address is <%= address %></p>
+        <p><h3>Your name :</h3> <%= name %> </p>
+         <p> <h3>Your address :</h3> <%= address %></p>
       <% } else if (role === 'shipper') { %>
-        <p>Your hub name is <%= hubName %> and your address is <%= hubAddress %></p>
+        <p><h3>Your Hub name :</h3> <%= hubName %> </p> 
+        <p><h3>Your hub address :</h3> <%= hubAddress %></p>
       <% } %>
-     
+
+     <h3>Avatar</h3>
       <!-- <img src="data:image/png;base64, <%= image %>" alt="Profile Picture" style="width: 500px; height: 500px;"> -->
       <div class="profile-picture">
         <% if (profilePicture) { %>
@@ -55,10 +61,6 @@
           <p>No profile picture uploaded yet.</p>
         <% } %>
       </div>
-      <form action="/updateProfilePicture" method="POST" enctype="multipart/form-data">
-        <input type="file" name="profilePicture">
-        <button type="submit">Upload Picture</button>
-      </form>
      
 
 

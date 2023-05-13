@@ -33,10 +33,10 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use(fileUpload({
-    limits: { fileSize: 50 * 1024 * 1024 },
-}));
-app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
+// app.use(fileUpload({
+//     limits: { fileSize: 50 * 1024 * 1024 },
+// }));
+// app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 // morgan checking 'log'
 app.use(morgan("dev"));
@@ -58,6 +58,7 @@ const authUserRoute = require("./server/routes/authUserRoute.js");
 app.use('/', authUserRoute);
 
 // Set the routes for the homepage
+app.set('layout', './layouts/homeLayout');
 const homeRoute = require('./server/routes/homeRoute.js');
 app.use('/home', homeRoute);
 
@@ -73,17 +74,31 @@ app.use('/vendor-dashboard', vendorRoute);
 
 // Set the routes for the shipper dashboard
 
+// Define the ejs file success and unsuccess
+app.get('/success', (req, res) => {
+    res.render('success.ejs');
+});
+
+app.get('/unsucess', (req, res) => {
+    res.render('unsuccess.ejs');
+});
+
 
 // Handling non matching request from the client
-app.use((req, res, next) => {
-    res.status(404).render('./404.ejs')
-})
 
 const notFoundMiddleware = require("./middlewares/not-found");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
+
+app.use((req, res, next) => {
+    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './layouts/homeLayout' })
+})
+
+app.use((err, req, res, next) => {
+    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './layouts/homeLayout' });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port http://localhost:${PORT}`)
