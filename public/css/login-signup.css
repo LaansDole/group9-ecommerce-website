@@ -109,6 +109,10 @@
     background: #ffffff;
 }
 
+.error {
+    color: red;
+}
+
 .toggle-btn {
     cursor: pointer;
     padding: 10px 12px;
@@ -237,7 +241,7 @@ input[type="checkbox"].toggle:checked+label::after {
 
 #toggleEye {
     position: absolute;
-    top: 27px;
+    top: 38px;
     right: 20px;
     width: 34px;
     height: 34px;
