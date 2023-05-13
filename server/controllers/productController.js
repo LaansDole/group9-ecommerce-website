@@ -102,105 +102,87 @@ exports.exploreLatest = async (req, res) => {
   }
 }
 
+// /**
+//  * GET /home/submit-product
+//  * Submit Product
+// */
+// exports.submitProduct = async (req, res) => {
+//   const infoErrorsObj = req.flash('infoErrors');
+//   const infoSubmitObj = req.flash('infoSubmit');
+//   res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+// }
 
-
-/**
- * GET /home/explore-random
- * Explore Random as JSON
-*/
-// exports.exploreRandom = async (req, res) => {
+// /**
+//  * POST /home/submit-product
+//  * Submit Product
+// */
+// exports.submitProductOnPost = async (req, res) => {
 //   try {
-//     let count = await Product.find().countDocuments();
-//     let random = Math.floor(Math.random() * count);
-//     let product = await Product.findOne().skip(random).exec();
-//     res.render('explore-random', { title: 'E-Commerce - Explore Latest', product });
+
+//     let imageUploadFile;
+//     let uploadPath;
+//     let newImageName;
+
+//     if (!req.files || Object.keys(req.files).length === 0) {
+//       console.log('No Files where uploaded.');
+//     } else {
+
+//       imageUploadFile = req.files.image;
+//       newImageName = Date.now() + imageUploadFile.name;
+
+//       uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+
+//       imageUploadFile.mv(uploadPath, function (err) {
+//         if (err) return res.satus(500).send(err);
+//       })
+
+//     }
+
+//     const newProduct = new Product({
+//       name: req.body.name,
+//       description: req.body.description,
+//       price: req.body.price,
+//       productNotes: req.body.productNotes,
+//       category: req.body.category,
+//       image: newImageName
+//     });
+
+//     await newProduct.save();
+
+//     req.flash('infoSubmit', 'Product has been added.')
+//     res.redirect('/submit-product');
 //   } catch (error) {
-//     res.satus(500).send({ message: error.message || "Error Occured" });
+//     // res.json(error);
+//     req.flash('infoErrors', error);
+//     res.redirect('/submit-product');
 //   }
 // }
 
 
-/**
- * GET /home/submit-product
- * Submit Product
-*/
-exports.submitProduct = async (req, res) => {
-  const infoErrorsObj = req.flash('infoErrors');
-  const infoSubmitObj = req.flash('infoSubmit');
-  res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
-}
-
-/**
- * POST /home/submit-product
- * Submit Product
-*/
-exports.submitProductOnPost = async (req, res) => {
-  try {
-
-    let imageUploadFile;
-    let uploadPath;
-    let newImageName;
-
-    if (!req.files || Object.keys(req.files).length === 0) {
-      console.log('No Files where uploaded.');
-    } else {
-
-      imageUploadFile = req.files.image;
-      newImageName = Date.now() + imageUploadFile.name;
-
-      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
-
-      imageUploadFile.mv(uploadPath, function (err) {
-        if (err) return res.satus(500).send(err);
-      })
-
-    }
-
-    const newProduct = new Product({
-      name: req.body.name,
-      description: req.body.description,
-      price: req.body.price,
-      productNotes: req.body.productNotes,
-      category: req.body.category,
-      image: newImageName
-    });
-
-    await newProduct.save();
-
-    req.flash('infoSubmit', 'Product has been added.')
-    res.redirect('/home/submit-product');
-  } catch (error) {
-    // res.json(error);
-    req.flash('infoErrors', error);
-    res.redirect('/home/submit-product');
-  }
-}
 
 
+// // Delete Product
+// async function deleteProduct() {
+//   try {
+//     await Product.deleteOne({ name: 'New Product From Form' });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// deleteProduct();
 
 
-// Delete Product
-async function deleteProduct() {
-  try {
-    await Product.deleteOne({ name: 'New Product From Form' });
-  } catch (error) {
-    console.log(error);
-  }
-}
-deleteProduct();
-
-
-// Update Product
-async function updateProduct() {
-  try {
-    const res = await Product.updateOne({ name: 'New Product' }, { name: 'New Product Updated' });
-    res.n; // Number of documents matched
-    res.nModified; // Number of documents modified
-  } catch (error) {
-    console.log(error);
-  }
-}
-updateProduct();
+// // Update Product
+// async function updateProduct() {
+//   try {
+//     const res = await Product.updateOne({ name: 'New Product' }, { name: 'New Product Updated' });
+//     res.n; // Number of documents matched
+//     res.nModified; // Number of documents modified
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// updateProduct();
 
 
 /**
@@ -212,27 +194,27 @@ async function insertDymmyCategoryData() {
     await Category.insertMany([
       {
         "name": "Tablet",
-        "image": "thai-food.jpg"
+        "image": ""
       },
       {
         "name": "Laptop",
-        "image": "american-food.jpg"
+        "image": ""
       },
       {
         "name": "Phone",
-        "image": "chinese-food.jpg"
+        "image": ""
       },
       {
         "name": "Sound",
-        "image": "mexican-food.jpg"
+        "image": ""
       },
       {
         "name": "Keyboard",
-        "image": "indian-food.jpg"
+        "image": ""
       },
       {
         "name": "Screen",
-        "image": "spanish-food.jpg"
+        "image": ""
       }
     ]);
   } catch (error) {

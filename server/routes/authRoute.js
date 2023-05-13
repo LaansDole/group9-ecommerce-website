@@ -32,7 +32,6 @@ router.get('/vendor', authMiddleware, checkVendorRole, vendor);
 router.get('/shipper', authMiddleware, checkShipperRole, shipper);
 
 router.get('/', logout);
-router.get('/', login);
 
 router.get('testauth', authMiddleware);
 

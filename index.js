@@ -56,7 +56,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Set the routes for the login/signup page
 const authRoute = require("./server/routes/authRoute.js");
-app.use('/', authRoute);
+// app.use('/', authRoute);
+
+app.get('/', (req, res) => {
+    res.render('./layouts/loginLayout');
+});
+
 
 // Set the layout for the homepage
 app.set('layout', './layouts/homeLayout');
