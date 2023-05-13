@@ -58,6 +58,7 @@ const authUserRoute = require("./server/routes/authUserRoute.js");
 app.use('/', authUserRoute);
 
 // Set the routes for the homepage
+app.set('layout', './layouts/homeLayout');
 const homeRoute = require('./server/routes/homeRoute.js');
 app.use('/home', homeRoute);
 
@@ -72,6 +73,15 @@ app.use('/vendor-dashboard', vendorRoute);
 // app.set('layout', './layouts/shipperLayout');
 
 // Set the routes for the shipper dashboard
+
+// Define the ejs file success and unsuccess
+app.get('/success', (req, res) => {
+    res.render('success.ejs');
+});
+
+app.get('/unsucess', (req, res) => {
+    res.render('unsuccess.ejs');
+});
 
 
 // Handling non matching request from the client
