@@ -1,0 +1,143 @@
+<% if(product !=null ) { %>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/home">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%- product.name %></li>
+    </ol>
+  </nav>
+
+
+  <div class="row justify-content-center mx-auto">
+
+    <div class="col-md-5 container">
+      <img src="/uploads/<%- product.image %>" class="img-fluid sticky-top start-50"  alt="<%- product.name %>"
+        loading="lazy">
+    </div>
+
+    <div class="col-md-7 ps-5">
+      <div class="fs-5">
+        <div class="product-info">
+          <div class="fs-1 lh-base mb-2"><%- product.name %></div>
+          <div class="col-12 mb-4"><i class="bi bi-tag"></i><a href="/categories/Laptop"><%- product.category %></a></div>
+          <div class="reviews-counter">
+            <div class="rate pe-1">
+              <input type="radio" id="star5" name="rate" value="5" checked />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" checked />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" checked />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+          </div>
+          <div class="product-price fs-2 pt-1 pb-1"><span>$<%- product.price %></span></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="color" class="pb-3">Color</label>
+            <select id="color" name="color" class="form-control bg-light fw-light">
+              <option value="">---Choose an option---</option>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="red">Red</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-count mt-2">
+          <label for="size" class="pb-3">Quantity</label>
+          <form action="#" class="d-flex">
+            <div class="qtyminus w-40 h-40 bg-dark text-center fs-4 lh-base text-white cursor-pointer">-</div>
+            <input type="text" name="quantity" value="1" class="qty w-50 text-center">
+            <div class="qtyplus w-40 h-40 bg-dark text-center fs-4 lh-base text-white cursor-pointer">+</div>
+          </form>
+          <a href="#" class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-5 pe-5 fs-3 mt-5">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-info-tabs mt-3">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+          aria-controls="description" aria-selected="true">Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+          aria-selected="false">Reviews (0)</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+        <%- product.description %>
+      </div>
+      <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+        <div class="fs-3 lh-base mb-1 text-uppercase text-dark">REVIEWS</div>
+        <p class="mb-20 fw-light">There are no reviews yet.</p>
+        <form class="review-form">
+          <div class="form-group d-flex">
+            <label class="pb-2 pe-5">Your rating</label>
+            <div class="fs-5">
+              <div class="rate float-none d-inline-block">
+                <input type="radio" id="star5" name="rate " value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Your message</label>
+            <textarea class="form-control fw-normal" rows="10"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="" class="form-control h-50 mt-2" placeholder="Name*">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" name="" class="form-control h-50 mt-2" placeholder="Email Id*">
+              </div>
+            </div>
+          </div>
+          <button class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-3 pe-3 fs-6 mt-5">Submit Review</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- <div class="col-12 col-md-8">
+      <div class="row">
+        <div class="col-12"><h1><%- product.name %></h1></div>
+        <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- product.category %></div>
+        <div class="col-12" style="white-space: pre-line;">
+          <h4>E-Commerce Instructions</h4>
+          <%- product.description %>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <h4>Product Notes</h4>
+          <ul class="list-group list-group-flush">
+            <% product.productNotes.forEach(function(productNotes, index){ %>
+              <li class="list-group-item"><%= productNotes %></li>
+            <% }) %>
+          </ul> 
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <% } else { %>
+    <p>No item found.</p>
+    <% } %>

@@ -1,82 +1,37 @@
 .page {
-    background: var(--background-color);
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col {
-    flex: 1;
-    height: 100vh;
-    position: relative;
+  background: #F6F7F9;
 }
 
 .image-container {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-size: cover;
 }
 
-.time {
-    color: #fff;
-    text-transform: uppercase;
-    width: 90%;
+.btn:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1023px) {
+  .page {
     display: flex;
-    justify-content: center;
+    flex-flow: column wrap;
+  }
 }
 
-.middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.time span {
-    padding: 0 14px;
-    font-size: 10px;
-}
-
-.time span div {
-    font-size: 40px;
-}
-
-.newslatter {
-    width: 90%;
-}
-
-.newslatter h4 {
-    font-style: italic;
-    font-size: 12px;
-}
-
-.newslatter input,
-.newslatter button {
-    display: block;
-    margin: 12px auto;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-    padding: 14px 20px;
-    border-radius: 30px;
-    border: 1px solid #ddd;
-    outline: none;
-}
-
-.newslatter-button {
-    background: var(--secondary-color);
-    color: #fff;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-.newslatter-button:hover {
-    opacity: 0.7;
-}
-
-
-@media screen and (max-width: 900px) {
-    .col {
-        flex: 100%;
-    }
+@media screen and (max-width: 767px) {
+  .time {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 50px;
+  }
+  #days {
+    padding-left: 0.3rem;
+  }
+  #hours {
+    padding-left: 1.5rem;
+  }
+  #minutes,
+  #seconds {
+    padding-left: 2rem;
+  }
 }

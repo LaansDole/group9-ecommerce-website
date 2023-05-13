@@ -1,10 +1,16 @@
 # Group9 E-commerce Website
 
-#### Link to the website:
+#### Link to the website: https://group9-ecommerce-app.herokuapp.com/
 #### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
+#### Disclaimer: If you encounter this error: EADDRINUSE, Address already in use, do as below:
+```bash
+$ sudo lsof -i :3000
+# Check for the PID on the screeen
+$ kill -9 <PID>
+```
 
 ## Contribution
 
@@ -62,7 +68,8 @@ In this project, with Lazada's permission, you are working on a simplified and s
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
-- Packages: Refer to `package.json` and `package-lock.json`
+- Other resources: MDN Web Docs, RMIT Canvas, NPM Package
+- Packages: Refer to package.json and package-lock.json
 
 ## Build
 
