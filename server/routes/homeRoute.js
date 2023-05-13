@@ -6,12 +6,12 @@ const { authMiddleware, checkVendorRole, checkCustomerRole, checkShipperRole } =
 /**
  * App Routes 
 */
-router.get('/', authMiddleware, homeController.homepage);
-router.get('/product/:id', authMiddleware, homeController.exploreProduct);
-router.get('/categories', authMiddleware, homeController.exploreCategories);
-router.get('/categories/:id', authMiddleware, homeController.exploreCategoriesById);
-router.post('/search', authMiddleware, homeController.searchProduct);
-router.get('/explore-latest', authMiddleware, homeController.exploreLatest);
+router.get('/', homeController.homepage);
+router.get('/product/:id', homeController.exploreProduct);
+router.get('/categories', homeController.exploreCategories);
+router.get('/categories/:id', homeController.exploreCategoriesById);
+router.post('/search', homeController.searchProduct);
+router.get('/explore-latest', homeController.exploreLatest);
 // router.get('/submit-product', homeController.submitProduct);
 // router.post('/submit-product', homeController.submitProductOnPost);
 

@@ -7,7 +7,9 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const multer = require("multer");
 
-
+require('../model/database');
+const Category = require('../model/Category');
+const Product = require('../model/Product');
 
 
 const path = require('path');
@@ -273,10 +275,22 @@ const shipper = (req, res) => {
 
 };
 
-const customer = (req, res) => {
-  res.render('customer-private.ejs', { user: req.user });
+const customer = async (req, res) => {
+  try {
+    const limitNumber = 5;
+    const categories = await Category.find({}).limit(limitNumber);
+    const latest = await Product.find({}).limit(limitNumber);
+    const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
+    const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
+    const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
 
-};
+    const productCategory = { latest, tablet, laptop, phone };
+
+    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
+  } catch (error) {
+    res.satus(500).send({ message: error.message || "Error Occured" });
+  }
+}
 
 const myProfile = (req, res) => {
   const userId = req.session.userId; // get user id from session or database

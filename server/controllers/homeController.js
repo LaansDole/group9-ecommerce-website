@@ -10,7 +10,7 @@ exports.homepage = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    const latest = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const latest = await Product.find({}).limit(limitNumber);
     const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
     const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
     const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
@@ -94,7 +94,7 @@ exports.searchProduct = async (req, res) => {
 exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
-    const product = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const product = await Product.find({}).limit(limitNumber);
     res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });

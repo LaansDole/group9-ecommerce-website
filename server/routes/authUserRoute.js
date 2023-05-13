@@ -23,9 +23,9 @@ router.get('/all-users', getallUser); //Get all user account exist
 router.get('/refresh', handleRefreshToken);
 router.get('/myProfile', authMiddleware, getaUser, myProfile);
 // router.get('/myProfileUpdate', authMiddleware, myProfileUpdate);
-router.get('/home', authMiddleware, checkCustomerRole, customer);
-router.get('/vendor', authMiddleware, checkVendorRole, vendor);
-router.get('/shipper', authMiddleware, checkShipperRole, shipper);
+router.get('/home', customer);
+router.get('/vendor', vendor);
+router.get('/shipper', shipper);
 
 router.get("/logout", logout);
 
