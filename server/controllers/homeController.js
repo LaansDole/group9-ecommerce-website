@@ -194,27 +194,27 @@ async function insertDymmyCategoryData() {
     await Category.insertMany([
       {
         "name": "Tablet",
-        "image": ""
+        "image": "tablet.jpg"
       },
       {
         "name": "Laptop",
-        "image": ""
+        "image": "laptop.png"
       },
       {
         "name": "Phone",
-        "image": ""
+        "image": "phone.jpg"
       },
       {
         "name": "Sound",
-        "image": ""
+        "image": "sound.png"
       },
       {
         "name": "Keyboard",
-        "image": ""
+        "image": "keyboard.jpg"
       },
       {
         "name": "Screen",
-        "image": ""
+        "image": "screen.jpg"
       }
     ]);
   } catch (error) {
@@ -229,28 +229,18 @@ async function insertDymmyProductData() {
   try {
     await Product.insertMany([
       {
-        "name": "Product Name Goes Here",
-        "description": `Product Description Goes Here`,
-        "price": 18,
-        "productNotes": [
-          "1 level teaspoon baking powder",
-          "1 level teaspoon cayenne pepper",
-          "1 level teaspoon hot smoked paprika",
-        ],
+        "name": "Dell G15 5511",
+        "description": `Screen size: 15.6 inches`,
+        "price": 599,
         "category": "Laptop",
-        "image": ""
+        "image": "dellg155511.png"
       },
       {
-        "name": "Product Name Goes Here",
-        "description": `Product Description Goes Here`,
-        "price": 18,
-        "productNotes": [
-          "1 level teaspoon baking powder",
-          "1 level teaspoon cayenne pepper",
-          "1 level teaspoon hot smoked paprika",
-        ],
-        "category": "Laptop",
-        "image": ""
+        "name": "Samsung Z Flip 4",
+        "description": `Screen size: 6.2 inches`,
+        "price": 699,
+        "category": "Phone",
+        "image": "samsungzflip4.png"
       },
     ]);
   } catch (error) {
