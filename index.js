@@ -75,15 +75,20 @@ app.use('/vendor-dashboard', vendorRoute);
 
 
 // Handling non matching request from the client
-app.use((req, res, next) => {
-    res.status(404).render('./404.ejs')
-})
 
 const notFoundMiddleware = require("./middlewares/not-found");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
+
+app.use((req, res, next) => {
+    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './layouts/homeLayout' })
+})
+
+app.use((err, req, res, next) => {
+    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './layouts/homeLayout' });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port http://localhost:${PORT}`)
