@@ -60,7 +60,7 @@ const authUserRoute = require("./server/routes/authUserRoute.js");
 app.set('layout', './layouts/loginLayout');
 
 app.get('/', (req, res) => {
-    res.render('./login-signup-page/login.ejs', { layout: './layouts/loginLayout' });
+    res.render('./login-signup-page/customer-signup.ejs', { title: "E-Commerce Login", layout: './layouts/loginLayout' });
 });
 
 

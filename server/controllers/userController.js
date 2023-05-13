@@ -9,9 +9,9 @@ exports.login = async (req, res) => {
     }
 }
 
-exports.signup = async (req, res) => {
+exports.registerCustomer = async (req, res) => {
     try {
-        res.render('./login-signup-page/login.ejs', { title: "E-Commerce Login", layout: './layouts/loginLayout' });
+        res.render('./login-signup-page/customer-signup.ejs', { title: "E-Commerce Login", layout: './layouts/loginLayout' });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }

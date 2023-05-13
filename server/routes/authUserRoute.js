@@ -39,7 +39,7 @@ router.delete('/:id', deleteaUser); //delete user
 
 // Login and Signup Route
 router.get('/', userController.login);
-router.get('/', userController.signup);
+router.get('/register-customer', userController.registerCustomer);
 
 
 

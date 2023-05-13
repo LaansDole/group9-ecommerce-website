@@ -6,7 +6,7 @@
 
 <form class="login-form" action="/register-shipper" method="post" enctype="multipart/form-data">
 
-  <% include ('../partials/common-signup') %>
+  <%- include ('../partials/common-signup') %>
 
   <div class="form-control">
     <label>Your name</label>
@@ -25,6 +25,7 @@
   </div>
   <button class="submit">Register</button>
 </form>
+<script src="/js/checkPassword.js"></script>
 <script src="/js/shipper-create.js"></script>
 
 
