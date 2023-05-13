@@ -82,7 +82,8 @@ const createVendor = asyncHandler(async (req, res) => {
           profilePicture: profilePicture
         });
         const role = newUser.role;
-        res.json(newUser);
+        // res.json(newUser);
+        res.redirect('/');
       } else {
         throw new Error('User already exists');
       }
@@ -123,6 +124,8 @@ const createCustomer = asyncHandler(async (req, res) => {
             contentType: req.file.mimetype
           };
           fs.unlinkSync(req.file.path); // Delete the temporary file after converting to Base64
+        } else {
+          profilePicture = null; // Set a default value if no file is uploaded
         }
 
         const newUser = await User.create({
@@ -134,12 +137,13 @@ const createCustomer = asyncHandler(async (req, res) => {
           profilePicture: profilePicture
         });
         const role = newUser.role;
-        res.json(newUser);
+        // res.json(newUser);
+        res.redirect('/')
       } else {
         throw new Error('User already exists');
       }
     } catch (err) {
-      next(err);
+      res.status(500).json({ error: err.message });
     }
   });
 });
@@ -190,7 +194,8 @@ const createShipper = asyncHandler(async (req, res) => {
           profilePicture: profilePicture
         });
         const role = newUser.role;
-        res.json(newUser);
+        // res.json(newUser);
+        res.redirect('/')
       } else {
         throw new Error('User already exists');
       }
@@ -241,14 +246,18 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       userName: findUser.userName,
       role: findUser.role
     };
-    res.render('success', { role: findUser.role, token: token }); // Render the success page and pass `firstname` and `lastname` variables
-
+    if (findUser.role === 'vendor') {
+      res.redirect('/vendor');
+    } else if (findUser.role === 'customer') {
+      res.redirect('/home');
+    } else if (findUser.role === 'shipper') {
+      res.redirect('/shipper');
+    } else {
+      res.status(401).send('Unauthorized');
+    }
   } else {
-    res.render('unsuccess'); // Render the unsuccess page
+    res.render('unsuccess');
   }
-  // } else {
-  //     throw new Error("Invalid Credentials");
-  // }
 });
 
 
@@ -497,7 +506,67 @@ const myProfileUpdate = asyncHandler(async (req, res) => {
   }
 });
 
+const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
 
+    const update = {};
+    if (req.body.name) {
+      update.name = req.body.name;
+    }
+    if (req.body.address) {
+      update.address = req.body.address;
+    }
+    if (req.body.businessAddress) {
+      update.businessAddress = req.body.businessAddress;
+    }
+
+    if (req.file) {
+      const buffer = fs.readFileSync(req.file.path);
+      const base64Image = buffer.toString('base64');
+      const profilePicture = {
+        data: Buffer.from(base64Image, 'base64'),
+        contentType: req.file.mimetype
+      };
+      update.profilePicture = profilePicture;
+    }
+
+    await User.findOneAndUpdate({ _id: userId }, update);
+
+    res.redirect('myProfile');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+const profileUpdateFunction = asyncHandler(async (req, res) => {
+  let token;
+  if (req.cookies && req.cookies.refreshToken) {
+    token = req.cookies.refreshToken;
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      validateMongoDbId(decoded?.id);
+      const user = await User.findById(decoded?.id);
+      const { userName, businessName, businessAddress, name, address, hubName, hubAddress, role,profilePicture } = user;
+      // console.log(user);
+      let image;
+      if (profilePicture && profilePicture.data && profilePicture.contentType) {
+      const imageBuffer = profilePicture.data;
+      const imageType = profilePicture.contentType.split('/')[1];
+      image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
+    }
+      res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      
+    } catch (error) {
+      throw new Error(error);
+    }
+  } else {
+    res.redirect('/login');
+  }
+});
 
 
 
@@ -584,5 +653,6 @@ module.exports = {
   upload,
   updateAddress,
   updateName,
-  myProfileUpdate
+  profileUpdateFunction,
+  updateProfile,
 };

@@ -33,10 +33,10 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use(fileUpload({
-    limits: { fileSize: 50 * 1024 * 1024 },
-}));
-app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
+// app.use(fileUpload({
+//     limits: { fileSize: 50 * 1024 * 1024 },
+// }));
+// app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 // morgan checking 'log'
 app.use(morgan("dev"));
