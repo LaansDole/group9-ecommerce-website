@@ -23,7 +23,7 @@ router.get('/all-users', getallUser); //Get all user account exist
 router.get('/refresh', handleRefreshToken);
 router.get('/myProfile', authMiddleware, getaUser, myProfile);
 // router.get('/myProfileUpdate', authMiddleware, myProfileUpdate);
-router.get('/customer', authMiddleware, checkCustomerRole, customer);
+router.get('/home', authMiddleware, checkCustomerRole, customer);
 router.get('/vendor', authMiddleware, checkVendorRole, vendor);
 router.get('/shipper', authMiddleware, checkShipperRole, shipper);
 
@@ -40,7 +40,8 @@ router.delete('/:id', deleteaUser); //delete user
 // Login and Signup Route
 router.get('/', userController.login);
 router.get('/register-customer', userController.registerCustomer);
-
+router.get('/register-vendor', userController.registerVendor);
+router.get('/register-shipper', userController.registerShipper);
 
 
 

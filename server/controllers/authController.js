@@ -252,11 +252,6 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
 
 // Function to render page
 
-const vendor = (req, res) => {
-  res.render('vendor-private.ejs', { user: req.user });
-
-};
-
 const vendorProduct = async (req, res) => {
   try {
     const vendor = await Product.find({ 'v_id': vendorID });
@@ -267,14 +262,22 @@ const vendorProduct = async (req, res) => {
   }
 }
 
+// Roles-dashboard, delete below or re-render once done
+const vendor = (req, res) => {
+  res.render('vendor-private.ejs', { user: req.user });
+
+};
+
 const shipper = (req, res) => {
   res.render('shipper-private.ejs', { user: req.user });
 
 };
+
 const customer = (req, res) => {
   res.render('customer-private.ejs', { user: req.user });
 
 };
+
 const myProfile = (req, res) => {
   const userId = req.session.userId; // get user id from session or database
   res.render('myProfile', { userId: userId });
@@ -326,7 +329,7 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
     });
-    res.render('login');
+    res.render('login-signup-page/login');
     res.sendStatus(204); //Forbidden
   }
   await User.findOneAndUpdate(refreshToken, {
@@ -337,7 +340,7 @@ const logout = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: true,
   });
-  res.render('login');
+  res.render('login-signup-page/login');
   res.sendStatus(204); //Forbidden
 
 
@@ -383,7 +386,7 @@ const getaUser = asyncHandler(async (req, res) => {
       throw new Error(error);
     }
   } else {
-    res.redirect('/login');
+    res.redirect('./');
   }
 });
 
@@ -476,7 +479,7 @@ const myProfileUpdate = asyncHandler(async (req, res) => {
       throw new Error(error);
     }
   } else {
-    res.redirect('/login');
+    res.redirect('./');
   }
 });
 

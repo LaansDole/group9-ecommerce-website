@@ -55,17 +55,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Set the routes for the login/signup page
 const authUserRoute = require("./server/routes/authUserRoute.js");
-// app.use('/', authRoute);
-
-app.set('layout', './layouts/loginLayout');
-
-app.get('/', (req, res) => {
-    res.render('./login-signup-page/customer-signup.ejs', { title: "E-Commerce Login", layout: './layouts/loginLayout' });
-});
-
-
-// Set the layout for the homepage
-app.set('layout', './layouts/homeLayout');
+app.use('/', authUserRoute);
 
 // Set the routes for the homepage
 const homeRoute = require('./server/routes/homeRoute.js');
