@@ -3,7 +3,6 @@ const multer = require('multer');
 const { loginUserCtrl, getallUser, getaUser, deleteaUser, blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controllers/userController');
 const { authMiddleware, checkVendorRole, checkCustomerRole, checkShipperRole } = require("../../middlewares/authMiddleware");
 const router = express.Router();
-const bodyParser = require('body-parser');
 
 
 
@@ -11,7 +10,8 @@ const bodyParser = require('body-parser');
 
 
 
-//Post
+// Post
+
 // router.post('/register',createUser); //Register new account
 router.post('/register-vendor', createVendor); //Register new account
 router.post('/register-customer', createCustomer); //Register new account
@@ -31,7 +31,8 @@ router.get('/customer', authMiddleware, checkCustomerRole, customer);
 router.get('/vendor', authMiddleware, checkVendorRole, vendor);
 router.get('/shipper', authMiddleware, checkShipperRole, shipper);
 
-router.get("/", logout);
+router.get('/', logout);
+router.get('/', login);
 
 router.get('testauth', authMiddleware);
 
