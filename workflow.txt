@@ -1,0 +1,59 @@
+1. Create MVC folder
+
+2. Get all npm dependency
+
+3. Connect database
+
+4. Working at port 4000
+
+5. Get token from database
+
+6. Create middlewares to show the specific error when project is broken.
+
+7. authRoute to set the link for another logic function.
+
+8. Controller User to interract with user account.
+
+9. Create user, login user (post method).
+
+10. Get all user detail, get single user detail, delete user, update user (Get method).
+
+11. req.params (When a client requests a URL like /users/123, the value 123 will be 
+stored in req.params.id. You can then use this value to perform further processing or 
+to retrieve data from a database.)
+
+12. Test User part: (Clear all user database) USE POSTMAN
+13. ADD ADMIN role
+14. Add Block and Unblock user
+POST
+    - Register User (create 2 new user)
+        {
+            check if create same mail, => userCtrl.js will show error 'user already exist'.
+        }
+    - Login User 
+        {
+        (Check the user account by enter (if same return the same account)) 
+        After that we can get Token
+        }
+
+Get
+    - Get all user Register - localhost:4000/api/user/all-users
+    - Get Specific user data -  localhost:4000/api/user/id
+
+Delete
+    - Delete User data
+update
+    - Update User data 
+
+PUT
+    Check admin
+        {
+            only admin can block or unblock
+        }
+    - Block User
+    - Unblock
+    
+
+
+
+    

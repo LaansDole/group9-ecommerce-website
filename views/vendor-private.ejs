@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Success</title>
+</head>
+<body>
+	<h1>This is vendor page</h1>
+    <button onclick="window.location.href='/logout'">Logout</button>
+	<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+		<% if(product != '') { %>
+		  <% product.forEach(function(product, index){ %>
+		  <a href="/home/product/<%= product._id %>" class="text-center category__link">
+			<div class="category__img category__img--large shadow">
+			  <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" loading="lazy">
+			</div>
+			<div class="pt-1"><%= product.name %></div>
+		  </a>
+		  <% }) %>
+		<% } else { %>
+		  <p>No items found.</p>
+		<% } %> 
+	  </div>
+    
+</body>
+</html>
