@@ -29,21 +29,18 @@
     
   </head>
   <body>
-    <%- include ('./partials/navbar') %>
+    <%- include ('../partials/navbar') %>
     <seciton id="main">
       <secion id="side">
           <img src="/img/side.png" alt="shopping-illustrate">
       </secion>
 
-      <main>
-        <%- body -%>
-      </main>
 
       <section id="main">
         <div class="login-container">
           <p class="title">Nice to see you again!</p>
           <div class="seperator"></div>
-          <%- include ('partials/login-form') %>
+          <%- body -%>
         </div>
       </section>
     </seciton>

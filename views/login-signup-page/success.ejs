@@ -2,10 +2,10 @@
 <h2>Here is Token: </h2></p><p><%= token %></p>
 <p>Role</p> 
 <%= role %>
-<button onclick="window.location.href='/api/user/vendor'">Go to Vendor Page</button>
-<button onclick="window.location.href='/api/user/customer'">Go to Customer Page</button>
-<button onclick="window.location.href='/api/user/shipper'">Go to Shipper Page</button>
-<button onclick="window.location.href='/api/user/myProfile'">Go to Profile Page</button>
+<button onclick="window.location.href='/vendor'">Go to Vendor Page</button>
+<button onclick="window.location.href='/customer'">Go to Customer Page</button>
+<button onclick="window.location.href='/shipper'">Go to Shipper Page</button>
+<button onclick="window.location.href='/myProfile'">Go to Profile Page</button>
 
 
 <script>
@@ -26,6 +26,6 @@
 // }
 
 function redirectToUnauthorizedPage() {
-  window.location.href = '/api/user/vendor1';
+  window.location.href = '/vendor1';
 }
 </script>

@@ -1,47 +1,44 @@
 const express = require('express');
 const multer = require('multer');
-const { loginUserCtrl, getallUser, getaUser, deleteaUser, blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controllers/userController');
+const { loginUserCtrl, getallUser, getaUser, deleteaUser, blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controllers/authController');
 const { authMiddleware, checkVendorRole, checkCustomerRole, checkShipperRole } = require("../../middlewares/authMiddleware");
 const router = express.Router();
-
-
-
-
-
+const userController = require('../controllers/userController');
 
 
 // Post
-
 // router.post('/register',createUser); //Register new account
 router.post('/register-vendor', createVendor); //Register new account
 router.post('/register-customer', createCustomer); //Register new account
 router.post('/register-shipper', createShipper); //Register new account
+router.post('/updateProfilePicture', authMiddleware, upload, updateProfilePicture);
 
-router.post('/', loginUserCtrl); //Login account
+router.post('/login', loginUserCtrl); //Login account
 
-//Get
+// Get
 
 router.get('/all-users', getallUser); //Get all user account exist
 
 // router.get('/vendor1',authMiddleware,vendor1Page);
 router.get('/refresh', handleRefreshToken);
 router.get('/myProfile', authMiddleware, getaUser, myProfile);
-
+// router.get('/myProfileUpdate', authMiddleware, myProfileUpdate);
 router.get('/customer', authMiddleware, checkCustomerRole, customer);
 router.get('/vendor', authMiddleware, checkVendorRole, vendor);
 router.get('/shipper', authMiddleware, checkShipperRole, shipper);
 
-router.get('/', logout);
+router.get("/logout", logout);
 
 router.get('testauth', authMiddleware);
 
-//Delete
+// Delete
 router.delete('/:id', deleteaUser); //delete user
 
-//Put
+// Put
 // router.put('/edit-user', authMiddleware,updatedUser); //update data of user
-router.post('/updateProfilePicture', authMiddleware, upload, updateProfilePicture);
 
+// Login and Signup Route
+router.get('/', userController.login);
 
 
 

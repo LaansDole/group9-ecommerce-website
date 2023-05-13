@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/productController');
+const homeController = require('../controllers/homeController');
 
 /**
  * App Routes 
 */
-router.get('/', productController.homepage);
-router.get('/product/:id', productController.exploreProduct);
-router.get('/categories', productController.exploreCategories);
-router.get('/categories/:id', productController.exploreCategoriesById);
-router.post('/search', productController.searchProduct);
-router.get('/explore-latest', productController.exploreLatest);
-// router.get('/explore-random', productController.exploreRandom);
-router.get('/submit-product', productController.submitProduct);
-router.post('/submit-product', productController.submitProductOnPost);
+router.get('/', homeController.homepage);
+router.get('/product/:id', homeController.exploreProduct);
+router.get('/categories', homeController.exploreCategories);
+router.get('/categories/:id', homeController.exploreCategoriesById);
+router.post('/search', homeController.searchProduct);
+router.get('/explore-latest', homeController.exploreLatest);
+// router.get('/submit-product', homeController.submitProduct);
+// router.post('/submit-product', homeController.submitProductOnPost);
 
 module.exports = router;

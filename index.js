@@ -52,14 +52,15 @@ app.use(expressLayouts);
 app.set('views', path.join(__dirname, 'views'));
 
 // Set the layout for the login/signup page
-// app.set('layout', './layouts/loginSignupLayout');
 
 // Set the routes for the login/signup page
-const authRoute = require("./server/routes/authRoute.js");
+const authUserRoute = require("./server/routes/authUserRoute.js");
 // app.use('/', authRoute);
 
+app.set('layout', './layouts/loginLayout');
+
 app.get('/', (req, res) => {
-    res.render('./layouts/loginLayout');
+    res.render('./login-signup-page/login.ejs', { layout: './layouts/loginLayout' });
 });
 
 
