@@ -379,6 +379,13 @@ input[type="checkbox"].toggle:checked+label::after {
     .container {
         padding: 10px;
     }
+    .btn {
+        flex-flow: column wrap;
+    }
+
+    .toggle-btn {
+        margin-bottom: 1rem;
+    }
 
     h1 {
         font-size: 24px;
