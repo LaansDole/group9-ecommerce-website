@@ -69,11 +69,15 @@ app.use('/home', homeRoute);
 const vendorRoute = require("./server/routes/vendorRoute.js");
 app.use('/vendor-dashboard', vendorRoute);
 
+
 // Set the layout for the shipper dashboard
-// app.set('layout', './layouts/shipperLayout');
+const shipperRouter = require("./server/routes/shipperRouter")
+app.use("/shipperDashboard", shipperRouter);
 
 // Set the routes for the shipper dashboard
-
+// Set the route for orderRouter
+// const orderRouter = require("./server/routes/")
+// app.use("/api/order", orderRouter);
 // Define the ejs file success and unsuccess
 app.get('/success', (req, res) => {
     res.render('success.ejs');
