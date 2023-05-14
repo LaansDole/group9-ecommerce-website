@@ -77,10 +77,6 @@
     padding: 50px 50px;
 }
 
-.side img {
-    width: 50%;
-    max-width: 50%;
-}
 
 .login-container {
     border: none;
@@ -109,13 +105,20 @@
     background: #ffffff;
 }
 
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .error {
     color: red;
 }
 
 .toggle-btn {
     cursor: pointer;
-    padding: 10px 12px;
+    padding: 10px 5px;
+    margin-left: 1rem;
     background: transparent;
     border: 0;
     outline: none;
@@ -123,8 +126,13 @@
     text-align: center;
     color: rgb(0, 0, 0);
     font-weight: 500;
-    /* background: var(--primary-color); */
     border: 1px solid var(--primary-color);
+    transition: all 0.5s linear;
+}
+
+
+.toggle-btn:hover {
+    background-color: var(--hover-color);
 }
 
 
@@ -316,16 +324,9 @@ input[type="checkbox"].toggle:checked+label::after {
         margin: 0px 20px;
     }
 
-    #side {
-        display: none;
-    }
 }
 
-@media (max-width: 1090px) {
-    #menu-icon {
-        display: block;
-    }
-
+@media (max-width: 1023px) {
     #navbar {
         position: absolute;
         top: 100%;
@@ -360,9 +361,21 @@ input[type="checkbox"].toggle:checked+label::after {
     #navbar.open {
         right: 2%;
     }
+
+    #side {
+        position: absolute;
+        z-index: -1;
+    }
+
+    #side img {
+        width: 700px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .login-container {
+        margin-left: 10%;
+    }
     .container {
         padding: 10px;
     }
@@ -377,5 +390,9 @@ input[type="checkbox"].toggle:checked+label::after {
 
     h3 {
         font-size: 18px;
+    }
+
+    #side {
+        display: none;
     }
 }
