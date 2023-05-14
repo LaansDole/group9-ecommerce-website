@@ -270,10 +270,18 @@ const vendor = (req, res) => {
 
 };
 
-const shipper = (req, res) => {
-  res.render('shipper-private.ejs', { user: req.user });
+// const shipper = (req, res) => {
+//   res.render('shipper-private.ejs', { user: req.user });
 
-};
+// };
+const shipper = async (req, res) => {
+  try {
+    res.render('shipper-dashboard.ejs', { user: req.user, layout: './shipper-dashboard' })
+
+  } catch (error) {
+    res.satus(500).send({ message: error.message || "Error Occured" });
+  }
+}
 
 const customer = async (req, res) => {
   try {
