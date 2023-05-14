@@ -12,7 +12,7 @@ router.get('/categories', homeController.exploreCategories);
 router.get('/categories/:id', homeController.exploreCategoriesById);
 router.post('/search', homeController.searchProduct);
 router.get('/explore-latest', homeController.exploreLatest);
-// router.get('/submit-product', homeController.submitProduct);
-// router.post('/submit-product', homeController.submitProductOnPost);
+router.get('/submit-product', homeController.submitProduct);
+router.post('/submit-product', homeController.submitProductOnPost);
 
 module.exports = router;

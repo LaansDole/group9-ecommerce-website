@@ -102,61 +102,61 @@ exports.exploreLatest = async (req, res) => {
   }
 }
 
-// /**
-//  * GET /home/submit-product
-//  * Submit Product
-// */
-// exports.submitProduct = async (req, res) => {
-//   const infoErrorsObj = req.flash('infoErrors');
-//   const infoSubmitObj = req.flash('infoSubmit');
-//   res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
-// }
+/**
+ * GET /home/submit-product
+ * Submit Product
+*/
+exports.submitProduct = async (req, res) => {
+  const infoErrorsObj = req.flash('infoErrors');
+  const infoSubmitObj = req.flash('infoSubmit');
+  res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+}
 
 // /**
 //  * POST /home/submit-product
 //  * Submit Product
 // */
-// exports.submitProductOnPost = async (req, res) => {
-//   try {
+exports.submitProductOnPost = async (req, res) => {
+  try {
 
-//     let imageUploadFile;
-//     let uploadPath;
-//     let newImageName;
+    let imageUploadFile;
+    let uploadPath;
+    let newImageName;
 
-//     if (!req.files || Object.keys(req.files).length === 0) {
-//       console.log('No Files where uploaded.');
-//     } else {
+    if (!req.files || Object.keys(req.files).length === 0) {
+      console.log('No Files where uploaded.');
+    } else {
 
-//       imageUploadFile = req.files.image;
-//       newImageName = Date.now() + imageUploadFile.name;
+      imageUploadFile = req.files.image;
+      newImageName = Date.now() + imageUploadFile.name;
 
-//       uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
 
-//       imageUploadFile.mv(uploadPath, function (err) {
-//         if (err) return res.satus(500).send(err);
-//       })
+      imageUploadFile.mv(uploadPath, function (err) {
+        if (err) return res.satus(500).send(err);
+      })
 
-//     }
+    }
 
-//     const newProduct = new Product({
-//       name: req.body.name,
-//       description: req.body.description,
-//       price: req.body.price,
-//       productNotes: req.body.productNotes,
-//       category: req.body.category,
-//       image: newImageName
-//     });
+    const newProduct = new Product({
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      productNotes: req.body.productNotes,
+      category: req.body.category,
+      image: newImageName
+    });
 
-//     await newProduct.save();
+    await newProduct.save();
 
-//     req.flash('infoSubmit', 'Product has been added.')
-//     res.redirect('/submit-product');
-//   } catch (error) {
-//     // res.json(error);
-//     req.flash('infoErrors', error);
-//     res.redirect('/submit-product');
-//   }
-// }
+    req.flash('infoSubmit', 'Product has been added.')
+    res.redirect('/');
+  } catch (error) {
+    // res.json(error);
+    req.flash('infoErrors', error);
+    res.redirect('/');
+  }
+}
 
 
 
