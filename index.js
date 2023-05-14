@@ -70,14 +70,27 @@ const vendorRoute = require("./server/routes/vendorRoute.js");
 app.use('/vendor-dashboard', vendorRoute);
 
 
+
+
+//NEWWWW!!!!!!!
 // Set the layout for the shipper dashboard
 const shipperRouter = require("./server/routes/shipperRouter")
 app.use("/shipperDashboard", shipperRouter);
 
 // Set the routes for the shipper dashboard
 // Set the route for orderRouter
-// const orderRouter = require("./server/routes/")
-// app.use("/api/order", orderRouter);
+const orderRouter = require("./server/routes/orderRouter")
+app.use("/order", orderRouter);
+
+//Product router
+const productRouter = require("./server/routes/productRouter")
+app.use("/api/product", productRouter );
+
+
+
+
+
+
 // Define the ejs file success and unsuccess
 app.get('/success', (req, res) => {
     res.render('success.ejs');
