@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { loginUserCtrl, getallUser, getaUser, deleteaUser, blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload } = require('../controllers/authController');
+const { loginUserCtrl, getallUser, getaUser, deleteaUser, blockUser, unblockUser, createVendor, createCustomer, createShipper, handleRefreshToken, logout, vendor, success, shipper, customer, myProfile, updateProfilePicture, upload, updateProfile, profileUpdateFunction } = require('../controllers/authController');
 const { authMiddleware, checkVendorRole, checkCustomerRole, checkShipperRole } = require("../../middlewares/authMiddleware");
 const router = express.Router();
 const userController = require('../controllers/userController');
@@ -14,7 +14,7 @@ router.post('/register-shipper', createShipper); //Register new account
 router.post('/updateProfilePicture', authMiddleware, upload, updateProfilePicture);
 
 router.post('/login', loginUserCtrl); //Login account
-
+router.post('/updateProfile',authMiddleware,upload,updateProfile);
 // Get
 
 router.get('/all-users', getallUser); //Get all user account exist
@@ -22,10 +22,10 @@ router.get('/all-users', getallUser); //Get all user account exist
 // router.get('/vendor1',authMiddleware,vendor1Page);
 router.get('/refresh', handleRefreshToken);
 router.get('/myProfile', authMiddleware, getaUser, myProfile);
-// router.get('/myProfileUpdate', authMiddleware, myProfileUpdate);
-router.get('/home', authMiddleware, checkCustomerRole, customer);
-router.get('/vendor', authMiddleware, checkVendorRole, vendor);
-router.get('/shipper', authMiddleware, checkShipperRole, shipper);
+router.get('/myProfileUpdate', authMiddleware, profileUpdateFunction);
+router.get('/home',authMiddleware,checkCustomerRole, customer);
+router.get('/vendor',authMiddleware,checkVendorRole, vendor);
+router.get('/shipper', authMiddleware,checkShipperRole,shipper);
 
 router.get("/logout", logout);
 

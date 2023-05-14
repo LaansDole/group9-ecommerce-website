@@ -1,13 +1,13 @@
 <p class="title">Nice to see you again!</p>
 <div class="seperator"></div>
-<form class="login-form" action="/login" method="post">
+<form id="validForm" class="login-form" action="/login" method="post">
   <div class="form-control">
-    <input type="text" placeholder="Email or phone number" name="userName">
+    <input type="text" placeholder="Email or phone number" name="userName" id="userName">
     </div> 
     <div class="form-control"> 
     <input type="password" id="password" placeholder="Password" name="password">
     </div>
-    <button class="submit">Sign in</button>
+    <button class="submit" type="submit">Sign in</button>
 </form>
 <div class="sub-login">
   <input type="checkbox" id="remmeber_me" class="toggle">

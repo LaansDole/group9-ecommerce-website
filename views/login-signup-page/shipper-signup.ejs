@@ -4,7 +4,7 @@
 
 <div class="seperator"></div>
 
-<form class="login-form" action="/register-shipper" method="post" enctype="multipart/form-data">
+<form id="validForm" class="login-form" action="/register-shipper" method="post" enctype="multipart/form-data">
 
   <%- include ('../partials/common-signup') %>
 
@@ -23,9 +23,8 @@
     </select>
     <input type="hidden" name="hubAddress" id="hubAddress" value="" required>
   </div>
-  <button class="submit">Register</button>
+  <button class="submit" type="submit">Register</button>
 </form>
-<script src="/js/checkPassword.js"></script>
 <script src="/js/shipper-create.js"></script>
 
 

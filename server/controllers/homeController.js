@@ -10,7 +10,7 @@ exports.homepage = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    const latest = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const latest = await Product.find({}).limit(limitNumber);
     const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
     const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
     const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
@@ -94,7 +94,7 @@ exports.searchProduct = async (req, res) => {
 exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
-    const product = await Product.find({}).sort({ _id: -1 }).limit(limitNumber);
+    const product = await Product.find({}).limit(limitNumber);
     res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
@@ -194,27 +194,27 @@ async function insertDymmyCategoryData() {
     await Category.insertMany([
       {
         "name": "Tablet",
-        "image": ""
+        "image": "tablet.jpg"
       },
       {
         "name": "Laptop",
-        "image": ""
+        "image": "laptop.png"
       },
       {
         "name": "Phone",
-        "image": ""
+        "image": "phone.jpg"
       },
       {
         "name": "Sound",
-        "image": ""
+        "image": "sound.png"
       },
       {
         "name": "Keyboard",
-        "image": ""
+        "image": "keyboard.jpg"
       },
       {
         "name": "Screen",
-        "image": ""
+        "image": "screen.jpg"
       }
     ]);
   } catch (error) {
@@ -229,28 +229,18 @@ async function insertDymmyProductData() {
   try {
     await Product.insertMany([
       {
-        "name": "Product Name Goes Here",
-        "description": `Product Description Goes Here`,
-        "price": 18,
-        "productNotes": [
-          "1 level teaspoon baking powder",
-          "1 level teaspoon cayenne pepper",
-          "1 level teaspoon hot smoked paprika",
-        ],
+        "name": "Dell G15 5511",
+        "description": `Screen size: 15.6 inches`,
+        "price": 599,
         "category": "Laptop",
-        "image": ""
+        "image": "dellg155511.png"
       },
       {
-        "name": "Product Name Goes Here",
-        "description": `Product Description Goes Here`,
-        "price": 18,
-        "productNotes": [
-          "1 level teaspoon baking powder",
-          "1 level teaspoon cayenne pepper",
-          "1 level teaspoon hot smoked paprika",
-        ],
-        "category": "Laptop",
-        "image": ""
+        "name": "Samsung Z Flip 4",
+        "description": `Screen size: 6.2 inches`,
+        "price": 699,
+        "category": "Phone",
+        "image": "samsungzflip4.png"
       },
     ]);
   } catch (error) {

@@ -1,19 +1,20 @@
 <div class="form-control">
     <label>Username</label> 
-    <input type="text" placeholder="Enter username" name="userName" required>
+    <input type="text" placeholder="Enter username" name="userName" id="userName" required>
 </div> 
 <div class="form-control"> 
     <label>Password</label> 
     <input type="password" id="password" placeholder="Enter password" name="password" onkeyup="checkPassword(this.value)" required>
+    <div class="error"></div>
     <span id="toggleEye"></span>
     <div class="validation">
-    <ul>
-        <li id="lower">At least one lowercase character</li>
-        <li id="upper">At least one uppercase character</li>
-        <li id="number">At least one number</li>
-        <li id="special">At least one special character</li>
-        <li id="length">At least 8 chracters</li>
-    </ul>
+        <ul>
+            <li id="lower">At least one lowercase character</li>
+            <li id="upper">At least one uppercase character</li>
+            <li id="number">At least one number</li>
+            <li id="special">At least one special character</li>
+            <li id="length">At least 8 chracters</li>
+        </ul>
     </div>
 </div>
 <div class="form-control">
