@@ -84,7 +84,7 @@ app.use("/order", orderRouter);
 
 //Product router
 const productRouter = require("./server/routes/productRouter")
-app.use("/api/product", productRouter );
+app.use("/product", productRouter );
 
 
 

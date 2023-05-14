@@ -32,7 +32,7 @@ const createProduct = asyncHandler(async (req, res, next) => {
   const getProducts = async (req, res) => {
     try {
         const products = await Product.find();
-        res.render('allProduct', { products });
+        res.render('shipper-page/allProduct', { products });
     } catch (err) {
         console.error('Error retrieving products:', err);
         res.status(500).send('Internal Server Error');

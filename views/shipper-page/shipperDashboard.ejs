@@ -1,0 +1,34 @@
+<h1>Shipper Dashboard</h1>
+
+<h2>Hub Name: <%= hubName %></h2>
+
+<h2>Orders</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      
+      <th>Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach((order) => { %>
+      <tr>
+        <td><a href="/shipperDashboard/<%= order._id %>"><%= order._id %></a></td>
+        
+        <td><%= order.orderStatus %></td>
+        <td>
+            <form method="POST" action="/shipperDashboard/<%= order._id %>/delivered">
+                <button type="submit">Accept</button>
+              </form>              
+        </td>
+        <td>
+          <form method="POST" action="/shipperDashboard/<%= order._id %>/cancel">
+              <button type="submit">Cancel</button>
+            </form>              
+      </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

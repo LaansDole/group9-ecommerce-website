@@ -71,3 +71,10 @@ vendorprivate:
 		  <p>No items found.</p>
 		<% } %>  -->
 	  </div>
+
+
+    note for orderDetailShipper businessName
+    <!-- <tr>
+      <td>Vendor:</td>
+      <td><%= order.products[0].businessName %></td>
+    </tr> -->

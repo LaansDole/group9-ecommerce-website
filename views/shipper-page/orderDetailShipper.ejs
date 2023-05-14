@@ -1,0 +1,29 @@
+<h1>Order Detail</h1>
+<p>Username: <%= user.name %></p>
+<p>User ID: <%= user._id %></p>
+<table>
+  <tbody>
+    <tr>
+      <td>Order ID:</td>
+      <td><%= order._id %></td>
+    </tr>
+    <% order.products.forEach(function(product) { %>
+      <tr>
+        <td>Name:</td>
+        <td><%= product.name %></td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td><%= product.price %> USD</td>
+      </tr>
+    <% }) %>
+    
+    <tr>
+      <td>Timestamp:</td>
+      <td><%= order.createdAt.toLocaleString() %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a href="/shipperDashboard">Back to Shipper Dashboard</a>

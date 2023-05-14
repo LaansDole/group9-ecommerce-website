@@ -30,10 +30,10 @@ const checkShipperHub = asyncHandler(async (req, res, next) => {
         throw new Error('Order not found');
       }
   
-      return res.render('orderDetailShipper', { order });
+      return res.render('shipper-page/orderDetailShipper', { order });
     }
   
-    return res.render('shipperDashboard', { orders: req.shipperOrders, hubName: req.hubName });
+    return res.render('shipper-page/shipperDashboard', { orders: req.shipperOrders, hubName: req.hubName });
   });
   
   const orderDetailShipper = asyncHandler(async (req, res) => {
@@ -46,13 +46,13 @@ const checkShipperHub = asyncHandler(async (req, res, next) => {
       throw new Error('Order not found');
     }
   
-    return res.render('orderDetailShipper', { order, user: req.user });
+    return res.render('shipper-page/orderDetailShipper', { order, user: req.user });
   });
 
   const shipperOrderComplete = asyncHandler(async (req, res) => {
     const orders = await Order.find({ orderStatus: 'delivered' }).lean();
   
-    res.render('shipperOrderComplete', { orders });
+    res.render('shipper-page/shipperOrder', { orders });
   });
   
 
