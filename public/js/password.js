@@ -26,13 +26,14 @@ form.addEventListener('submit', e => {
 
         setErrorMessage('Invalid Password');
     } else {
+        window.alert('Success! Please go back and login again!');
         form.submit();
     }
 
     const usernameValue = form.querySelector('#userName').value.trim();
 
     if (usernameValue == "" && passwordValue == "") {
-        alert('Please fill out all the required fields correctly');
+        window.alert('Please fill out all the required fields correctly');
     }
 });
 
