@@ -150,7 +150,7 @@ exports.submitProductOnPost = async (req, res) => {
     await newProduct.save();
 
     req.flash('infoSubmit', 'Product has been added.')
-    res.redirect('/');
+    res.redirect('/home/submit-product');
   } catch (error) {
     // res.json(error);
     req.flash('infoErrors', error);
