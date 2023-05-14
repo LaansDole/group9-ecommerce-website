@@ -1,0 +1,65 @@
+<!-- cart.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <% if (cartProduct.length === 0) { %>
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cartProduct.forEach(item => { %>
+                    <tr>
+                        <td><%= item.product_Name %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= item.product_Price %></td>
+                        <td><%= item.quantity * item.product_Price %></td>
+                    </tr>
+                <% }) %>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total:</td>
+                    <td><%= getTotal(cartProduct) %></td>
+                </tr>
+            </tbody>
+        </table>
+    <% } %>
+
+    <a href="/api/product/allProduct">Continue Shopping</a>
+    <button onclick="clearCart()">Clear Cart</button>
+    <script>
+        const cartProduct = JSON.parse(localStorage.getItem('cartProduct')) || [];
+
+        console.log(cartProduct);   
+        // Define a function to calculate the total price of items in the cart
+        function getTotal(cartProduct) {
+            let total = 0;
+            cartProduct.forEach(item => {
+                total += item.product_Price * item.quantity;
+            });
+            return total;
+        }
+
+        // Define a function to clear the cart items from localStorage
+        function clearCart() {
+            localStorage.removeItem('cartProduct');
+            alert('Cart cleared!');
+            window.location.href = '/api/product/cart'; // Redirect the user to the cart page
+        }
+        // Send a request to the server to retrieve the cart items
+        
+    </script>
+</body>
+</html>
