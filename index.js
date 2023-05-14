@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 
 const cookiesParser = require('cookie-parser');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const path = require('path');
 
 const bodyParser = require("body-parser");
