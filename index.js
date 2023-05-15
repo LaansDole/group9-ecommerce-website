@@ -80,10 +80,10 @@ app.use("/shipper", shipperRouter);
 const orderRouter = require("./server/routes/orderRouter")
 app.use("/order", orderRouter);
 
-// Cart router
-const cartRoute = require("./server/routes/cartRoute")
-app.use("/home/your-cart", cartRoute);
+// Product router
 
+const productRouter= require("./server/routes/productRouter")
+app.use("/product", productRouter);
 
 
 

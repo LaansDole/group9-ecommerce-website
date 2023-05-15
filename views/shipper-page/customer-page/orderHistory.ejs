@@ -1,0 +1,32 @@
+<!-- order-history.ejs -->
+
+<h1>Order History</h1>
+
+<% if (orderHistory && orderHistory.length) { %>
+    <% orderHistory.forEach((order, index) => { %>
+    <h3>Order <%= index + 1 %></h3>
+    <p>Status: <%= order.orderStatus %></p>
+    <p>Total Price: <%= order.totalPrice %></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order.products.forEach((product) => { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.quantity %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% }) %>
+<% } else { %>
+  <p>No order history found.</p>
+<% } %>

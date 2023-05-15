@@ -1,65 +1,41 @@
-<!-- cart.ejs -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cart</title>
 </head>
 <body>
-    <h1>Cart</h1>
-    <% if (cartProduct.length === 0) { %>
-        <p>Your cart is empty.</p>
-    <% } else { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% cartProduct.forEach(item => { %>
-                    <tr>
-                        <td><%= item.product_Name %></td>
-                        <td><%= item.quantity %></td>
-                        <td><%= item.product_Price %></td>
-                        <td><%= item.quantity * item.product_Price %></td>
-                    </tr>
-                <% }) %>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Total:</td>
-                    <td><%= getTotal(cartProduct) %></td>
-                </tr>
-            </tbody>
-        </table>
-    <% } %>
-
-    <a href="/home">Continue Shopping</a>
+    <h1>Your Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="cart-table-body">
+            <!-- Cart items will be dynamically added here -->
+        </tbody>
+    </table>
+    <p>Total Price: $<span id="cart-total">0</span></p>
+    <input type="hidden" name="customerName" value="<%= user.name %>">
+    <input type="hidden" name="customerAddress" value="<%= user.address %>">
+    <div>
+        <p>Choose Hub Delivery:</p>
+        <select id="hubDeliverySelect">
+            <option value="GHTK">GHTK</option>
+            <option value="viettel">ViettelPost</option>
+            <option value="ghn">Giao Hang Nhanh</option>
+            <option value="aha">Aha Move</option>
+        </select>
+    </div>
+    <button onclick="submitOrder()">Submit Order</button>
+    <a href="/api/product/allProduct">Continue Shopping</a>
     <button onclick="clearCart()">Clear Cart</button>
+    <script src="/js/cart.js"></script>
     <script>
-        const cartProduct = JSON.parse(localStorage.getItem('cartProduct')) || [];
-
-        console.log(cartProduct);   
-        // Define a function to calculate the total price of items in the cart
-        function getTotal(cartProduct) {
-            let total = 0;
-            cartProduct.forEach(item => {
-                total += item.product_Price * item.quantity;
-            });
-            return total;
-        }
-
-        // Define a function to clear the cart items from localStorage
-        function clearCart() {
-            localStorage.removeItem('cartProduct');
-            alert('Cart cleared!');
-            window.location.href = '/home/your-cart'; // Redirect the user to the cart page
-        }
-        // Send a request to the server to retrieve the cart items
-        
+        // Populate the cart page with the list of products and quantities
+        populateCartPage();
     </script>
 </body>
 </html>
