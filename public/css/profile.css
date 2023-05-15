@@ -1,0 +1,57 @@
+
+h1 {
+    color: #0203AC;;
+}
+.profile-pic {
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.profile-pic img {
+    border: 2px solid black;
+    background-color: whitesmoke;
+}
+
+#personal-info {
+    font-size: larger;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+#personal-info input {
+    margin-top: 1rem;
+
+}
+
+#personal-info label {
+    margin-top: 1rem;
+    font-weight: lighter;
+}
+
+.btn {
+    font-size: large;
+    transition: 0.3s linear;
+}
+
+.btn:hover {
+    background-color: var(--hover-color);
+}
+
+@media (max-width: 1023px) {
+    #personal-info input {
+        width: 75%;
+    }
+
+    .profile-pic img {
+        width: 300px;
+        height: 300px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #personal-info {
+        align-items: center;
+    }
+}
