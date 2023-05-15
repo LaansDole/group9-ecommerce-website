@@ -1,5 +1,5 @@
 const express = require('express');
-const { authMiddleware } = require('../../middlewares/authMiddleware');
+const { authMiddleware, checkCustomerRole } = require('../../middlewares/authMiddleware');
 const { createOrder, submitOrder } = require('../controllers/orderCtrl');
 const confirmOrder = require('../model/confirmOrderModel');
 
@@ -35,7 +35,7 @@ const router = express.Router();
 
 
 //submit product
-router.post('/submit', authMiddleware, async (req, res) => {
+router.post('/submit', checkCustomerRole,authMiddleware, async (req, res) => {
   try {
     const { products, customerName, customerAddress, hubDelivery } = req.body;
     const { name, address } = req.user;
@@ -65,7 +65,7 @@ router.post('/submit', authMiddleware, async (req, res) => {
 
 
 //Get order history
-router.get('/history', authMiddleware, async (req, res) => {
+router.get('/history', authMiddleware, checkCustomerRole,async (req, res) => {
   try {
     const { user } = req;
     const orderHistory = await confirmOrder.find({ user: user._id });

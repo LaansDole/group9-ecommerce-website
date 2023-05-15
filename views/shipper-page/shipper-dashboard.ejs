@@ -40,42 +40,53 @@
         </ul>
     </nav>
     <main class="dashboard">
-        <!-- Distribution hub containing the orders-->
-        <% orders.forEach((order) => { %>
-        <div id="dis-hub">
-            <h2 class="pt-3 ps-5">Distribution <%= hubName %></h2>
-            <h3 class="fw-light pt-3 ps-5">Active orders</h3>
-            <div class="cards-container container d-flex">
-                <div class="order-card pt-2 pb-2 ps-3 mt-5">
-                    <h6 class="card-heading">Order ID</h6>
-                    <p class="order-id ps-5" id="show-overlay"><%= order._id %></p>
-                    <h6 class="card-heading">Address</h6>
-                    <p class="cart-content fw-bold"><img src="/img/to-button.png" alt="To button" width="46px"
-                            height="30px">Address
-                        here
-                    </p>
-                    <h6 class="card-heading">Customer</h6>
-                    <p class="cart-content fw-bold">Customer name</p>
-                    <h6 class="card-heading">Status</h6>
-                    <p class="active-status ps-5"> <img src="/img/loading-bar.png" class="pe-2" alt="Loading bar">Active
-                    </p>
-                </div>
+     
+<!-- Distribution hub containing the orders -->
+<div id="dis-hub">
+    <h2 class="pt-3 ps-5">Distribution <%= hubName %></h2>
+    <% if (shipperOrders && shipperOrders.length > 0) { %>
+      <h3 class="fw-light pt-3 ps-5">Active orders</h3>
+  
+      <div class="cards-container container d-flex">
+        <% shipperOrders.forEach((order) => { %>
+          <% if (order.orderStatus !== 'cancel' && order.orderStatus !== 'delivered') { %>
+            <div class="order-card pt-2 pb-2 ps-3 mt-5">
+              <h6 class="card-heading">Order ID</h6>
+              <p class="order-id ps-5" id="show-overlay"><%= order._id %></p>
+              <h6 class="card-heading">Address</h6>
+              <p class="cart-content fw-bold"><img src="/img/to-button.png" alt="To button" width="46px" height="30px"><%= order.customerAddress %></p>
+              <h6 class="card-heading">Customer</h6>
+              <p class="cart-content fw-bold"><%= order.customerName %></p>
+              <h6 class="card-heading">Status</h6>
+              <p class="active-status ps-5"><img src="/img/loading-bar.png" class="pe-2" alt="Loading bar"><%= order.orderStatus %></p>
+              <form method="POST" action="/shipper/<%= order._id %>/delivered">
+                <button type="submit">Accept</button>
+              </form>              
+              <form method="POST" action="/shipper/<%= order._id %>/cancel">
+                <button type="submit">Cancel</button>
+              </form> 
             </div>
-        </div>
-        <form method="POST" action="/shipper/<%= order._id %>/delivered">
-            <button type="submit">Accept</button>
-          </form>
-          <form method="POST" action="/shipper/<%= order._id %>/cancel">
-            <button type="submit">Cancel</button>
-          </form>   
+          <% } %>
         <% }) %>
+      </div>
+  
+    <% } else { %>
+      <p>No active orders found.</p>
+    <% } %>
+  </div>
+  
+  
+
         <!--Order details-->
         <div class="ord-details px-3 py-2 position-fixed cursor-pointer">
             <button class="btn btn-close position-absolute cursor-pointer" id="hide-overlay"></button>
             <div id="overview">
+                
                 <h2>Order ID</h2>
+                
                 <div class="d-flex container general-info">
                     <div class="customer mt-2 p-3 pb-1 bg-white container">
+                        
                         <h5 class="fw-light"><img src="/img/customer-icon.png" alt="Customer icon">Customer name</h5>
                         <p class="text-center">Name here</p>
                     </div>
@@ -90,7 +101,7 @@
                 <ul class="item">
                     <li>Name: Name here</li>
                     <li> Quantity: Quantity here</li>
-                    <li> Price: Price here</li> 
+                    <li> Price: Price here</li>
                 </ul>
                 <h6 class="total-price">Total price: $here</h6>
             </div>
@@ -101,8 +112,11 @@
                     <option value="delivered">Delivered</option>
                     <option value="canceled">Canceled</option>
                 </select>
+                
             </div>
+            
         </div>
+
     </main>
 
     <script src="/js/dashboard.js"></script>

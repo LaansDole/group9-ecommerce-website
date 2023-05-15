@@ -1,6 +1,6 @@
 const User = require("../model/userModel");
 const asyncHandler = require('express-async-handler');
-const Order = require('../model/orderModel')
+const Order = require('../model/confirmOrderModel')
 const jwt = require('jsonwebtoken');
 
 
@@ -23,18 +23,31 @@ const shipperDashboard = asyncHandler(async (req, res) => {
   const { orderId } = req.query;
 
   if (orderId) {
-    const order = await Order.findById(orderId);
+    try {
+      const order = await Order.findById(orderId);
 
-    if (!order) {
-      res.status(404);
-      throw new Error('Order not found');
+      if (!order) {
+        res.status(404);
+        throw new Error('Order not found');
+      }
+
+      return res.render('shipper-page/shipper-dashboard', { order, layout: './shipper-page/shipper-dashboard' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
     }
+  } else {
+    try {
+      const shipperOrders = await Order.find({ hubName: req.hubName });
 
-    return res.render('shipper-page/shipper-dashboard', { orders  });
+      return res.render('shipper-page/shipper-dashboard', { shipperOrders, hubName: req.hubName, layout: './shipper-page/shipper-dashboard' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
   }
-
-  return res.render('shipper-page/shipper-dashboard', { orders: req.shipperOrders, hubName: req.hubName,layout: './shipper-page/shipper-dashboard' });
 });
+
 
 const orderDetailShipper = asyncHandler(async (req, res) => {
   const orderId = req.params.orderId;
@@ -89,3 +102,6 @@ const updateOrderStatusCancel = asyncHandler(async (req, res) => {
 
 
 module.exports = { checkShipperHub, shipperDashboard, orderDetailShipper, updateOrderStatus, shipperOrderComplete, updateOrderStatusCancel };
+
+
+
