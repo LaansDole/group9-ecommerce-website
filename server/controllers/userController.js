@@ -12,7 +12,11 @@ exports.login = async (req, res) => {
 
 exports.registerCustomer = async (req, res) => {
     try {
-        res.render('./login-signup-page/customer-signup.ejs', { title: "Customer Register", layout: './layouts/loginLayout' });
+        res.render('./login-signup-page/customer-signup.ejs', {
+            title: "Customer Register",
+            error: req.query.error === 'Username_already_exists' ? ('Error: ' + req.query.error) : '',
+            layout: './layouts/loginLayout'
+        });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }
@@ -20,7 +24,15 @@ exports.registerCustomer = async (req, res) => {
 
 exports.registerVendor = async (req, res) => {
     try {
-        res.render('./login-signup-page/vendor-signup.ejs', { title: "Vendor Register", layout: './layouts/loginLayout' });
+        const error = req.query.error;
+        if (error !== '') {
+            error = 'Error: ' + error;
+        }
+        res.render('./login-signup-page/vendor-signup.ejs', {
+            title: "Vendor Register",
+            error: req.query.error === 'Username_already_exists' ? ('Error: ' + req.query.error) : '',
+            layout: './layouts/loginLayout'
+        });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }
@@ -28,7 +40,11 @@ exports.registerVendor = async (req, res) => {
 
 exports.registerShipper = async (req, res) => {
     try {
-        res.render('./login-signup-page/shipper-signup.ejs', { title: "Shipper Register", layout: './layouts/loginLayout' });
+        res.render('./login-signup-page/shipper-signup.ejs', {
+            title: "Shipper Register",
+            error: req.query.error === 'Username_already_exists' ? ('Error: ' + req.query.error) : '',
+            layout: './layouts/loginLayout'
+        });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }

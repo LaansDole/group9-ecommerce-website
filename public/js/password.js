@@ -10,7 +10,7 @@ const setErrorMessage = message => {
 signupForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    const passwordValue = form.querySelector('#password').value.trim();
+    const passwordValue = signupForm.querySelector('#password').value.trim();
 
     const lower = new RegExp("(?=.*[a-z])");
     const upper = new RegExp("(?=.*[A-Z])");
@@ -28,20 +28,20 @@ signupForm.addEventListener('submit', e => {
         setErrorMessage('Invalid Password');
     } else {
         window.alert('Success! Please go back and login again!');
-        form.submit();
+        signupForm.submit();
     }
 
-    const usernameValue = form.querySelector('#userName').value.trim();
+    const usernameValue = signupForm.querySelector('#userName').value.trim();
 
     if (usernameValue == "" && passwordValue == "") {
         window.alert('Please fill out all the required fields correctly');
     }
 });
 
-signupForm.addEventListener('submit', e => {
+loginForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    const passwordValue = form.querySelector('#password').value.trim();
+    const passwordValue = loginForm.querySelector('#password').value.trim();
 
     const lower = new RegExp("(?=.*[a-z])");
     const upper = new RegExp("(?=.*[A-Z])");
@@ -58,10 +58,10 @@ signupForm.addEventListener('submit', e => {
 
         setErrorMessage('Invalid Password');
     } else {
-        form.submit();
+        loginForm.submit();
     }
 
-    const usernameValue = form.querySelector('#userName').value.trim();
+    const usernameValue = loginForm.querySelector('#userName').value.trim();
 
     if (usernameValue == "" && passwordValue == "") {
         window.alert('Please fill out all the required fields correctly');
