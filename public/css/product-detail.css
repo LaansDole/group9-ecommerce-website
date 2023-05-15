@@ -132,6 +132,12 @@
   color: #7a7a7a;
 }
 
+.pd-description {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: lighter;
+}
+
 .review-form .form-group {
   clear: both;
 }

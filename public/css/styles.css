@@ -98,6 +98,7 @@ a:hover {
   height: 100px;
   margin-bottom: 10px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
+  background: white;
   overflow: hidden;
   border-radius: 8px;
 }
