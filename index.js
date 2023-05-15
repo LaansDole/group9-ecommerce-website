@@ -82,7 +82,7 @@ app.use("/order", orderRouter);
 
 // Cart router
 const cartRoute = require("./server/routes/cartRoute")
-app.use("/your-cart", cartRoute);
+app.use("/home/your-cart", cartRoute);
 
 
 

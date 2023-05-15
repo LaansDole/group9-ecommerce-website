@@ -7,7 +7,7 @@ const localStorage = new LocalStorage('./localstorage');
 
 router.post('/productcreate', authMiddleware, createProduct)
 router.get('/allProduct', getProducts)
-router.get('/cart', cartPage);
+router.get('/', cartPage);
 // router.get('/cart', cartPage);
 
 module.exports = router;

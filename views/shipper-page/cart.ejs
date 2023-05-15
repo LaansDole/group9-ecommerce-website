@@ -37,7 +37,7 @@
         </table>
     <% } %>
 
-    <a href="/api/product/allProduct">Continue Shopping</a>
+    <a href="/home">Continue Shopping</a>
     <button onclick="clearCart()">Clear Cart</button>
     <script>
         const cartProduct = JSON.parse(localStorage.getItem('cartProduct')) || [];
@@ -56,7 +56,7 @@
         function clearCart() {
             localStorage.removeItem('cartProduct');
             alert('Cart cleared!');
-            window.location.href = '/api/product/cart'; // Redirect the user to the cart page
+            window.location.href = '/home/your-cart'; // Redirect the user to the cart page
         }
         // Send a request to the server to retrieve the cart items
         

@@ -12,49 +12,49 @@ const localStorage = new LocalStorage('./scratch');
 
 
 const createProduct = asyncHandler(async (req, res, next) => {
-    try {
-        const { product_Name, product_Price, businessName } = req.body;
-      const user = req.user;
-      const newProduct = await Product.create({
-        product_Name: product_Name,
-        product_Price: product_Price,
-        v_id: user._id,
-        businessName: businessName,
-      });
-      await newProduct.save();
-      res.status(201).json(newProduct);
-    } catch (err) {
-      console.log(err)
-      next(err);
-    }
-  });
+  try {
+    const { product_Name, product_Price, businessName } = req.body;
+    const user = req.user;
+    const newProduct = await Product.create({
+      product_Name: product_Name,
+      product_Price: product_Price,
+      v_id: user._id,
+      businessName: businessName,
+    });
+    await newProduct.save();
+    res.status(201).json(newProduct);
+  } catch (err) {
+    console.log(err)
+    next(err);
+  }
+});
 
-  const getProducts = async (req, res) => {
-    try {
-        const products = await Product.find();
-        res.render('shipper-page/allProduct', { products });
-    } catch (err) {
-        console.error('Error retrieving products:', err);
-        res.status(500).send('Internal Server Error');
-    }
+const getProducts = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.render('shipper-page/allProduct', { products });
+  } catch (err) {
+    console.error('Error retrieving products:', err);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
 
-const cartPage = asyncHandler(async(req, res) => {
+const cartPage = asyncHandler(async (req, res) => {
 
-  
+
   // Retrieve cart items from localStorage
   const cartProduct = JSON.parse(localStorage.getItem('cartProduct')) || [];
   console.log(localStorage.getItem('cartProduct'));
- 
+
   if (localStorage.getItem("username") === null) {
     console.log('no have')
   } else {
     console.log('have ')
   }
-  
+
   // Render the addtocart.ejs template and pass the cartItems to it
-  res.render('cart', { cartProduct });
+  res.render('shipper-page/cart', { cartProduct });
 });
 
 const addToCart = async (productId, userId) => {
@@ -102,7 +102,7 @@ const addToCart = async (productId, userId) => {
 
 
 
-  module.exports = { createProduct, getProducts, cartPage };
-  
-  
+module.exports = { createProduct, getProducts, cartPage };
+
+
 
