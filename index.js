@@ -85,7 +85,19 @@ app.use("/order", orderRouter);
 const productRouter= require("./server/routes/productRouter")
 app.use("/product", productRouter);
 
-
+app.get('/ordercreate', async (req, res) => {
+    try {
+      const products = await Product.find();
+      
+      res.render('orderCreate', { products });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+  });
+  app.get('/productcreate', (req,res ) => {
+    res.render('productcreate');
+})
 
 
 

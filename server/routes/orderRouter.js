@@ -34,7 +34,7 @@ const router = express.Router();
 
 
 
-
+//submit product
 router.post('/submit', authMiddleware, async (req, res) => {
   try {
     const { products, customerName, customerAddress, hubDelivery } = req.body;
@@ -63,6 +63,8 @@ router.post('/submit', authMiddleware, async (req, res) => {
   }
 });
 
+
+//Get order history
 router.get('/history', authMiddleware, async (req, res) => {
   try {
     const { user } = req;

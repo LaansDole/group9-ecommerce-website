@@ -31,6 +31,7 @@ function clearCart() {
     localStorage.removeItem('cart');
     updateCartItemCount();
     populateCartPage();
+    location.reload();
 }
 
 // Define a function to populate the cart page with the list of products and quantities
@@ -101,7 +102,8 @@ function submitOrder() {
         alert('Order submitted successfully!');
     })
     .catch(error => {
-        console.error(error);
+        console.log(error);
+        
         alert('Your Order is confirm!.');
     });
 }

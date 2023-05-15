@@ -42,7 +42,7 @@ const createProduct = asyncHandler(async (req, res, next) => {
 
 const cartPage = asyncHandler(async(req, res) => {
 
-  res.render('shipper-page/cart');
+  res.render('shipper-page/cart', {user: req.user});
 });
 
 const addToCart = async (productId, userId) => {
