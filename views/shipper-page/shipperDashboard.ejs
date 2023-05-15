@@ -15,16 +15,16 @@
   <tbody>
     <% orders.forEach((order) => { %>
       <tr>
-        <td><a href="/shipperDashboard/<%= order._id %>"><%= order._id %></a></td>
+        <td><a href="/shipper/<%= order._id %>"><%= order._id %></a></td>
         
         <td><%= order.orderStatus %></td>
         <td>
-            <form method="POST" action="/shipperDashboard/<%= order._id %>/delivered">
+            <form method="POST" action="/shipper/<%= order._id %>/delivered">
                 <button type="submit">Accept</button>
               </form>              
         </td>
         <td>
-          <form method="POST" action="/shipperDashboard/<%= order._id %>/cancel">
+          <form method="POST" action="/shipper/<%= order._id %>/cancel">
               <button type="submit">Cancel</button>
             </form>              
       </td>

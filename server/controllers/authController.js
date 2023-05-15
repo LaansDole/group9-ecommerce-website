@@ -303,7 +303,8 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
     });
-    res.render('login-signup-page/login');
+    res.render('login-signup-page/login', { layout: './layouts/loginLayout' });
+    res.redirect('/');
     res.sendStatus(204); //Forbidden
   }
   await User.findOneAndUpdate(refreshToken, {

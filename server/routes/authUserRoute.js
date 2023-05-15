@@ -22,7 +22,7 @@ router.get('/all-users', getallUser); //Get all user account exist
 // router.get('/vendor1',authMiddleware,vendor1Page);
 router.get('/refresh', handleRefreshToken);
 router.get('/myProfileUpdate', authMiddleware, profileUpdateFunction);
-router.get("/logout", logout);
+router.get("/", logout);
 
 router.get('testauth', authMiddleware);
 

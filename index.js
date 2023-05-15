@@ -73,7 +73,7 @@ app.use('/vendor-dashboard', vendorRoute);
 // NEWWWW!!!!!!!
 // Set the layout for the shipper dashboard
 const shipperRouter = require("./server/routes/shipperRouter")
-app.use("/shipperDashboard", shipperRouter);
+app.use("/shipper", shipperRouter);
 
 // Set the routes for the shipper dashboard
 // Set the route for orderRouter

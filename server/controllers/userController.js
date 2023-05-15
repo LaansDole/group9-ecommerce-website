@@ -40,13 +40,9 @@ exports.vendor = (req, res) => {
 
 };
 
-// exports.shipper = (req, res) => {
-//   res.render('shipper-private.ejs', { user: req.user });
-
-// };
 exports.shipper = async (req, res) => {
     try {
-        res.render('shipper-dashboard.ejs', { user: req.user, layout: './shipper-dashboard' })
+        res.render('shipper-page/shipper-dashboard.ejs', { user: req.user, layout: './shipper-page/shipper-dashboard' })
 
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
