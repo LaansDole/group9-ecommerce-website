@@ -41,7 +41,7 @@ router.get('/register-shipper', userController.registerShipper);
 // User role Route
 router.get('/home', authMiddleware, checkCustomerRole, userController.customer);
 router.get('/vendor', authMiddleware, checkVendorRole, userController.vendor);
-router.get('/shipper', authMiddleware, checkShipperRole, userController.shipper);
+// router.get('/shipper', authMiddleware, checkShipperRole, userController.shipper);
 router.get('/myProfile', authMiddleware, getaUser, userController.myProfile);
 
 module.exports = router;

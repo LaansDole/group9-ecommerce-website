@@ -30,10 +30,10 @@ const shipperDashboard = asyncHandler(async (req, res) => {
       throw new Error('Order not found');
     }
 
-    return res.render('shipper-page/orderDetailShipper', { order });
+    return res.render('shipper-page/shipper-dashboard', { orders  });
   }
 
-  return res.render('shipper-page/shipper', { orders: req.shipperOrders, hubName: req.hubName });
+  return res.render('shipper-page/shipper-dashboard', { orders: req.shipperOrders, hubName: req.hubName,layout: './shipper-page/shipper-dashboard' });
 });
 
 const orderDetailShipper = asyncHandler(async (req, res) => {

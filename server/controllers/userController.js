@@ -40,14 +40,14 @@ exports.vendor = (req, res) => {
 
 };
 
-exports.shipper = async (req, res) => {
-    try {
-        res.render('shipper-page/shipper-dashboard.ejs', { user: req.user, layout: './shipper-page/shipper-dashboard' })
+// exports.shipper = async (req, res) => {
+//     try {
+//         res.render('shipper-page/shipper-dashboard.ejs', { user: req.user, layout: './shipper-page/shipper-dashboard' })
 
-    } catch (error) {
-        res.satus(500).send({ message: error.message || "Error Occured" });
-    }
-}
+//     } catch (error) {
+//         res.satus(500).send({ message: error.message || "Error Occured" });
+//     }
+// }
 
 exports.customer = async (req, res) => {
     try {
