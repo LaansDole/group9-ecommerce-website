@@ -1,5 +1,6 @@
-const User = require("../model/userModel");
 require('../model/database');
+const Category = require('../model/Category');
+const Product = require('../model/Product');
 
 exports.login = async (req, res) => {
     try {
@@ -32,4 +33,46 @@ exports.registerShipper = async (req, res) => {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }
 }
+
+// Roles-dashboard, delete below or re-render once done
+exports.vendor = (req, res) => {
+    res.render('vendor-private.ejs', { user: req.user });
+
+};
+
+// exports.shipper = (req, res) => {
+//   res.render('shipper-private.ejs', { user: req.user });
+
+// };
+exports.shipper = async (req, res) => {
+    try {
+        res.render('shipper-dashboard.ejs', { user: req.user, layout: './shipper-dashboard' })
+
+    } catch (error) {
+        res.satus(500).send({ message: error.message || "Error Occured" });
+    }
+}
+
+exports.customer = async (req, res) => {
+    try {
+        const limitNumber = 5;
+        const categories = await Category.find({}).limit(limitNumber);
+        const latest = await Product.find({}).limit(limitNumber);
+        const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
+        const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
+        const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
+
+        const productCategory = { latest, tablet, laptop, phone };
+
+        res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
+    } catch (error) {
+        res.satus(500).send({ message: error.message || "Error Occured" });
+    }
+}
+
+exports.myProfile = (req, res) => {
+    const userId = req.session.userId; // get user id from session or database
+    res.render('myProfile', { userId: userId });
+
+};
 

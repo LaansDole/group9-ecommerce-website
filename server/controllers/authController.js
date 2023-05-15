@@ -8,8 +8,6 @@ const fs = require('fs');
 const multer = require("multer");
 
 require('../model/database');
-const Category = require('../model/Category');
-const Product = require('../model/Product');
 
 
 const path = require('path');
@@ -260,61 +258,6 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
   }
 });
 
-
-// Function to render page
-
-const vendorProduct = async (req, res) => {
-  try {
-    const vendor = await Product.find({ 'v_id': vendorID });
-    res.render('vendor-private.ejs', { title: 'Vendor Dashboard', vendorid });
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-
-  }
-}
-
-// Roles-dashboard, delete below or re-render once done
-const vendor = (req, res) => {
-  res.render('vendor-private.ejs', { user: req.user });
-
-};
-
-// const shipper = (req, res) => {
-//   res.render('shipper-private.ejs', { user: req.user });
-
-// };
-const shipper = async (req, res) => {
-  try {
-    res.render('shipper-dashboard.ejs', { user: req.user, layout: './shipper-dashboard' })
-
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-  }
-}
-
-const customer = async (req, res) => {
-  try {
-    const limitNumber = 5;
-    const categories = await Category.find({}).limit(limitNumber);
-    const latest = await Product.find({}).limit(limitNumber);
-    const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
-    const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
-    const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
-
-    const productCategory = { latest, tablet, laptop, phone };
-
-    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-  }
-}
-
-const myProfile = (req, res) => {
-  const userId = req.session.userId; // get user id from session or database
-  res.render('myProfile', { userId: userId });
-
-};
-
 const success = (req, res) => {
   res.render('success.ejs');
 
@@ -558,21 +501,21 @@ const profileUpdateFunction = asyncHandler(async (req, res) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       validateMongoDbId(decoded?.id);
       const user = await User.findById(decoded?.id);
-      const { userName, businessName, businessAddress, name, address, hubName, hubAddress, role,profilePicture } = user;
+      const { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, profilePicture } = user;
       // console.log(user);
       let image;
       if (profilePicture && profilePicture.data && profilePicture.contentType) {
-      const imageBuffer = profilePicture.data;
-      const imageType = profilePicture.contentType.split('/')[1];
-      image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
-    }
+        const imageBuffer = profilePicture.data;
+        const imageType = profilePicture.contentType.split('/')[1];
+        image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
+      }
       res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
-      
+
     } catch (error) {
       throw new Error(error);
     }
   } else {
-    res.redirect('/login');
+    res.redirect(`${req.originalUrl}`);
   }
 });
 
@@ -651,13 +594,9 @@ module.exports = {
   updateProfilePicture,
   blockUser,
   unblockUser,
-  vendor,
   handleRefreshToken,
   logout,
   success,
-  shipper,
-  customer,
-  myProfile,
   upload,
   updateAddress,
   updateName,
