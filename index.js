@@ -51,8 +51,6 @@ app.use(expressLayouts);
 // Set the path to the layouts directory
 app.set('views', path.join(__dirname, 'views'));
 
-// Set the layout for the login/signup page
-
 // Set the routes for the login/signup page
 const authUserRoute = require("./server/routes/authUserRoute.js");
 app.use('/', authUserRoute);
@@ -72,7 +70,7 @@ app.use('/vendor-dashboard', vendorRoute);
 
 
 
-//NEWWWW!!!!!!!
+// NEWWWW!!!!!!!
 // Set the layout for the shipper dashboard
 const shipperRouter = require("./server/routes/shipperRouter")
 app.use("/shipperDashboard", shipperRouter);
@@ -82,9 +80,9 @@ app.use("/shipperDashboard", shipperRouter);
 const orderRouter = require("./server/routes/orderRouter")
 app.use("/order", orderRouter);
 
-//Product router
-const productRouter = require("./server/routes/productRouter")
-app.use("/product", productRouter );
+// Cart router
+const cartRoute = require("./server/routes/cartRoute")
+app.use("/your-cart", cartRoute);
 
 
 
