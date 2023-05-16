@@ -42,7 +42,7 @@ router.get('/history', authMiddleware, checkCustomerRole, async (req, res) => {
     const { user } = req;
     const orderHistory = await confirmOrder.find({ user: user._id });
 
-    res.render('customer-page/orderHistory', { orderHistory: orderHistory || [] });
+    res.render('home-page/orderHistory', { orderHistory: orderHistory || [] });
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve order history' });
   }

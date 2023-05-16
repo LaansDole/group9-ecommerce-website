@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/product-detail.css" />
   <link rel="stylesheet" href="/css/styles.css">
-
 </head>
 <body>
   
@@ -20,22 +19,15 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/home" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#footer" class="nav-link px-2 link-secondary">About</a></li>
         <li><a href="#footer" class="nav-link px-2 link-secondary">Contact</a></li>
+        <li><a href="/order/history" class="nav-link px-2 link-secondary">Order History</a></li>
+        <li><a href="/home/your-cart" class="nav-link px-2 link-secondary">Your Cart</a></li>
+        <li><a href="/myProfile" class="nav-link px-2 link-secondary">My Profile
+          <img src="/img/navbar-user.png" alt="User icon">
+        </a></li>
       </ul>
-      <div id="cart-button">
-        <a href="/home/your-cart" class="cart-button nav-link ps-5 pe-3 link-secondary"><img src="/img/cart-icon.png" alt="Cart icon"></a>
-      </div>
-      <div id="user-button">
-        <img src="/img/navbar-user.png" alt="User icon">
-      </div>
-      <ul class="list-unstyled" id="user-options">
-        <li><a href="">My profile</a></li>
-        <li><a href="">Order history</a></li>
-        <li><a href="">Log out</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
+      
+      <div class="col-md-3 text-end mt-3">
         <form method="POST" action="/home/search">
           <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
         </form>

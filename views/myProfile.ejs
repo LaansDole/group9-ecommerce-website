@@ -69,6 +69,11 @@
           <label for="h-address">Hub address</label>
           <input type="text" class="form-control" id="h-address" value="<%= hubAddress %>" readonly>
         <% } %>
+        <form action="/logout" method="GET">
+          <a href="/logout" class="text-decoration-none btn mt-4 px-3 py-2 bg-dark text-white">
+            Log out
+          </a>
+        </form>
       </form>
     </div>
     <script src="/js/openMenu.js"></script>
