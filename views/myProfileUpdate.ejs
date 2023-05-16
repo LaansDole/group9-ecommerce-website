@@ -1,4 +1,4 @@
-<<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,45 +9,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
     <base href="/"> 
     <script
       src="https://kit.fontawesome.com/625c7efa43.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.js" ></script>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/profile.css" />
   </head>
   <body>
-    <seciton id="main">
-      <secion id="side">
-          <img src="/img/side.png" alt="shopping-illustrate">
-      </secion>
-      <h1>Profile</h1>
-  </seciton>
- 
-
-<!-- update-profile.html -->
-
-
-<form id="update-form" action="/updateProfile" method="POST" enctype="multipart/form-data">
-    <% if (role === 'vendor') { %>
-      <label for="business-address">Business Address:</label>
-      <input type="text" id="business-address" name="businessAddress" placeholder="<%= businessAddress %>" >
-    <% } else if (role === 'customer') { %>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="<%= name %>" >
-      <label for="address">Address:</label>
-      <input type="text" id="address" name="address" placeholder="<%= address %>" >
-    <% } else if (role === 'shipper') { %>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="<%= name %>" >
-    <% } %>
-    <label for="profile-picture">Profile Picture:</label>
-    <input type="file" name="profilePicture">
-    <button type="submit">Update Profile</button>
-  </form>
+    <h1 class="text-center">My Profile</h1>
+    <div class="row">
+      <form action="" id="update-form" action="/updateProfile" method="POST" enctype="multipart/form-data" class="col-md-12 container bg-cover">
+        <!-- For vendors -->
+        <% if (role === 'vendor') { %>
+          <label for="b-address">Business address</label>
+          <input type="text" class="form-control" id="b-address" name="businessAddress" placeholder="<%= businessAddress %>" >
+        <!-- For customers -->  
+        <% } else if (role === 'customer') { %>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="<%= name %>" >
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" placeholder="<%= address %>" >
+        <!-- For shippers -->
+        <% } else if (role === 'shipper') { %>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="<%= name %>" >
+        <% } %>
+        <label for="profile-picture">Profile Picture:</label>
+        <input type="file" name="profilePicture">
+        <div class="buttons">
+          <button class="btn submit text-white" type="submit">Update</button>
+          <button class="btn text-white bg-dark" type="reset">Reset</button>
+        </div>
+        
+    </form>
+    </div>
+    
   
 
      
@@ -58,4 +58,3 @@
   <script src="/js/shipper-create.js"></script>
   </body>
 </html>
->>

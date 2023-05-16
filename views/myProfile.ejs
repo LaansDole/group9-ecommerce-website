@@ -17,55 +17,62 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" ></script>
-    <link rel="stylesheet" href="/css/login-signup.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/profile.css" />
   </head>
   <body>
-    
-    <seciton id="main">
-      <secion id="side">
-          <img src="/img/side.png" alt="shopping-illustrate">
-      </secion>
-      <h1>Profile</h1>
-  </seciton>
-  <button onclick="window.location.href='/myProfileUpdate'">Update Profile</button>
-  <h1>Welcome, <%= name %>!</h1>
-      <p><h3>ROLE:</h3> <%= role %></p>
-
-      <% if (role === 'vendor') { %>
-        <p><h3>Your business name :</h3> <%= businessName %></p>  
-        <p><h3>Your business address :</h3> <%= businessAddress %></p>
-      <% } else if (role === 'customer') { %>
-        <p><h3>Your name :</h3> <%= name %> </p>
-         <p> <h3>Your address :</h3> <%= address %></p>
-      <% } else if (role === 'shipper') { %>
-        <p><h3>Your Hub name :</h3> <%= hubName %> </p> 
-        <p><h3>Your hub address :</h3> <%= hubAddress %></p>
-      <% } %>
-
-     <h3>Avatar</h3>
-      <!-- <img src="data:image/png;base64, <%= image %>" alt="Profile Picture" style="width: 500px; height: 500px;"> -->
-      <div class="profile-picture">
+    <h1 class="text-center">My Profile</h1>
+    <div class="row">
+      <div class="profile-pic img-container col-md-6 d-flex flex-column align-items-center pe-5">
         <% if (profilePicture) { %>
           <% const base64Image = profilePicture.data.toString('base64'); %>
           <% const imageSrc = `data:${profilePicture.contentType};base64,${base64Image}`; %>
           <% const fileExtension = profilePicture.contentType.split('/')[1]; %>
           <% const imageSize = 'style="width: 500px; height: 500px;"'; %>
           <% if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg') { %>
-            <img src="<%= imageSrc %>" alt="Profile Picture" style="width: 500px; height: 500px;">
+            <img src="<%= imageSrc %>" alt="Profile Picture" class="img rounded-circle" width="400px" height="400px">
           <% } else if (fileExtension === 'svg+xml') { %>
-            <object type="image/svg+xml" data="<%= imageSrc %>" style="width: 500px; height: 500px;"></object>
+            <object type="image/svg+xml" data="<%= imageSrc %>" style="width: 400px; height: 400px;"></object>
           <% } else { %>
             <p>Unsupported image file type.</p>
           <% } %>
         <% } else { %>
           <p>No profile picture uploaded yet.</p>
         <% } %>
+
+        <button class="btn mt-4 px-3 py-2 bg-dark text-white" onclick="window.location.href='/myProfileUpdate'">Update Profile</button>
       </div>
-     
-
-
-  <script src="/js/openMenu.js"></script>
-  <script src="/js/checkPassword.js"></script>
-  <script src="/js/shipper-create.js"></script>
+      <form action="" id="personal-info" class="col-md-6">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" value=" <%= userName %>" readonly>
+        <label for="role">Role</label>
+        <input type="text" class="form-control" id="role" value="<%= role %>" readonly>
+        <!-- For vendors -->
+        <% if (role === 'vendor') { %>
+          <label for="bussiness">Business name</label>
+          <input type="text" class="form-control" id="business" value="<%= businessName %>" readonly>
+          <label for="b-address">Business address</label>
+          <input type="text" class="form-control" id="b-address" value="<%= businessAddress %>" readonly>
+        <!-- For customers -->  
+        <% } else if (role === 'customer') { %>
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" value="<%= name %>" readonly>
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" value="<%= address %>" readonly>
+        <!-- For shippers -->
+        <% } else if (role === 'shipper') { %>
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" value="<%= name %>" readonly>
+          <label for="h-name">Distribution hub</label>
+          <input type="text" class="form-control" id="h-name" value="<%= hubName %>" readonly>
+          <label for="h-address">Hub address</label>
+          <input type="text" class="form-control" id="h-address" value="<%= hubAddress %>" readonly>
+        <% } %>
+      </form>
+    </div>
+    <script src="/js/openMenu.js"></script>
+    <script src="/js/checkPassword.js"></script>
+    <script src="/js/shipper-create.js"></script>
   </body>
 </html>
