@@ -3,8 +3,11 @@
 <h1>Order History</h1>
 
 <% if (orderHistory && orderHistory.length) { %>
-    <% orderHistory.forEach((order, index) => { %>
-    <h3>Order <%= index + 1 %></h3>
+  <% orderHistory.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach((order, index) => { %>
+    <!-- <h3>Order <%= index + 1 %></h3> -->
+    <h3>Order Id: <%= order._id %></h3>
+    <p>Created At: <%= new Date(order.createdAt).toLocaleString() %></p>
+    <p>Updated At: <%= new Date(order.updatedAt).toLocaleString() %></p>
     <p>Status: <%= order.orderStatus %></p>
     <p>Total Price: <%= order.totalPrice %></p>
 

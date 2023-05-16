@@ -11,25 +11,72 @@ const vendor = async (req, res) => {
   res.render("index")
 };
 
-const viewProduct = async (req, res) => {
-  Product.find({})
-    .then((products) => res.render('view-product', { products }))
-    .catch(error => res.send(error))
-};
+// const viewProduct = async (req, res) => {
+//   Product.find({})
+//     .then((products) => res.render('view-product', { products }))
+//     .catch(error => res.send(error))
+// };
+const viewProduct = asyncHandler(async (req, res, next) => {
+  try {
+    const v_id = req.user._id;
+    const products = await Product.find({ v_id: v_id });
+    res.render('view-product', {products})
+    
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
+
 
 const createProduct = async (req, res) => {
-  res.render("create-product")
+  const infoErrorsObj = req.flash('infoErrors');
+  const infoSubmitObj = req.flash('infoSubmit');
+  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
 };
 
 const createProductpost = async (req, res) => {
-  console.log(req.body);
-  const newProduct = new Product(req.body);
-  Product.v_id = User.businessName;
-  newProduct.save()
-    .then(() => { res.redirect('/products') })
-    .catch(error => res.send(error))
+  try {
 
-};
+    let imageUploadFile;
+    let uploadPath;
+    let newImageName;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+      console.log('No Files where uploaded.');
+    } else {
+
+      imageUploadFile = req.files.image;
+      newImageName = Date.now() + imageUploadFile.name;
+
+      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+
+      imageUploadFile.mv(uploadPath, function (err) {
+        if (err) return res.satus(500).send(err);
+      })
+
+    }
+
+    const newProduct = new Product({
+      v_id: req.user._id,
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      productNotes: req.body.productNotes,
+      category: req.body.category,
+      image: newImageName
+    });
+
+    await newProduct.save();
+
+    req.flash('infoSubmit', 'Product has been added.')
+    res.redirect('/vendor/submit-product');
+  } catch (error) {
+    // res.json(error);
+    req.flash('infoErrors', error)
+    res.redirect('/vendor/submit-product');
+  }
+}
 
 
 const deleteProductform = async (req, res) => {
@@ -49,7 +96,7 @@ const deleteproductbyID = async (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.redirect('/products');
+      res.redirect('/vendor/products');
     })
     .catch(error => res.send(error));
 };
@@ -67,9 +114,9 @@ const updateProductform = (req, res) => {
 
 const updateproduct = (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['title', 'price', 'description', 'category'];
+  const allowedUpdates = ['name', 'price', 'description', 'category'];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-
+  
   if (!isValidOperation) {
     return res.send({ error: 'Invalid updates!' });
   }
@@ -82,7 +129,7 @@ const updateproduct = (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.redirect('/products');
+      res.redirect('/vendor/products');
     })
     .catch(error => res.send(error));
 };

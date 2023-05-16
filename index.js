@@ -65,7 +65,7 @@ app.use('/home', homeRoute);
 
 // Set the routes for the vendor dashboard
 const vendorRoute = require("./server/routes/vendorRoute.js");
-app.use('/vendor-dashboard', vendorRoute);
+app.use('/vendor', vendorRoute);
 
 
 

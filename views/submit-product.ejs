@@ -18,19 +18,20 @@
 
   <div class="col-8">
 
-    <form action="/home/submit-product" enctype="multipart/form-data" method="POST">
+    <form action="/vendor/submit-product" enctype="multipart/form-data" method="POST">
     
       <div class="row g-3">
+        <div class="col-12">
+          <label for="name" class="form-label">Product Name</label>
+          <input type="text" name="name" id="name" class="form-control" required>
+        </div>
 
         <div class="col-12">
           <label for="price" class="form-label">Price</label> $
           <input type="number" name="price" id="price" class="form-control">
         </div>
 
-        <div class="col-12">
-          <label for="name" class="form-label">Product Name</label>
-          <input type="text" name="name" id="name" class="form-control" required>
-        </div>
+       
         
         <div class="col-12">
           <label for="description" class="form-label">Description</label>
