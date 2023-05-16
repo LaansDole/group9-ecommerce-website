@@ -31,7 +31,7 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categories, layout: './layouts/homeLayout' });
+    res.render('home-page/categories', { title: 'E-Commerce - Categories', categories, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -46,7 +46,7 @@ exports.exploreCategories = async (req, res) => {
 exports.exploreCategoriesById = async (req, res) => {
   try {
     let categoryId = req.params.id;
-    const limitNumber = 20;
+    const limitNumber = 10;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
     res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, layout: './layouts/homeLayout' });
   } catch (error) {
@@ -109,7 +109,7 @@ exports.exploreLatest = async (req, res) => {
 exports.submitProduct = async (req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
 }
 
 // /**
@@ -139,6 +139,7 @@ exports.submitProductOnPost = async (req, res) => {
     }
 
     const newProduct = new Product({
+      v_id: req.user._id,
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
@@ -153,8 +154,8 @@ exports.submitProductOnPost = async (req, res) => {
     res.redirect('/home/submit-product');
   } catch (error) {
     // res.json(error);
-    req.flash('infoErrors', error);
-    res.redirect('/');
+    req.flash('infoErrors', error)
+    res.redirect('/home/submit-product');
   }
 }
 
@@ -189,64 +190,5 @@ exports.submitProductOnPost = async (req, res) => {
  * Dummy Data Example
 */
 
-async function insertDymmyCategoryData() {
-  try {
-    await Category.insertMany([
-      {
-        "name": "Tablet",
-        "image": "tablet.jpg"
-      },
-      {
-        "name": "Laptop",
-        "image": "laptop.png"
-      },
-      {
-        "name": "Phone",
-        "image": "phone.jpg"
-      },
-      {
-        "name": "Sound",
-        "image": "sound.png"
-      },
-      {
-        "name": "Keyboard",
-        "image": "keyboard.jpg"
-      },
-      {
-        "name": "Screen",
-        "image": "screen.jpg"
-      }
-    ]);
-  } catch (error) {
-    console.log('err', + error)
-  }
-}
 
-insertDymmyCategoryData();
-
-
-async function insertDymmyProductData() {
-  try {
-    await Product.insertMany([
-      {
-        "name": "Dell G15 5511",
-        "description": `Screen size: 15.6 inches`,
-        "price": 599,
-        "category": "Laptop",
-        "image": "dellg155511.png"
-      },
-      {
-        "name": "Samsung Z Flip 4",
-        "description": `Screen size: 6.2 inches`,
-        "price": 699,
-        "category": "Phone",
-        "image": "samsungzflip4.png"
-      },
-    ]);
-  } catch (error) {
-    console.log('err', + error)
-  }
-}
-
-insertDymmyProductData();
 
