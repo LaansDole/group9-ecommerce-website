@@ -187,8 +187,41 @@ exports.submitProductOnPost = async (req, res) => {
 
 
 /**
- * Dummy Data Example
+ * Dummy Data Initialize
 */
+// async function insertDymmyCategoryData() {
+//   try {
+//     await Category.insertMany([
+//       {
+//         "name": "Tablet",
+//         "image": "tablet.jpg"
+//       },
+//       {
+//         "name": "Laptop",
+//         "image": "laptop.png"
+//       },
+//       {
+//         "name": "Phone",
+//         "image": "phone.jpg"
+//       },
+//       {
+//         "name": "Sound",
+//         "image": "sound.png"
+//       },
+//       {
+//         "name": "Keyboard",
+//         "image": "keyboard.jpg"
+//       },
+//       {
+//         "name": "Screen",
+//         "image": "screen.jpg"
+//       }
+//     ]);
+//   } catch (error) {
+//     console.log('err', + error)
+//   }
+// }
 
+// insertDymmyCategoryData();
 
 
