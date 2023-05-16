@@ -35,7 +35,7 @@ const router = express.Router();
 
 
 //submit product
-router.post('/submit', checkCustomerRole,authMiddleware, async (req, res) => {
+router.post('/submit', authMiddleware,checkCustomerRole, async (req, res) => {
   try {
     const { products, customerName, customerAddress, hubDelivery } = req.body;
     const { name, address } = req.user;

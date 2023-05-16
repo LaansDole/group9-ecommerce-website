@@ -48,29 +48,29 @@ const createOrder = ('/ordersubmit', async (req, res) => {
   }
 });
 
-const submitOrder = async (req, res) => {
-  try {
-    const orderData = req.body;
+// const submitOrder = async (req, res) => {
+//   try {
+//     const orderData = req.body;
 
-    // Create a new order instance
-    const order = new Order({
-      products: orderData.products,
-      customerName: orderData.customerName,
-      customerAddress: orderData.customerAddress,
-      orderStatus: 'active',
-      hubName: orderData.hubDelivery,
-    });
+//     // Create a new order instance
+//     const order = new Order({
+//       products: orderData.products,
+//       customerName: orderData.customerName,
+//       customerAddress: orderData.customerAddress,
+//       orderStatus: 'active',
+//       hubName: orderData.hubDelivery,
+//     });
 
-    // Save the order to the database
-    await order.save();
-
-    res.status(200).json({ message: 'Order submitted successfully' });
+//     // Save the order to the database
+//     await order.save();
     
-  } catch (error) {
+//     res.status(200).json({ message: 'Order submitted successfully' });
     
-    res.status(500).json({ error: 'Failed to submit order' });
-    console.log(error)
-  }
-};
+//   } catch (error) {
+    
+//     res.status(500).json({ error: 'Failed to submit order' });
+//     console.log(error)
+//   }
+// };
 
-module.exports = { createOrder, submitOrder };
+module.exports = { createOrder};
