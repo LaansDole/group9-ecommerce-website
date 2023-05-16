@@ -77,7 +77,7 @@ a {
 
 a:hover,
 li:hover {
-  color: var(--hover-color);
+  color: var(--hover-color) !important;
 }
 
 /* Category Card */
