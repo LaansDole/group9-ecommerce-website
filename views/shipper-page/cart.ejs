@@ -26,7 +26,7 @@
         <input type="hidden" name="customerAddress" value="<%= user.address %>">
         <div class="row">
             <h5 class="col-md-4  lh-base">Choose Hub Delivery:</h5>
-            <select id="hubDeliverySelect" class="col-md-8 w-25 rounded">
+            <select id="hubDeliverySelect" class="col-md-8 w-25 rounded ms-3 mt-2">
                 <option value="GHTK">GHTK</option>
                 <option value="viettel">ViettelPost</option>
                 <option value="ghn">Giao Hang Nhanh</option>
@@ -34,8 +34,8 @@
             </select>  
         </div>
         <div class="mt-4 text-center container">
-            <button class="btn px-2 py-3 me-2 bg-primary text-white fs-5" onclick="submitOrder()">Submit Order</button>
-            <button class="btn px-2 py-3 bg-dark text-white fs-5" onclick="clearCart()">Clear Cart</button>
+            <button class="btn px-2 py-3 me-2 bg-primary text-white fs-5 mt-1" onclick="submitOrder()">Submit Order</button>
+            <button class="btn px-2 py-3 bg-dark text-white fs-5 mt-1" onclick="clearCart()">Clear Cart</button>
         </div>
     </div>  
     <script src="/js/cart.js"></script>
