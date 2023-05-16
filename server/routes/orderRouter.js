@@ -7,7 +7,7 @@ const confirmOrder = require('../model/confirmOrderModel');
 const router = express.Router();
 
 // submit order
-router.post('/submit', checkCustomerRole, authMiddleware, async (req, res) => {
+router.post('/submit', authMiddleware, checkCustomerRole, async (req, res) => {
   try {
     const { products, customerName, customerAddress, hubDelivery } = req.body;
     const { name, address } = req.user;

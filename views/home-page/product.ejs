@@ -54,7 +54,9 @@
             <input type="text" name="quantity" value="1" class="qty w-50 text-center">
             <div class="qtyplus w-40 h-40 bg-dark text-center fs-4 lh-base text-white cursor-pointer">+</div>
           </form>
-          <a href="#" class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-5 pe-5 fs-3 mt-5">Add to Cart</a>
+          <button class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-5 pe-5 fs-3 mt-5" onclick="addToCart('<%= product._id %>',1,'<%= product.price %>','<%= product.name %>')">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
@@ -141,3 +143,4 @@
   <% } else { %>
     <p>No item found.</p>
     <% } %>
+<script src="/js/cart.js"></script>

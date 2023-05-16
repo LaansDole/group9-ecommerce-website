@@ -45,33 +45,33 @@ const cartPage = asyncHandler(async (req, res) => {
   res.render('shipper-page/cart', { user: req.user });
 });
 
-const addToCart = async (productId, userId) => {
-  try {
-    // Check if the product already exists in the user's cart
-    const existingCartItem = await Cart.findOne({
-      product: productId,
-      user: userId
-    });
+// const addToCart = async (productId, userId) => {
+//   try {
+//     // Check if the product already exists in the user's cart
+//     const existingCartItem = await Cart.findOne({
+//       product: productId,
+//       user: userId
+//     });
 
-    if (existingCartItem) {
-      // If the product already exists in the cart, increment the quantity
-      existingCartItem.quantity += 1;
-      await existingCartItem.save();
-    } else {
-      // If the product doesn't exist in the cart, create a new cart item
-      const newCartItem = new Cart({
-        product: productId,
-        user: userId,
-        quantity: 1
-      });
-      await newCartItem.save();
-    }
+//     if (existingCartItem) {
+//       // If the product already exists in the cart, increment the quantity
+//       existingCartItem.quantity += 1;
+//       await existingCartItem.save();
+//     } else {
+//       // If the product doesn't exist in the cart, create a new cart item
+//       const newCartItem = new Cart({
+//         product: productId,
+//         user: userId,
+//         quantity: 1
+//       });
+//       await newCartItem.save();
+//     }
 
-    console.log('Product added to cart successfully');
-  } catch (err) {
-    console.error(err);
-  }
-};
+//     console.log('Product added to cart successfully');
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 
 
