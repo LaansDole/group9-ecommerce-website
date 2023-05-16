@@ -19,7 +19,7 @@
       <div class="fs-5">
         <div class="product-info">
           <div class="fs-1 lh-base mb-2"><%- product.name %></div>
-          <div class="col-12 mb-4"><i class="bi bi-tag"></i><a href="/categories/Laptop"><%- product.category %></a></div>
+          <div class="col-12 mb-4"><i class="bi bi-tag"></i><a href="/home/categories/<%- product.category %>"><%- product.category %></a></div>
           <div class="reviews-counter">
             <div class="rate pe-1">
               <input type="radio" id="star5" name="rate" value="5" checked />
@@ -74,7 +74,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-        <%- product.description %>
+        <p class="pd-description"><%- product.description %></p>
       </div>
       <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
         <div class="fs-3 lh-base mb-1 text-uppercase text-dark">REVIEWS</div>
