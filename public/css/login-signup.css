@@ -376,9 +376,11 @@ input[type="checkbox"].toggle:checked+label::after {
     .login-container {
         margin-left: 10%;
     }
+
     .container {
         padding: 10px;
     }
+
     .btn {
         flex-flow: column wrap;
     }
@@ -402,4 +404,10 @@ input[type="checkbox"].toggle:checked+label::after {
     #side {
         display: none;
     }
+}
+
+.signup-error-message {
+    text-align: left;
+    color: red;
+    font-size: 1.2rem;
 }

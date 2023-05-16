@@ -84,9 +84,10 @@ const createVendor = asyncHandler(async (req, res) => {
         res.redirect('/');
       } else {
         throw new Error('User already exists');
+
       }
     } catch (err) {
-      next(err);
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
@@ -139,9 +140,10 @@ const createCustomer = asyncHandler(async (req, res) => {
         res.redirect('/')
       } else {
         throw new Error('User already exists');
+
       }
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
@@ -198,7 +200,7 @@ const createShipper = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
       }
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
