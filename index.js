@@ -82,26 +82,26 @@ app.use("/order", orderRouter);
 
 // Product router
 
-const productRouter= require("./server/routes/productRouter")
-app.use("/product", productRouter);
+const cartRoute = require("./server/routes/cartRoute")
+app.use("/home/your-cart", cartRoute);
 
 app.get('/ordercreate', async (req, res) => {
     try {
-      const products = await Product.find();
-      
-      res.render('orderCreate', { products });
+        const products = await Product.find();
+
+        res.render('orderCreate', { products });
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Server Error');
+        console.error(error);
+        res.status(500).send('Server Error');
     }
-  });
-  app.get('/productcreate', (req,res ) => {
+});
+app.get('/productcreate', (req, res) => {
     res.render('productcreate');
 })
 
 
 
-// Define the ejs file success and unsuccess
+// Define the ejs file success and unsuccess for testing user role authentication
 app.get('/success', (req, res) => {
     res.render('success.ejs');
 });
