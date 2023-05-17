@@ -21,7 +21,7 @@ const checkShipperHub = asyncHandler(async (req, res, next) => {
 
 const shipperDashboard = asyncHandler(async (req, res) => {
   const { orderId } = req.query;
-
+  
   if (orderId) {
     try {
       const order = await Order.findById(orderId);
@@ -40,7 +40,7 @@ const shipperDashboard = asyncHandler(async (req, res) => {
     try {
       const shipperOrders = await Order.find({ hubName: req.hubName });
 
-      return res.render('shipper-page/shipper-dashboard', { shipperOrders, hubName: req.hubName, layout: './shipper-page/shipper-dashboard' });
+      return res.render('shipper-page/shipper-dashboard', { shipperOrders, userName: req.user.name,hubName: req.hubName, layout: './shipper-page/shipper-dashboard' });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
