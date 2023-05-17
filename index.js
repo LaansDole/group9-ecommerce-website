@@ -61,10 +61,6 @@ app.use('/home', homeRoute);
 const vendorRoute = require("./server/routes/vendorRoute.js");
 app.use('/vendor', vendorRoute);
 
-
-
-
-// NEWWWW!!!!!!!
 // Set the layout for the shipper dashboard
 const shipperRouter = require("./server/routes/shipperRouter")
 app.use("/shipper", shipperRouter);
@@ -78,16 +74,6 @@ app.use("/order", orderRouter);
 
 const cartRoute = require("./server/routes/cartRoute")
 app.use("/home/your-cart", cartRoute);
-
-// Define the ejs file success and unsuccess for testing user role authentication
-app.get('/success', (req, res) => {
-    res.render('success.ejs');
-});
-
-app.get('/unsucess', (req, res) => {
-    res.render('unsuccess.ejs');
-});
-
 
 // Handling non matching request from the client
 
