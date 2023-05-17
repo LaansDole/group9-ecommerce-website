@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 const expressLayouts = require('express-ejs-layouts');
-const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const flash = require('connect-flash');
 
@@ -32,11 +31,6 @@ app.use(session({
     resave: true
 }));
 app.use(flash());
-
-// app.use(fileUpload({
-//     limits: { fileSize: 50 * 1024 * 1024 },
-// }));
-// app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 // morgan checking 'log'
 app.use(morgan("dev"));
@@ -84,22 +78,6 @@ app.use("/order", orderRouter);
 
 const cartRoute = require("./server/routes/cartRoute")
 app.use("/home/your-cart", cartRoute);
-
-app.get('/ordercreate', async (req, res) => {
-    try {
-        const products = await Product.find();
-
-        res.render('orderCreate', { products });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Server Error');
-    }
-});
-app.get('/productcreate', (req, res) => {
-    res.render('productcreate');
-})
-
-
 
 // Define the ejs file success and unsuccess for testing user role authentication
 app.get('/success', (req, res) => {
