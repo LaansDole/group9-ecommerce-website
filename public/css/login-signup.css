@@ -248,14 +248,12 @@ input[type="checkbox"].toggle:checked+label::after {
 }
 
 #toggleEye {
-    position: absolute;
-    top: 38px;
-    right: 20px;
-    width: 34px;
+    position:relative;
+    bottom: 2.5rem;
+    left: 17rem;
     height: 34px;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 50%;
-    display: flex;
     cursor: pointer;
     justify-content: center;
     align-items: center;

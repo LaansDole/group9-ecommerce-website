@@ -27,20 +27,65 @@ $ kill -9 <PID>
 ```
 Group9_E-commerce_Website/
 ├── src/
-|   ├── scripts/
-│   |   ├── script.js
-|   ├── styles/
-│   |   ├── components/
-|   ├── templates/
-│   |   ├── components/
-|   |   ├── data/
-|   |   ├── layouts/
-|   |   ├── pages/
-|   ├── images/
+|   ├── errors/
+|   ├── middlewares/
+|   ├── public/
+│   |   ├── css/
+|   |   ├── img/
+|   |   ├── js/
+|   |   |   ├── api/
+|   |   ├── uploads/
+|   ├── server/
+│   |   ├── controllers/
+|   |   ├── model/
+|   |   ├── routes/
+|   |   ├── uploads/
+|   ├── utils/
+|   ├── views/
+│   |   ├── layouts/
+|   |   ├── partials/
 
-#TODO: Change the folder structure
+# errors/
+The errors folder contains the exception handlers for the website
 
-```
+# middleware/
+The handlers to check user authentication are located in this folder
+
+# public/css/
+The css folder consists of style files for the website pages
+
+# public/img/
+This folder stores figures needed to build the website
+
+# public/js/
+The js folder stores the website behaviours
+
+# public/uploads/
+The figures uploaded by users are stored in this folder
+
+# server/controllers/
+Each controller exports and renders the pages. It chooses what pages will be in the <%- body %> of the main section, and it is then imported in `server/routes`
+
+# server/model
+The folder acts as the database for `server/controllers`. 
+
+# server/routes 
+This stores the routes of the layouts. It works with the `controllers` to define the page route
+
+# utils/
+This folder's purpose is to create tokens, connect with and validate MongoDB ID
+
+# views/
+The views folder contains all the pages on the website
+
+# views/layouts/
+The layout acts as a container for other pages content
+
+# views/partials/
+The partials folder stores the components of the layout 
+
+
+
 
 
 ## About:
