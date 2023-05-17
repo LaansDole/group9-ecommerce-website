@@ -28,6 +28,11 @@ function removeFromCart(productId) {
 
 // Define a function to clear the cart
 function clearCart() {
+    const cartTotal = parseInt(document.querySelector('#cart-total').textContent);
+    if (cartTotal === 0) {
+        alert('Cart is already empty!');
+        return;
+    }
     localStorage.removeItem('cart');
     updateCartItemCount();
     populateCartPage();
