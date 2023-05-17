@@ -256,7 +256,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       res.status(401).send('Unauthorized');
     }
   } else {
-    res.render('unsuccess');
+    res.redirect(`/?error=Invalid_username_or_password`);
   }
 });
 

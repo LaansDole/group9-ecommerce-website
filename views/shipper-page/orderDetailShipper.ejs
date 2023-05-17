@@ -1,0 +1,39 @@
+<h1>Order Detail</h1>
+<table>
+  <tbody>
+    <tr>
+      
+      
+      <p>Order ID: <%= orderId %> </p>
+      <p>Customer Name: <%= customerName %></p>
+<p>Customer Address: <%= customerAddress %></p>
+    </tr>
+    <!-- <p>User: <%= user %></p> -->
+
+<p>Order Status: <%= orderStatus %></p>
+<h3>Products:</h3>
+<ul>
+  <% products.forEach((product) => { %>
+    <li>Name: <%= product.name %></li>
+    <li>Price: <%= product.price %></li>
+    <li>Quantity: <%= product.quantity %></li>
+    <br>
+  <% }) %>
+</ul>
+<p>Total Price: <%= totalPrice %></p>
+
+
+
+
+  </tbody>
+</table>
+<form method="POST" action="/shipper/<%= orderId %>/delivered">
+  <button type="submit">Accept</button>
+</form>              
+<form method="POST" action="/shipper/<%= orderId %>/cancel">
+  <button type="submit">Cancel</button>
+</form>
+<a href="/shipper">Back to Shipper Dashboard</a>
+
+
+

@@ -4,7 +4,11 @@ const Product = require('../model/Product');
 
 exports.login = async (req, res) => {
     try {
-        res.render('./login-signup-page/login.ejs', { title: "E-Commerce Login", layout: './layouts/loginLayout' });
+        res.render('./login-signup-page/login.ejs', {
+            title: "E-Commerce Login",
+            error: req.query.error === 'Invalid_username_or_password' ? ('Error: ' + `${req.query.error}`) : '',
+            layout: './layouts/loginLayout'
+        });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }

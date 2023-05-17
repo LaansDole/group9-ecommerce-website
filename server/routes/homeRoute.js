@@ -12,7 +12,7 @@ router.get('/categories',  authMiddleware,checkCustomerRole,homeController.explo
 router.get('/categories/:id',  authMiddleware,checkCustomerRole,homeController.exploreCategoriesById);
 router.post('/search',  authMiddleware,checkCustomerRole,homeController.searchProduct);
 router.get('/explore-latest', authMiddleware,checkCustomerRole, homeController.exploreLatest);
-router.get('/submit-product',  authMiddleware,checkCustomerRole,homeController.submitProduct);
-router.post('/submit-product',  authMiddleware,checkCustomerRole,homeController.submitProductOnPost);
+// router.get('/submit-product',  authMiddleware,checkCustomerRole,homeController.submitProduct);
+// router.post('/submit-product',  authMiddleware,checkCustomerRole,homeController.submitProductOnPost);
 
 module.exports = router;

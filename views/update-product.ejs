@@ -6,24 +6,27 @@
   </head>
   <body>
     <h1>Update Product</h1>
-    <form action="/home/product/<%= product._id %>/update" method="POST">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" value="<%= product.title %>">
+    <form action="/vendor/<%= product._id %>/update" method="POST">
+      <label for="title">Name:</label>
+      <input type="text" id="title" name="name" placeholder="<%= product.name %>">
       <br>
       <label for="price">Price:</label>
-      <input type="number" id="price" name="price" min="0" value="<%= product.price %>">
+      <input type="number" id="price" name="price" min="0" placeholder="<%= product.price %>">
       <br>
-      <label for="description">Description:</label>
-      <textarea id="description" name="description"><%= product.description %></textarea>
+      <label for="description" >Description:</label>
+      <textarea id="description" name="description" placeholder="<%= product.description %>"></textarea>
       <br>
       <br>
       <label for="category">Categories:</label>
       <select id="category" name="category">
         <option value="">Select a category</option>
-        <option value="eletrics" <% if (product.categories === "eletrics") { %>selected<% } %>>Eletrics</option>
-        <option value="beauty products" <% if (product.categories === "beauty products") { %>selected<% } %>>Beauty Products</option>
-        <option value="toys" <% if (product.categories === "toys") { %>selected<% } %>>Toys</option>
+        <option value="Tablet" <% if (product.categories === "Tablet") { %>selected<% } %>>Tablet</option>
+        <option value="Laptop" <% if (product.categories === "Laptop") { %>selected<% } %>>Laptop</option>
+        <option value="Phone" <% if (product.categories === "Phone") { %>selected<% } %>>Phone</option>
+        <option value="Sound" <% if (product.categories === "Sound") { %>selected<% } %>>Sound</option>
+        <option value="Keyboard" <% if (product.categories === "Keyboard") { %>selected<% } %>>Keyboard</option>
       </select>
+      <br>
       <br>
       <input type="submit" value="Update">
     </form>
