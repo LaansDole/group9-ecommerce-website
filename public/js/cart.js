@@ -3,7 +3,7 @@ function updateCartItemCount() {
     let cart = JSON.parse(localStorage.getItem('cart')) || {};
     let cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
     let cartItemCountElem = document.getElementById('cart-item-count');
-    cartItemCountElem.textContent = cartItemCount;
+    cartItemCountElem.innerText = cartItemCount; // Update the cart item count element
 }
 
 // Define a function to add a product to the cart
@@ -26,16 +26,8 @@ function removeFromCart(productId) {
     updateCartItemCount();
 }
 
-const cartTotal = parseInt(document.querySelector('#cart-total').textContent);
-
 // Define a function to clear the cart
 function clearCart() {
-
-    if (cartTotal === 0) {
-        alert("You have no products to clear!");
-        return; // Stop further execution
-    }
-
     localStorage.removeItem('cart');
     updateCartItemCount();
     populateCartPage();
@@ -88,12 +80,11 @@ function populateCartPage() {
 }
 
 function submitOrder() {
-
+    const cartTotal = parseInt(document.querySelector('#cart-total').textContent);
     if (cartTotal === 0) {
-        alert("Please add items to your cart before submitting the order.");
-        return; // Stop further execution
+        alert('Cart is empty. Please add products to your cart before submitting the order.');
+        return;
     }
-
     const orderData = {
         customerName: document.querySelector('input[name="customerName"]').value,
         customerAddress: document.querySelector('input[name="customerAddress"]').value,
