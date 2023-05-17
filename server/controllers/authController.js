@@ -356,7 +356,7 @@ const getaUser = asyncHandler(async (req, res) => {
         const imageType = profilePicture.contentType.split('/')[1];
         image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
       }
-      res.render('myProfile.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      res.render('layouts/myProfile.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfile' });
 
     } catch (error) {
       throw new Error(error);
@@ -449,7 +449,7 @@ const myProfileUpdate = asyncHandler(async (req, res) => {
         const imageType = profilePicture.contentType.split('/')[1];
         image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
       }
-      res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      res.render('layouts/myProfileUpdate', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfileUpdate' });
 
     } catch (error) {
       throw new Error(error);
@@ -511,7 +511,7 @@ const profileUpdateFunction = asyncHandler(async (req, res) => {
         const imageType = profilePicture.contentType.split('/')[1];
         image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
       }
-      res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      res.render('layouts/myProfileUpdate', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfileUpdate' });
 
     } catch (error) {
       throw new Error(error);

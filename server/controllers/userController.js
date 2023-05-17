@@ -80,7 +80,7 @@ exports.customer = async (req, res) => {
 
 exports.myProfile = (req, res) => {
     const userId = req.session.userId; // get user id from session or database
-    res.render('myProfile', { userId: userId });
+    res.render('layouts/myProfile', { userId: userId, layout: './layouts/myProfile' });
 
 };
 

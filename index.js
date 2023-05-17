@@ -36,7 +36,7 @@ app.use(flash());
 // app.use(fileUpload({
 //     limits: { fileSize: 50 * 1024 * 1024 },
 // }));
-// app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
+app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 // morgan checking 'log'
 app.use(morgan("dev"));
@@ -120,11 +120,11 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 app.use((req, res, next) => {
-    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './layouts/homeLayout' })
+    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './404.ejs' })
 })
 
 app.use((err, req, res, next) => {
-    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './layouts/homeLayout' });
+    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './404.ejs' });
 });
 
 app.listen(PORT, () => {
