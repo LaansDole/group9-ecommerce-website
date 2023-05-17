@@ -52,7 +52,9 @@
           <% if (order.orderStatus !== 'cancel' && order.orderStatus !== 'delivered') { %>
             <div class="order-card pt-2 pb-2 ps-3 mt-5">
               <h6 class="card-heading">Order ID</h6>
-              <p class="order-id ps-5" id="show-overlay"><%= order._id %></p>
+              <a href="/shipper/<%= order._id %>">
+                <p class="order-id ps-5" id="show-overlay"><%= order._id %></p>
+              </a>
               <h6 class="card-heading">Address</h6>
               <p class="cart-content fw-bold"><img src="/img/to-button.png" alt="To button" width="46px" height="30px"><%= order.customerAddress %></p>
               <h6 class="card-heading">Customer</h6>

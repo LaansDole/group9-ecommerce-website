@@ -59,8 +59,19 @@ const orderDetailShipper = asyncHandler(async (req, res) => {
     throw new Error('Order not found');
   }
 
-  return res.render('shipper-page/orderDetailShipper', { order, user: req.user });
+  const { _id, user, products, totalPrice, orderStatus, hubName, customerName, customerAddress } = order;
+
+  return res.render('shipper-page/orderDetailShipper', {
+    orderId: _id,
+    user,
+    products,
+    totalPrice,
+    orderStatus,
+    customerName,
+    customerAddress
+  });
 });
+
 
 const shipperOrderComplete = asyncHandler(async (req, res) => {
   const orders = await Order.find({ orderStatus: 'delivered' }).lean();
