@@ -1,12 +1,14 @@
-# Group9 E-commerce Website
+# Group 9 E-commerce Website
 
-#### Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
-#### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
+## Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
+## Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
-#### Disclaimer: If you encounter this error: EADDRINUSE, Address already in use, do as below:
+
+#### If you encounter this error: EADDRINUSE, Address already in use, do as below:
 ```bash
+# Display the processes or applications that are currently using the network port 3000
 $ sudo lsof -i :3000
 # Check for the PID on the screeen
 $ kill -9 <PID>
@@ -16,11 +18,11 @@ $ kill -9 <PID>
 
 | Student Name      | Student ID | Contribution Score |
 | :---------------- | :--------- | :----------------: |
-| Do Le Long An     | S-3963207  |                    |
-| Truong Hong Van   | S-3957034  |                    |
-| Pham Le Quynh Anh | S-3927427  |                    |
-| Bui Tuan Anh      | S-3970375  |                    |
-| Lao Vinh Khang    | S-3891925  |                    |
+| Do Le Long An     | S-3963207  |         20         |
+| Truong Hong Van   | S-3957034  |         20         |
+| Pham Le Quynh Anh | S-3927427  |         20         |
+| Bui Tuan Anh      | S-3970375  |         20         |
+| Lao Vinh Khang    | S-3891925  |         20         |
 
 ## Project Structure
 
@@ -44,47 +46,73 @@ Group9_E-commerce_Website/
 |   ├── views/
 │   |   ├── layouts/
 |   |   ├── partials/
+├── .env
+├── Dockerfile
+├── index.js
+├── package-lock.json
+├── package.json
+├── README.md
+```
 
-# errors/
-The errors folder contains the exception handlers for the website
+1. `errors/`
+The errors directory contains the exception handlers for the website
 
-# middleware/
-The handlers to check user authentication are located in this folder
+2. `middleware/`
+The handlers to check user authentication are located in this directory
 
-# public/css/
-The css folder consists of style files for the website pages
+3. `public/css/`
+The css directory consists of .css style files for the website, including global styles
 
-# public/img/
-This folder stores figures needed to build the website
+4. `public/img/`
+This directory stores images needed to build the website UI
 
-# public/js/
-The js folder stores the website behaviours
+5. `public/js/`
+The js directory stores the website behaviours
 
-# public/uploads/
-The figures uploaded by users are stored in this folder
+6. `public/uploads/`
+The uploaded images by users are stored in this directory, website local storage
 
-# server/controllers/
-Each controller exports and renders the pages. It chooses what pages will be in the <%- body %> of the main section, and it is then imported in `server/routes`
+7. `server/controllers/`
+Each controller is responsible for the GET and POST method of the pages, which is then imported in `server/routes`. In addition, it defines the objects to go in the rendered `.ejs` file.
 
-# server/model
-The folder acts as the database for `server/controllers`. 
+8. `server/model`
+The directory contains the schema model for the `Product`, `Cart`, `Order`, etc. for the BE to work with website database.
 
-# server/routes 
-This stores the routes of the layouts. It works with the `controllers` to define the page route
+9. `server/routes` 
+This stores the routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
 
-# utils/
-This folder's purpose is to create tokens, connect with and validate MongoDB ID
+10. `utils/`
+This directory's purpose is to create tokens, connect with and validate MongoDB ID
 
-# views/
-The views folder contains all the pages on the website
+11. `views/`
+The views directory contains all the pages on the website
 
-# views/layouts/
+12. `views/layouts/`
 The layout acts as a container for other pages content
 
-# views/partials/
-The partials folder stores the components of the layout 
+13. `views/partials/`
+The partials directory stores the breakdown components for layouts and other .ejs files
 
+14. `views/pages/`
+The directory contains .ejs files related to that website pages, such as homepage, dashboard, etc.
 
+15. `.env`
+This file contains ENVIRONMENT VARIABLES such as ACCESS KEY, which is meant to be hidden and ignored by `.gitignore`
+
+16. `Dockerfile`
+The Dockerfile defines the environment and dependencies required by an application, along with instructions for how to build and configure the container image.
+
+17. `index.js`
+Entry point or main file of the application, it is responsible for setting up and configuring the application. It is the file that is executed first when the application starts.
+
+18. `package.json` & `package-lock.json`
+Manage dependencies and package versions.
+
+19. `README.md`
+A text file containing useful reference information about this project.
+
+20. `LICENSE`
+MIT LICENSE
 
 
 
@@ -105,24 +133,28 @@ In this project, with Lazada's permission, you are working on a simplified and s
 ### Technologies used:
 
 **MEN Stack**
-- Frontend: HTML, Bootstrap CSS, JavaScript
-- Backend: NodeJS, ExpressJS, EJS
+- Frontend: EJS, Bootstrap CSS, CSS, JavaScript
+- Backend: NodeJS, ExpressJS
 - Database: MongoDB
-- Hosting: Heroku
+- Hosting: [Back4App](https://containers.back4app.com/)
 
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
-- Other resources: MDN Web Docs, RMIT Canvas, NPM Package
+- Other resources: MDN Web Docs, RMIT Canvas, NPM Package, ChatGPT, Packages' Docs
 - Packages: Refer to package.json and package-lock.json
 
 ## Build
 
-To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://npmjs.com)) installed on your computer. From your command line:
+To clone and run this project, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://npmjs.com)) installed on your computer. 
+
+- Prequisite: VSCode or Other IDE / Editor
+
+- From your CLI, Terminal or SHELL:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/
+$ git clone https://github.com/LaansDole/Group9_E-commerce_Website.git
 
 # Go into the repository
 $ cd Group9_E-commerce_Website
@@ -130,8 +162,12 @@ $ cd Group9_E-commerce_Website
 # Install dependencies
 $ npm install
 
-# Start
+# Start with npm
 $ npm start
+
+# OR Start with node
+$ node index.js
+
 ```
 
 ## License

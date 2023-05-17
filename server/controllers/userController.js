@@ -52,7 +52,7 @@ exports.registerShipper = async (req, res) => {
 
 // Roles-dashboard, delete below or re-render once done
 exports.vendor = (req, res) => {
-    res.render('vendor-private.ejs', { user: req.user });
+    res.render('vendor-dashboard.ejs', { user: req.user });
 
 };
 
