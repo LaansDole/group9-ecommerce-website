@@ -26,8 +26,16 @@ function removeFromCart(productId) {
     updateCartItemCount();
 }
 
+const cartTotal = parseInt(document.querySelector('#cart-total').textContent);
+
 // Define a function to clear the cart
 function clearCart() {
+
+    if (cartTotal === 0) {
+        alert("You have no products to clear!");
+        return; // Stop further execution
+    }
+
     localStorage.removeItem('cart');
     updateCartItemCount();
     populateCartPage();
@@ -80,6 +88,12 @@ function populateCartPage() {
 }
 
 function submitOrder() {
+
+    if (cartTotal === 0) {
+        alert("Please add items to your cart before submitting the order.");
+        return; // Stop further execution
+    }
+
     const orderData = {
         customerName: document.querySelector('input[name="customerName"]').value,
         customerAddress: document.querySelector('input[name="customerAddress"]').value,
@@ -94,18 +108,18 @@ function submitOrder() {
         },
         body: JSON.stringify(orderData)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Clear the cart after successful submission
-        clearCart();
-        alert('Order submitted successfully!');
-    })
-    .catch(error => {
-        console.log(error);
-        
-        alert('Your Order is confirm!.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Clear the cart after successful submission
+            clearCart();
+            alert('Order submitted successfully!');
+        })
+        .catch(error => {
+            console.log(error);
+
+            alert('Your Order is confirm!.');
+        });
 }
 
 // Update the cart item count on page load
