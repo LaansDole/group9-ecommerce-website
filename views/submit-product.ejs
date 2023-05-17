@@ -18,42 +18,42 @@
 
   <div class="col-8">
 
-    <form action="/home/submit-product" enctype="multipart/form-data" method="POST">
+    <form action="/home/submit-product" enctype="multipart/form-data" method="POST" class="p-3 bg-white rounded">
     
       <div class="row g-3">
 
         <div class="col-12">
-          <label for="price" class="form-label">Price</label> $
-          <input type="number" name="price" id="price" class="form-control">
+          <label for="price" class="form-label fs-5">Price</label> $
+          <input type="number" name="price" id="price" class="form-control bg-light" required>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Product Name</label>
-          <input type="text" name="name" id="name" class="form-control" required>
+          <label for="name" class="form-label fs-5">Product Name</label>
+          <input type="text" name="name" id="name" class="form-control bg-light" required>
         </div>
         
         <div class="col-12">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="description" id="description" class="form-control" cols="30" rows="4"></textarea>
+          <label for="description" class="form-label fs-5">Description</label>
+          <textarea name="description" id="description" class="form-control bg-light" cols="30" rows="4"></textarea>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Product Notes</label><br>
-          <small>Example: Ice</small>
+          <label for="name" class="form-label fs-5">Product Notes</label><br>
+          <small class="fs-6 fw-light">Example: Blue color</small>
           <div class="noteList">
             <div class="ingredeintDiv mb-1">
-              <input type="text" name="productNotes" class="form-control">
+              <input type="text" name="productNotes" class="form-control bg-light">
             </div>
           </div>
         </div>
 
         <div class="col-12">
-          <button type="button" class="btn btn-outline-primary" id="addProductNotesBtn">+ Note</button>
+          <button type="button" class="btn btn-outline-dark" id="addProductNotesBtn">+ Note</button>
         </div>
 
         <div class="col-12">
-          <label for="category">Select Category</label>
-          <select class="form-select form-control" name="category" aria-label="Category">
+          <label for="category fs-5">Select Category</label>
+          <select class="form-select form-control bg-light" name="category" aria-label="Category">
             <option selected>Select Category</option>
             <option value="Tablet">Tablet</option>
             <option value="Laptop">Laptop</option>
@@ -64,12 +64,12 @@
         </div>
 
         <div class="col-12">
-          <label for="image">Product Image</label>
-          <input type="file" class="form-control" name="image" accept="image/*">
+          <label for="image fs-5">Product Image</label>
+          <input type="file" class="form-control bg-light" name="image" accept="image/*">
         </div>
 
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Submit Product</button>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary px-2 py-3 fs-5">Submit Product</button>
         </div>
       </div>
     </form>
