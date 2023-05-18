@@ -1,39 +1,69 @@
-<h1>Order Detail</h1>
-<table>
-  <tbody>
-    <tr>
-      
-      
-      <p>Order ID: <%= orderId %> </p>
-      <p>Customer Name: <%= customerName %></p>
-<p>Customer Address: <%= customerAddress %></p>
-    </tr>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+  <base href="/">
+  <script src="https://kit.fontawesome.com/625c7efa43.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/shipper-dashboard.css">
+
+</head>
+
+<body>
+  <h1 class="text-center lh-base mt-5 mb-3">Order Details</h1>
+  <div class="text-center mb-2">
+    <a href="/shipper">Back to Shipper Dashboard</a>
+  </div>
+  <main class="ord-details container w-50">
+    <h2 class="pt-3 ps-3 lh-base text-center"><%= orderId %></h2>
+    <h5 class="pt-3 ps-3 fw-light"><img src="/img/customer-icon.png" alt="Customer icon">Customer Name:</h5>
+    <h5 class="text-center"><%= customerName %></h5>
+    <h5 class="pt-3 ps-3 fw-light"><img src="/img/map-icon.png" alt="Location icon">Customer Address:</h5>
+    <h5 class="text-center"><%= customerAddress %></h5>
+
+    <h5 class="pt-3 ps-3 fw-light"><img src="/img/loading-bar.png" alt="Loading bar">Order status:</h5>
+    <h5 class="text-center"><%= orderStatus %></h5>
     <!-- <p>User: <%= user %></p> -->
+    <h5 class="pt-3 ps-3 pb-2">Items</h5>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr class="bg-dark text-white fw-bold">
+            <td>Name</td>
+            <td>Price</td>
+            <td>Quantity</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach((product)=> { %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= product.price %></td>
+              <td><%= product.quantity %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <h5 class="pt-3 ps-3 fw-light">Total price:</h5>
+    <h5 class="text-center total-price">$<%= totalPrice %></h5> 
+    <div class="d-flex justify-content-center mt-3">
+      <form method="POST" action="/shipper/<%= orderId %>/delivered">
+        <button class="btn btn-primary text-white fw-bold mb-1 me-1" type="submit">Accept</button>
+      </form>
+      <form method="POST" action="/shipper/<%= orderId %>/cancel">
+        <button class="btn btn-dark text-white fw-bold mb-1" type="submit">Cancel</button>
+      </form>
+    </div>
+  </main>
+</body>
 
-<p>Order Status: <%= orderStatus %></p>
-<h3>Products:</h3>
-<ul>
-  <% products.forEach((product) => { %>
-    <li>Name: <%= product.name %></li>
-    <li>Price: <%= product.price %></li>
-    <li>Quantity: <%= product.quantity %></li>
-    <br>
-  <% }) %>
-</ul>
-<p>Total Price: <%= totalPrice %></p>
-
-
-
-
-  </tbody>
-</table>
-<form method="POST" action="/shipper/<%= orderId %>/delivered">
-  <button type="submit">Accept</button>
-</form>              
-<form method="POST" action="/shipper/<%= orderId %>/cancel">
-  <button type="submit">Cancel</button>
-</form>
-<a href="/shipper">Back to Shipper Dashboard</a>
-
-
-
+</html>
