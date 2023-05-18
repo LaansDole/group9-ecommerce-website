@@ -20,8 +20,8 @@ const viewProduct = asyncHandler(async (req, res, next) => {
   try {
     const v_id = req.user._id;
     const products = await Product.find({ v_id: v_id });
-    res.render('view-product', {products})
-    
+    res.render('view-product', { products })
+
   } catch (err) {
     console.log(err);
     next(err);
@@ -32,7 +32,7 @@ const viewProduct = asyncHandler(async (req, res, next) => {
 const createProduct = async (req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './submit-product' });
 };
 
 const multer = require('multer');
@@ -139,7 +139,7 @@ const updateproduct = (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['name', 'price', 'description', 'category'];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-  
+
   if (!isValidOperation) {
     return res.send({ error: 'Invalid updates!' });
   }

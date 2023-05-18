@@ -2,6 +2,12 @@ require('../model/database');
 const Category = require('../model/Category');
 const Product = require('../model/Product');
 
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./scratch');
+
+const cart = JSON.parse(localStorage.getItem('cart')) || {};
+const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
 /**
  * GET /
  * Homepage 
@@ -17,7 +23,10 @@ exports.homepage = async (req, res) => {
 
     const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
+    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
@@ -31,7 +40,7 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('home-page/categories', { title: 'E-Commerce - Categories', categories, layout: './layouts/homeLayout' });
+    res.render('home-page/categories', { title: 'E-Commerce - Categories', categories, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -48,7 +57,7 @@ exports.exploreCategoriesById = async (req, res) => {
     let categoryId = req.params.id;
     const limitNumber = 10;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, layout: './layouts/homeLayout' });
+    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -63,7 +72,7 @@ exports.exploreProduct = async (req, res) => {
   try {
     let productId = req.params.id;
     const product = await Product.findById(productId);
-    res.render('home-page/product', { title: 'E-Commerce - Product', product, layout: './layouts/homeLayout' });
+    res.render('home-page/product', { title: 'E-Commerce - Product', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -79,7 +88,7 @@ exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('home-page/search', { title: 'E-Commerce - Search', product, layout: './layouts/homeLayout' });
+    res.render('home-page/search', { title: 'E-Commerce - Search', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -95,7 +104,7 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const product = await Product.find({}).limit(limitNumber);
-    res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, layout: './layouts/homeLayout' });
+    res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -106,58 +115,58 @@ exports.exploreLatest = async (req, res) => {
  * GET /home/submit-product
  * Submit Product
 */
-exports.submitProduct = async (req, res) => {
-  const infoErrorsObj = req.flash('infoErrors');
-  const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
-}
+// exports.submitProduct = async (req, res) => {
+//   const infoErrorsObj = req.flash('infoErrors');
+//   const infoSubmitObj = req.flash('infoSubmit');
+//   res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+// }
 
 // /**
 //  * POST /home/submit-product
 //  * Submit Product
 // */
-exports.submitProductOnPost = async (req, res) => {
-  try {
+// exports.submitProductOnPost = async (req, res) => {
+//   try {
 
-    let imageUploadFile;
-    let uploadPath;
-    let newImageName;
+//     let imageUploadFile;
+//     let uploadPath;
+//     let newImageName;
 
-    if (!req.files || Object.keys(req.files).length === 0) {
-      console.log('No Files where uploaded.');
-    } else {
+//     if (!req.files || Object.keys(req.files).length === 0) {
+//       console.log('No Files where uploaded.');
+//     } else {
 
-      imageUploadFile = req.files.image;
-      newImageName = Date.now() + imageUploadFile.name;
+//       imageUploadFile = req.files.image;
+//       newImageName = Date.now() + imageUploadFile.name;
 
-      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+//       uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
 
-      imageUploadFile.mv(uploadPath, function (err) {
-        if (err) return res.satus(500).send(err);
-      })
+//       imageUploadFile.mv(uploadPath, function (err) {
+//         if (err) return res.satus(500).send(err);
+//       })
 
-    }
+//     }
 
-    const newProduct = new Product({
-      v_id: req.user._id,
-      name: req.body.name,
-      description: req.body.description,
-      price: req.body.price,
-      productNotes: req.body.productNotes,
-      category: req.body.category,
-      image: newImageName
-    });
+//     const newProduct = new Product({
+//       v_id: req.user._id,
+//       name: req.body.name,
+//       description: req.body.description,
+//       price: req.body.price,
+//       productNotes: req.body.productNotes,
+//       category: req.body.category,
+//       image: newImageName
+//     });
 
-    await newProduct.save();
+//     await newProduct.save();
 
-    req.flash('infoSubmit', 'Product has been added.')
-    res.redirect('/home/submit-product');
-  } catch (error) {
-    // res.json(error);
-    req.flash('infoErrors', error)
-    res.redirect('/home/submit-product');
-  }
-}
+//     req.flash('infoSubmit', 'Product has been added.')
+//     res.redirect('/home/submit-product');
+//   } catch (error) {
+//     // res.json(error);
+//     req.flash('infoErrors', error)
+//     res.redirect('/home/submit-product');
+//   }
+// }
 
 
 

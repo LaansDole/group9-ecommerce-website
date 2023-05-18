@@ -2,6 +2,9 @@ require('../model/database');
 const Category = require('../model/Category');
 const Product = require('../model/Product');
 
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./scratch');
+
 exports.login = async (req, res) => {
     try {
         res.render('./login-signup-page/login.ejs', {
@@ -76,7 +79,10 @@ exports.customer = async (req, res) => {
 
         const productCategory = { latest, tablet, laptop, phone };
 
-        res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+        const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
+        res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, cartItemCount, layout: './layouts/homeLayout' });
     } catch (error) {
         res.satus(500).send({ message: error.message || "Error Occured" });
     }
