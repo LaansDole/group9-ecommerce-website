@@ -87,14 +87,25 @@ exports.exploreProduct = async (req, res) => {
 exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
-    let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
+    let minPrice = req.body.minPrice;
+    let maxPrice = req.body.maxPrice;
+
+    let query = { $text: { $search: searchTerm, $diacriticSensitive: true } };
+    if (minPrice && maxPrice) {
+      query.price = { $gte: minPrice, $lte: maxPrice };
+    } else if (minPrice) {
+      query.price = { $gte: minPrice };
+    } else if (maxPrice) {
+      query.price = { $lte: maxPrice };
+    }
+
+    let product = await Product.find(query);
     res.render('home-page/search', { title: 'E-Commerce - Search', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-
+    res.status(500).send({ message: error.message || "Error Occurred" });
   }
-
 }
+
 
 /**
  * GET /home/explore-latest
@@ -167,33 +178,6 @@ exports.exploreLatest = async (req, res) => {
 //     res.redirect('/home/submit-product');
 //   }
 // }
-
-
-
-
-// // Delete Product
-// async function deleteProduct() {
-//   try {
-//     await Product.deleteOne({ name: 'New Product From Form' });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// deleteProduct();
-
-
-// // Update Product
-// async function updateProduct() {
-//   try {
-//     const res = await Product.updateOne({ name: 'New Product' }, { name: 'New Product Updated' });
-//     res.n; // Number of documents matched
-//     res.nModified; // Number of documents modified
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// updateProduct();
-
 
 /**
  * Dummy Data Initialize
