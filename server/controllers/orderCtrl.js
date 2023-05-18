@@ -52,4 +52,4 @@ const submitOrder = async (req, res) => {
   }
 };
 
-module.exports = { createOrder, submitOrder };
+module.exports = { createOrder };
