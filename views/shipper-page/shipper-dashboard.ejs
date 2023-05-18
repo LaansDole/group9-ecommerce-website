@@ -47,10 +47,10 @@
     <% if (shipperOrders && shipperOrders.length > 0) { %>
       <h3 class="fw-light pt-3 ps-5">Active orders</h3>
   
-      <div class="cards-container container d-flex">
+      <div class="cards-container container d-flex justify-content-space-around">
         <% shipperOrders.forEach((order) => { %>
           <% if (order.orderStatus !== 'cancel' && order.orderStatus !== 'delivered') { %>
-            <div class="order-card pt-2 pb-2 ps-3 mt-5">
+            <div class="order-card pt-2 pb-2 ps-3 mt-5 me-3">
               <h6 class="card-heading">Order ID</h6>
               <a href="/shipper/<%= order._id %>">
                 <p class="order-id ps-5" id="show-overlay"><%= order._id %></p>
@@ -61,12 +61,15 @@
               <p class="cart-content fw-bold"><%= order.customerName %></p>
               <h6 class="card-heading">Status</h6>
               <p class="active-status ps-5"><img src="/img/loading-bar.png" class="pe-2" alt="Loading bar"><%= order.orderStatus %></p>
-              <form method="POST" action="/shipper/<%= order._id %>/delivered">
-                <button type="submit">Accept</button>
-              </form>              
-              <form method="POST" action="/shipper/<%= order._id %>/cancel">
-                <button type="submit">Cancel</button>
-              </form> 
+              <div class="d-flex justify-content-center">
+                <form method="POST" action="/shipper/<%= order._id %>/delivered">
+                  <button class="btn btn-primary text-white fw-bold mb-1 me-1" type="submit">Accept</button>
+                </form>              
+                <form method="POST" action="/shipper/<%= order._id %>/cancel">
+                  <button type="submit" class="btn btn-dark text-white fw-bold mb-1">Cancel</button>
+                </form> 
+              </div>
+              
             </div>
           <% } %>
         <% }) %>
