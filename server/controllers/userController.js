@@ -54,9 +54,24 @@ exports.registerShipper = async (req, res) => {
 }
 
 // Roles-dashboard, delete below or re-render once done
-exports.vendor = (req, res) => {
-    res.render('vendor-dashboard.ejs', { user: req.user, layout: './vendor-dashboard' });
+exports.vendor = async (req, res, next) => {
+    try {
+        const link = req.originalUrl;
 
+        const v_id = req.user._id;
+        const products = await Product.find({ v_id: v_id });
+        res.render('view-product', {
+            title: 'Vendor Dashboard',
+            link,
+            userName: req.user.businessName,
+            products,
+            layout: './layouts/vendorLayout'
+        })
+
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
 };
 
 // exports.shipper = async (req, res) => {

@@ -33,7 +33,7 @@ const shipperDashboard = asyncHandler(async (req, res) => {
         throw new Error('Order not found');
       }
 
-      return res.render('shipper-page/shipper-dashboard', { order, link, layout: './layouts/shipperLayout' });
+      return res.render('shipper-page/shipper-dashboard', { title: 'Shipper Dashboard', order, link, layout: './layouts/shipperLayout' });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -42,7 +42,7 @@ const shipperDashboard = asyncHandler(async (req, res) => {
     try {
       const shipperOrders = await Order.find({ hubName: req.hubName });
 
-      return res.render('shipper-page/shipper-dashboard', { shipperOrders, link, userName: req.user.name, hubName: req.hubName, layout: './layouts/shipperLayout' });
+      return res.render('shipper-page/shipper-dashboard', { title: 'Shipper Dashboard', shipperOrders, link, userName: req.user.name, hubName: req.hubName, layout: './layouts/shipperLayout' });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -66,6 +66,7 @@ const orderDetailShipper = asyncHandler(async (req, res) => {
   const { _id, user, products, totalPrice, orderStatus, hubName, customerName, customerAddress } = order;
 
   return res.render('shipper-page/orderDetailShipper', {
+    title: 'Shipper Dashboard',
     orderId: _id,
     user,
     products,
@@ -94,6 +95,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
   res.redirect('/shipper');
 });
+
 const updateOrderStatusCancel = asyncHandler(async (req, res) => {
   const order = await Order.findById(new mongoose.Types.ObjectId(req.params.orderId));
 

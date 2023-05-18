@@ -6,10 +6,11 @@
 }
 
 .navbar-toggler {
-    color: white;
-    margin: 1rem;
-    display: none;
+  color: white;
+  margin: 1rem;
+  display: none;
 }
+
 .sidebar h2 {
   color: var(--hover-color);
 }
@@ -67,6 +68,7 @@
 .btn-close {
   margin-left: 90%;
 }
+
 .ord-details {
   background: #f5f7f9;
   border-radius: 25px;
@@ -96,41 +98,44 @@
 
 
 @media (max-width: 1023px) {
-    .navbar-toggler {
-        display: block;
-    }
-    .sidebar {
-        width: 15%;
-    }
-    .title, .sidebar h2 {
-        display: none;
-    }
+  .navbar-toggler {
+    display: block;
+  }
 
-    .icon {
-        margin-left: -1rem;
-    }
+  .sidebar {
+    width: 15%;
+  }
+
+  .title,
+  .sidebar h2 {
+    display: none;
+  }
+
+  .icon {
+    margin-left: -1rem;
+  }
 }
 
 @media (max-width: 768px) {
-    .cards-container {
-        margin-left: 2rem;
-    }
+  .cards-container {
+    margin-left: 2rem;
+  }
 
-    .ord-details {
-        bottom: 30%;
-        left: 20%;
-        width: 350px;
-    }
+  .ord-details {
+    bottom: 30%;
+    left: 20%;
+    width: 350px;
+  }
 
-    .general-info {
-        flex-flow: column wrap;
-    }
+  .general-info {
+    flex-flow: column wrap;
+  }
 
-    .btn-close {
-        margin-left: 80%;
-    }
+  .btn-close {
+    margin-left: 80%;
+  }
 
-    #status {
-        width: 30%;
-    }
+  #status {
+    width: 30%;
+  }
 }

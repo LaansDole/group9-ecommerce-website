@@ -1,15 +1,8 @@
 const Product = require("../model/Product");
 const asyncHandler = require("express-async-handler");
-//slugify to cut space between words
-const slugify = require("slugify");
 //call asyncHandler is middleware to resolve all errors inside path between Product and vendorController
 //create new product in 'create product'
 const User = require("../model/userModel");
-
-
-const vendor = async (req, res) => {
-  res.render("index")
-};
 
 // const viewProduct = async (req, res) => {
 //   Product.find({})
@@ -18,9 +11,17 @@ const vendor = async (req, res) => {
 // };
 const viewProduct = asyncHandler(async (req, res, next) => {
   try {
+    const link = req.originalUrl;
+
     const v_id = req.user._id;
     const products = await Product.find({ v_id: v_id });
-    res.render('view-product', { products, layout: './view-product' })
+    res.render('view-product', {
+      title: 'Vendor Dashboard',
+      link,
+      userName: req.user.businessName,
+      products,
+      layout: './layouts/vendorLayout'
+    })
 
   } catch (err) {
     console.log(err);
@@ -108,7 +109,7 @@ const deleteProductform = async (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.render('delete-product', { product, layout: './vendor-dashboard' });
+      res.render('delete-product', { product, layout: './view-product' });
     })
     .catch(error => res.send(error));
 };
@@ -119,7 +120,7 @@ const deleteproductbyID = async (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.redirect('/vendor/products');
+      res.redirect('/vendor');
     })
     .catch(error => res.send(error));
 };
@@ -152,7 +153,7 @@ const updateproduct = (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.redirect('/vendor/products');
+      res.redirect('/vendor');
     })
     .catch(error => res.send(error));
 };
@@ -182,4 +183,4 @@ const updateproduct = (req, res) => {
 //     }
 // });
 
-module.exports = { vendor, createProduct, createProductpost, deleteProductform, deleteproductbyID, updateProductform, updateproduct, viewProduct }
+module.exports = { createProduct, createProductpost, deleteProductform, deleteproductbyID, updateProductform, updateproduct, viewProduct }
