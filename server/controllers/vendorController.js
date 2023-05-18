@@ -31,9 +31,18 @@ const viewProduct = asyncHandler(async (req, res, next) => {
 
 
 const createProduct = async (req, res) => {
+  const link = '/vendor';
+
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './submit-product' });
+  res.render('submit-product', {
+    title: 'E-Commerce - Submit Product',
+    link,
+    userName: req.user.businessName,
+    infoErrorsObj,
+    infoSubmitObj,
+    layout: './layouts/vendorLayout'
+  });
 };
 
 const multer = require('multer');
@@ -104,12 +113,20 @@ const createProductpost = async (req, res) => {
 
 
 const deleteProductform = async (req, res) => {
+  const link = '/vendor';
+
   Product.findById(req.params.id)
     .then(product => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.render('delete-product', { product, layout: './view-product' });
+      res.render('delete-product', {
+        title: 'Delete Product',
+        link,
+        userName: req.user.businessName,
+        product,
+        layout: './layouts/vendorLayout'
+      });
     })
     .catch(error => res.send(error));
 };
@@ -126,12 +143,20 @@ const deleteproductbyID = async (req, res) => {
 };
 
 const updateProductform = (req, res) => {
+  const link = '/vendor';
+
   Product.findById(req.params.id)
     .then(product => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.render('update-product', { product, layout: './vendor-dashboard' });
+      res.render('update-product', {
+        product,
+        title: 'Update Product',
+        link,
+        userName: req.user.businessName,
+        layout: './layouts/vendorLayout'
+      });
     })
     .catch(error => res.send(error));
 };
