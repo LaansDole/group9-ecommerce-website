@@ -48,12 +48,13 @@ const createVendor = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {
@@ -102,12 +103,13 @@ const createCustomer = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {
@@ -161,12 +163,13 @@ const createShipper = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {

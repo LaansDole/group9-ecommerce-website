@@ -113,6 +113,7 @@
 
 .error {
     color: red;
+
 }
 
 .toggle-btn {
@@ -408,5 +409,9 @@ input[type="checkbox"].toggle:checked+label::after {
 .signup-error-message {
     text-align: left;
     color: red;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    /* Adjust the width according to your needs */
+    overflow: hidden;
+    word-wrap: break-word;
+    /* or word-break: break-word; */
 }
