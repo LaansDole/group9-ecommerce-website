@@ -42,7 +42,13 @@ router.get('/history', authMiddleware, checkCustomerRole, async (req, res) => {
     const { user } = req;
     const orderHistory = await confirmOrder.find({ user: user._id });
 
-    res.render('home-page/orderHistory', { orderHistory: orderHistory || [] });
+    const LocalStorage = require('node-localstorage').LocalStorage;
+    const localStorage = new LocalStorage('./scratch');
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
+    res.render('home-page/orderHistory', { orderHistory: orderHistory || [], cartItemCount });
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve order history' });
   }
