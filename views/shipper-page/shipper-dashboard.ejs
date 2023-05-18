@@ -76,52 +76,8 @@
       <p>No active orders found.</p>
     <% } %>
   </div>
-  
-  
-
-        <!--Order details-->
-        <div class="ord-details px-3 py-2 position-fixed cursor-pointer">
-            <button class="btn btn-close position-absolute cursor-pointer" id="hide-overlay"></button>
-            <div id="overview">
-                
-                <h2>Order ID</h2>
-                
-                <div class="d-flex container general-info">
-                    <div class="customer mt-2 p-3 pb-1 bg-white container">
-                        
-                        <h5 class="fw-light"><img src="/img/customer-icon.png" alt="Customer icon">Customer name</h5>
-                        <p class="text-center">Name here</p>
-                    </div>
-                    <div class="address mt-2 p-3 pb-1 bg-white container">
-                        <h5 class="fw-light"><img src="/img/map-icon.png" alt="Location icon">Address</h5>
-                        <p class="text-center">Address here</p>
-                    </div>
-                </div>
-            </div>
-            <div id="items" class="mt-1">
-                <h5>Item list</h5>
-                <ul class="item">
-                    <li>Name: Name here</li>
-                    <li> Quantity: Quantity here</li>
-                    <li> Price: Price here</li>
-                </ul>
-                <h6 class="total-price">Total price: $here</h6>
-            </div>
-            <div class="status">
-                <label for="status" class="fs-5 fw-bold">Status</label>
-                <select name="status" id="status" class="fw-light bg-light">
-                    <option value="active">Active</option>
-                    <option value="delivered">Delivered</option>
-                    <option value="canceled">Canceled</option>
-                </select>
-                
-            </div>
-            
-        </div>
 
     </main>
-
-    <script src="/js/dashboard.js"></script>
 </body>
 
 </html>
