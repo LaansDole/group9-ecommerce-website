@@ -21,9 +21,13 @@ function addToCart(productId, quantity, productPrice, productName) {
 // Define a function to remove a product from the cart
 function removeFromCart(productId) {
     let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    if (!cart[productId]) {
+        return; // Product not found in the cart
+    }
     delete cart[productId];
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartItemCount();
+    populateCartPage();
 }
 
 // Define a function to clear the cart
@@ -70,6 +74,15 @@ function populateCartPage() {
         let priceCell = document.createElement('td');
         priceCell.textContent = price;
         row.appendChild(priceCell);
+
+        // Add a cell for the remove button
+        let removeCell = document.createElement('td');
+        let removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeFromCart(productId));
+        removeCell.appendChild(removeButton);
+        row.appendChild(removeCell);
+
 
         // Calculate the total price for this product
         let productTotalPrice = quantity * price;

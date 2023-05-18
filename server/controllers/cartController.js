@@ -33,7 +33,7 @@ const createProduct = asyncHandler(async (req, res, next) => {
 
 const cartPage = asyncHandler(async (req, res) => {
 
-  res.render('home-page/cart', { cartItemCount, user: req.user });
+  res.render('home-page/cart', { title: 'Your Cart', cartItemCount, user: req.user, layout: './layouts/homeLayout' });
 });
 
 module.exports = { createProduct, cartPage };

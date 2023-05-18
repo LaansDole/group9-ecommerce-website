@@ -1,48 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cart</title>
-</head>
-<body>
-    <h2 class="text-center lh-base">Your Cart</h2>
-    <div class="text-center"><a class="fw-light" href="/home">Continue Shopping</a></div>
-    <div class="mt-3 bg-white p-3 rounded">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr class="bg-dark text0-white">
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-table-body">
-                    <!-- Cart items will be dynamically added here -->
-                </tbody>
-            </table>
-        </div>
-        <p><span class="fw-bold fs-5 pt-3 pe-5">Total Price:</span><span class="text-danger fs-5 ps-5">$<span id="cart-total">0</span></span></p>
-        <input type="hidden" name="customerName" value="<%= user.name %>">
-        <input type="hidden" name="customerAddress" value="<%= user.address %>">
-        <div class="row">
-            <h5 class="col-md-4  lh-base">Choose Hub Delivery:</h5>
-            <select id="hubDeliverySelect" class="col-md-8 w-25 rounded ms-3 mt-2">
-                <option value="GHTK">GHTK</option>
-                <option value="viettel">ViettelPost</option>
-                <option value="ghn">Giao Hang Nhanh</option>
-                <option value="aha">Aha Move</option>
-            </select>  
-        </div>
-        <div class="mt-4 text-center container">
-            <button class="btn px-2 py-3 me-2 bg-primary text-white fs-5 mt-1" onclick="submitOrder()">Submit Order</button>
-            <button class="btn px-2 py-3 bg-dark text-white fs-5 mt-1" onclick="clearCart()">Clear Cart</button>
-        </div>
-        <div id="cart-item-count"></div>
-    </div>  
-    <script src="/js/cart.js"></script>
-    <script>
-        // Populate the cart page with the list of products and quantities
-        populateCartPage();
-    </script>
-</body>
-</html>
+<h2 class="text-center lh-base">Your Cart</h2>
+<div class="text-center"><a class="fw-light" href="/home">Continue Shopping</a></div>
+<div class="mt-3 bg-white p-3 rounded">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr class="bg-dark text-white">
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-table-body">
+                <!-- Cart items will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <p><span class="fw-bold fs-5 pt-3 pe-5">Total Price:</span><span class="text-danger fs-5 ps-5">$<span id="cart-total">0</span></span></p>
+    <input type="hidden" name="customerName" value="<%= user.name %>">
+    <input type="hidden" name="customerAddress" value="<%= user.address %>">
+    <div class="row">
+        <h5 class="col-md-4  lh-base">Choose Hub Delivery:</h5>
+        <select id="hubDeliverySelect" class="col-md-8 w-25 rounded ms-3 mt-2">
+            <option value="GHTK">GHTK</option>
+            <option value="viettel">ViettelPost</option>
+            <option value="ghn">Giao Hang Nhanh</option>
+            <option value="aha">Aha Move</option>
+        </select>  
+    </div>
+    <div class="mt-4 text-center container">
+        <button class="btn px-2 py-3 me-2 bg-primary text-white fs-5 mt-1" onclick="submitOrder()">Submit Order</button>
+        <button class="btn px-2 py-3 bg-dark text-white fs-5 mt-1" onclick="clearCart()">Clear Cart</button>
+    </div>
+    <div id="cart-item-count"></div>
+</div>  
+<script src="/js/cart.js"></script>
+<script>
+    // Populate the cart page with the list of products and quantities
+    populateCartPage();
+</script>
+
