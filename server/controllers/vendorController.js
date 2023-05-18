@@ -20,7 +20,7 @@ const viewProduct = asyncHandler(async (req, res, next) => {
   try {
     const v_id = req.user._id;
     const products = await Product.find({ v_id: v_id });
-    res.render('view-product', { products })
+    res.render('view-product', { products, layout: './view-product' })
 
   } catch (err) {
     console.log(err);
@@ -108,7 +108,7 @@ const deleteProductform = async (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.render('delete-product', { product });
+      res.render('delete-product', { product, layout: './vendor-dashboard' });
     })
     .catch(error => res.send(error));
 };
@@ -130,7 +130,7 @@ const updateProductform = (req, res) => {
       if (!product) {
         return res.send('Not found any product matching the ID!');
       }
-      res.render('update-product', { product });
+      res.render('update-product', { product, layout: './vendor-dashboard' });
     })
     .catch(error => res.send(error));
 };
