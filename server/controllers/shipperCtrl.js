@@ -69,7 +69,7 @@ const orderDetailShipper = asyncHandler(async (req, res) => {
     orderStatus,
     customerName,
     customerAddress,
-    layout: './orderDetailShipper'
+    layout: './shipper-page/orderDetailShipper'
   });
 });
 
