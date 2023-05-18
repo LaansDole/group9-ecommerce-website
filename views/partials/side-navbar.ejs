@@ -1,0 +1,21 @@
+<nav class="sidebar bg-cover">
+    <h2 class="lh-base pb-5 ps-2 pt-2">Welcome <br><%= userName %>!</h2>
+    <ul class="sidebar-list ">
+        <li class="fw-bold fs-5">
+            <a href="<%= link %>" class="icon"><img src="/img/dashboard-icon.png" alt="Dashboard icon"
+                    width="46px" height="30px" class="pe-3"></a>
+            <a href="<%= link %>" class="title">Dashboard</a>
+        </li>
+        <li class="fw-bold fs-5">
+            <a href="" class="icon"><img src="/img/user.png" alt="User icon" width="46px" height="30px"
+                    class="pe-3"></a>
+            <a href="/myProfile" class="title">My Profile</a>
+        </li>
+        <li class="fs-5">
+            <form action="/logout" method="GET">
+                <a href="/logout" class="icon"><img src="/img/logout.png" alt="Log out button" class="pe-3"></a>
+                <a href="/logout" class="title">Log out</a>
+            </form>
+        </li>
+    </ul>
+</nav>

@@ -22,6 +22,8 @@ const checkShipperHub = asyncHandler(async (req, res, next) => {
 const shipperDashboard = asyncHandler(async (req, res) => {
   const { orderId } = req.query;
 
+  const link = req.originalUrl;
+
   if (orderId) {
     try {
       const order = await Order.findById(orderId);
@@ -31,7 +33,7 @@ const shipperDashboard = asyncHandler(async (req, res) => {
         throw new Error('Order not found');
       }
 
-      return res.render('shipper-page/shipper-dashboard', { order, layout: './shipper-page/shipper-dashboard' });
+      return res.render('shipper-page/shipper-dashboard', { order, link, layout: './layouts/shipperLayout' });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -40,7 +42,7 @@ const shipperDashboard = asyncHandler(async (req, res) => {
     try {
       const shipperOrders = await Order.find({ hubName: req.hubName });
 
-      return res.render('shipper-page/shipper-dashboard', { shipperOrders, userName: req.user.name, hubName: req.hubName, layout: './shipper-page/shipper-dashboard' });
+      return res.render('shipper-page/shipper-dashboard', { shipperOrders, link, userName: req.user.name, hubName: req.hubName, layout: './layouts/shipperLayout' });
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -51,6 +53,8 @@ const shipperDashboard = asyncHandler(async (req, res) => {
 
 const orderDetailShipper = asyncHandler(async (req, res) => {
   const orderId = req.params.orderId;
+
+  const link = '/shipper';
 
   const order = await Order.findById(orderId);
 
@@ -69,17 +73,11 @@ const orderDetailShipper = asyncHandler(async (req, res) => {
     orderStatus,
     customerName,
     customerAddress,
-    layout: './shipper-page/orderDetailShipper'
+    link,
+    userName: req.user.name,
+    layout: './layouts/shipperLayout'
   });
 });
-
-
-const shipperOrderComplete = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ orderStatus: 'delivered' }).lean();
-
-  res.render('shipper-page/shipperOrder', { orders });
-});
-
 
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
@@ -113,7 +111,7 @@ const updateOrderStatusCancel = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { checkShipperHub, shipperDashboard, orderDetailShipper, updateOrderStatus, shipperOrderComplete, updateOrderStatusCancel };
+module.exports = { checkShipperHub, shipperDashboard, orderDetailShipper, updateOrderStatus, updateOrderStatusCancel };
 
 
 

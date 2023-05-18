@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shipper</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
-    <base href="/">
-    <script src="https://kit.fontawesome.com/625c7efa43.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/shipper-dashboard.css">
-
-</head>
-
-<body>
-    <nav class="sidebar bg-cover">
-        <h2 class="lh-base pb-5 ps-2 pt-2">Welcome, <%= userName %>!</h2>
-        <ul class="sidebar-list ">
-            <li class="fw-bold fs-5">
-                <a href="/shipper" class="icon"><img src="/img/dashboard-icon.png" alt="Dashboard icon"
-                        width="46px" height="30px" class="pe-3"></a>
-                <a href="/shipper" class="title">Dashboard</a>
-            </li>
-            <li class="fw-bold fs-5">
-                <a href="" class="icon"><img src="/img/user.png" alt="User icon" width="46px" height="30px"
-                        class="pe-3"></a>
-                <a href="/myProfile" class="title">My Profile</a>
-            </li>
-            <li class="fs-5">
-                <form action="/logout" method="GET">
-                    <a href="/logout" class="icon"><img src="/img/logout.png" alt="Log out button" class="pe-3"></a>
-                    <a href="/logout" class="title">Log out</a>
-                </form>
-            </li>
-        </ul>
-    </nav>
-    <main class="dashboard">
-     
 <!-- Distribution hub containing the orders -->
 <div id="dis-hub">
     <h2 class="pt-3 ps-5">Distribution <%= hubName %></h2>
@@ -78,9 +35,4 @@
     <% } else { %>
       <p>No active orders found.</p>
     <% } %>
-  </div>
-
-    </main>
-</body>
-
-</html>
+</div>
