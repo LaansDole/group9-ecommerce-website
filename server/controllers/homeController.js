@@ -2,6 +2,12 @@ require('../model/database');
 const Category = require('../model/Category');
 const Product = require('../model/Product');
 
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./scratch');
+
+const cart = JSON.parse(localStorage.getItem('cart')) || {};
+const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
 /**
  * GET /
  * Homepage 
@@ -17,7 +23,10 @@ exports.homepage = async (req, res) => {
 
     const productCategory = { latest, tablet, laptop, phone };
 
-    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartItemCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+
+    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
@@ -31,7 +40,7 @@ exports.exploreCategories = async (req, res) => {
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
-    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categories, layout: './layouts/homeLayout' });
+    res.render('home-page/categories', { title: 'E-Commerce - Categories', categories, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -46,9 +55,9 @@ exports.exploreCategories = async (req, res) => {
 exports.exploreCategoriesById = async (req, res) => {
   try {
     let categoryId = req.params.id;
-    const limitNumber = 20;
+    const limitNumber = 10;
     const categoryById = await Product.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, layout: './layouts/homeLayout' });
+    res.render('home-page/categories', { title: 'E-Commerce - Categoreis', categoryById, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -63,7 +72,7 @@ exports.exploreProduct = async (req, res) => {
   try {
     let productId = req.params.id;
     const product = await Product.findById(productId);
-    res.render('home-page/product', { title: 'E-Commerce - Product', product, layout: './layouts/homeLayout' });
+    res.render('home-page/product', { title: 'E-Commerce - Product', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
@@ -78,14 +87,25 @@ exports.exploreProduct = async (req, res) => {
 exports.searchProduct = async (req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
-    let product = await Product.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('home-page/search', { title: 'E-Commerce - Search', product, layout: './layouts/homeLayout' });
+    let minPrice = req.body.minPrice;
+    let maxPrice = req.body.maxPrice;
+
+    let query = { $text: { $search: searchTerm, $diacriticSensitive: true } };
+    if (minPrice && maxPrice) {
+      query.price = { $gte: minPrice, $lte: maxPrice };
+    } else if (minPrice) {
+      query.price = { $gte: minPrice };
+    } else if (maxPrice) {
+      query.price = { $lte: maxPrice };
+    }
+
+    let product = await Product.find(query);
+    res.render('home-page/search', { title: 'E-Commerce - Search', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-
+    res.status(500).redirect(`/home/search?error=Product_not_found`);
   }
-
 }
+
 
 /**
  * GET /home/explore-latest
@@ -95,21 +115,21 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const product = await Product.find({}).limit(limitNumber);
-    res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, layout: './layouts/homeLayout' });
+    res.render('home-page/explore-latest', { title: 'E-Commerce - Explore Latest', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
 
   }
 }
 
-// /**
-//  * GET /home/submit-product
-//  * Submit Product
-// */
+/**
+ * GET /home/submit-product
+ * Submit Product
+*/
 // exports.submitProduct = async (req, res) => {
 //   const infoErrorsObj = req.flash('infoErrors');
 //   const infoSubmitObj = req.flash('infoSubmit');
-//   res.render('home-page/submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
+//   res.render('submit-product', { title: 'E-Commerce - Submit Product', infoErrorsObj, infoSubmitObj, layout: './layouts/homeLayout' });
 // }
 
 // /**
@@ -139,6 +159,7 @@ exports.exploreLatest = async (req, res) => {
 //     }
 
 //     const newProduct = new Product({
+//       v_id: req.user._id,
 //       name: req.body.name,
 //       description: req.body.description,
 //       price: req.body.price,
@@ -150,103 +171,50 @@ exports.exploreLatest = async (req, res) => {
 //     await newProduct.save();
 
 //     req.flash('infoSubmit', 'Product has been added.')
-//     res.redirect('/submit-product');
+//     res.redirect('/home/submit-product');
 //   } catch (error) {
 //     // res.json(error);
-//     req.flash('infoErrors', error);
-//     res.redirect('/submit-product');
+//     req.flash('infoErrors', error)
+//     res.redirect('/home/submit-product');
 //   }
 // }
-
-
-
-
-// // Delete Product
-// async function deleteProduct() {
-//   try {
-//     await Product.deleteOne({ name: 'New Product From Form' });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// deleteProduct();
-
-
-// // Update Product
-// async function updateProduct() {
-//   try {
-//     const res = await Product.updateOne({ name: 'New Product' }, { name: 'New Product Updated' });
-//     res.n; // Number of documents matched
-//     res.nModified; // Number of documents modified
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-// updateProduct();
-
 
 /**
- * Dummy Data Example
+ * Dummy Data Initialize
 */
+// async function insertDymmyCategoryData() {
+//   try {
+//     await Category.insertMany([
+//       {
+//         "name": "Tablet",
+//         "image": "tablet.jpg"
+//       },
+//       {
+//         "name": "Laptop",
+//         "image": "laptop.png"
+//       },
+//       {
+//         "name": "Phone",
+//         "image": "phone.jpg"
+//       },
+//       {
+//         "name": "Sound",
+//         "image": "sound.png"
+//       },
+//       {
+//         "name": "Keyboard",
+//         "image": "keyboard.jpg"
+//       },
+//       {
+//         "name": "Screen",
+//         "image": "screen.jpg"
+//       }
+//     ]);
+//   } catch (error) {
+//     console.log('err', + error)
+//   }
+// }
 
-async function insertDymmyCategoryData() {
-  try {
-    await Category.insertMany([
-      {
-        "name": "Tablet",
-        "image": "tablet.jpg"
-      },
-      {
-        "name": "Laptop",
-        "image": "laptop.png"
-      },
-      {
-        "name": "Phone",
-        "image": "phone.jpg"
-      },
-      {
-        "name": "Sound",
-        "image": "sound.png"
-      },
-      {
-        "name": "Keyboard",
-        "image": "keyboard.jpg"
-      },
-      {
-        "name": "Screen",
-        "image": "screen.jpg"
-      }
-    ]);
-  } catch (error) {
-    console.log('err', + error)
-  }
-}
+// insertDymmyCategoryData();
 
-insertDymmyCategoryData();
-
-
-async function insertDymmyProductData() {
-  try {
-    await Product.insertMany([
-      {
-        "name": "Dell G15 5511",
-        "description": `Screen size: 15.6 inches`,
-        "price": 599,
-        "category": "Laptop",
-        "image": "dellg155511.png"
-      },
-      {
-        "name": "Samsung Z Flip 4",
-        "description": `Screen size: 6.2 inches`,
-        "price": 699,
-        "category": "Phone",
-        "image": "samsungzflip4.png"
-      },
-    ]);
-  } catch (error) {
-    console.log('err', + error)
-  }
-}
-
-insertDymmyProductData();
 

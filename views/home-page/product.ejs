@@ -19,7 +19,7 @@
       <div class="fs-5">
         <div class="product-info">
           <div class="fs-1 lh-base mb-2"><%- product.name %></div>
-          <div class="col-12 mb-4"><i class="bi bi-tag"></i><a href="/categories/Laptop"><%- product.category %></a></div>
+          <div class="col-12 mb-4"><i class="bi bi-tag"></i><a href="/home/categories/<%- product.category %>"><%- product.category %></a></div>
           <div class="reviews-counter">
             <div class="rate pe-1">
               <input type="radio" id="star5" name="rate" value="5" checked />
@@ -54,7 +54,9 @@
             <input type="text" name="quantity" value="1" class="qty w-50 text-center">
             <div class="qtyplus w-40 h-40 bg-dark text-center fs-4 lh-base text-white cursor-pointer">+</div>
           </form>
-          <a href="#" class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-5 pe-5 fs-3 mt-5">Add to Cart</a>
+          <button class="black-btn text-decoration-none d-inline-block pt-3 pb-3 ps-5 pe-5 fs-3 mt-5" onclick="addToCart('<%= product._id %>',1,'<%= product.price %>','<%= product.name %>')">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
@@ -72,7 +74,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-        <%- product.description %>
+        <p class="pd-description"><%- product.description %></p>
       </div>
       <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
         <div class="fs-3 lh-base mb-1 text-uppercase text-dark">REVIEWS</div>
@@ -141,3 +143,4 @@
   <% } else { %>
     <p>No item found.</p>
     <% } %>
+<script src="/js/cart.js"></script>

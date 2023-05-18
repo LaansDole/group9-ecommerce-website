@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="/css/footer.css">
+  </head>
+  <body>
+    <div class="container-xxl px-md-5 shadow-lg">
+      <main>
+        <h1 class="text-center pt-3">Update My Profile</h1>
+        <button id="back-button" class="mt-4 px-3 py-2 text-dark bg-transparent border-0">
+          <a class="text-decoration-none">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i> <strong>Go Back</strong>
+          </a>
+        </button>
+        <div class="row">
+          <form id="update-form" action="/updateProfile" method="POST" enctype="multipart/form-data" class="col-md-12 container bg-cover">
+            <!-- For vendors -->
+            <% if (role === 'vendor') { %>
+              <label for="b-address">Business address</label>
+              <input type="text" class="form-control" id="b-address" name="businessAddress" placeholder="<%= businessAddress %>" >
+            <!-- For customers -->  
+            <% } else if (role === 'customer') { %>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="<%= name %>" >
+              <label for="address">Address</label>
+              <input type="text" id="address" name="address" placeholder="<%= address %>" >
+            <!-- For shippers -->
+            <% } else if (role === 'shipper') { %>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="<%= name %>" >
+            <% } %>
+            <label for="profile-picture">Profile Picture:</label>
+            <input type="file" name="profilePicture">
+            <div class="buttons">
+              <button class="btn submit text-white" type="submit">Update</button>
+              <button class="btn text-white bg-dark" type="reset">Reset</button>
+            </div>
+            
+        </form>
+        </div>
+        <%- include('../partials/footer') %>
+      </main>
+    </div>
+    <script src="/js/back-button.js"></script>
+    <script src="/js/footer.js"></script>
+
+  </body>
+</html>

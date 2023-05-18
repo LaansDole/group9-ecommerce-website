@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 const expressLayouts = require('express-ejs-layouts');
-const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const flash = require('connect-flash');
 
@@ -33,11 +32,6 @@ app.use(session({
 }));
 app.use(flash());
 
-// app.use(fileUpload({
-//     limits: { fileSize: 50 * 1024 * 1024 },
-// }));
-// app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
-
 // morgan checking 'log'
 app.use(morgan("dev"));
 // app.use(bodyParser());
@@ -50,8 +44,6 @@ app.use(expressLayouts);
 
 // Set the path to the layouts directory
 app.set('views', path.join(__dirname, 'views'));
-
-// Set the layout for the login/signup page
 
 // Set the routes for the login/signup page
 const authUserRoute = require("./server/routes/authUserRoute.js");
@@ -67,22 +59,21 @@ app.use('/home', homeRoute);
 
 // Set the routes for the vendor dashboard
 const vendorRoute = require("./server/routes/vendorRoute.js");
-app.use('/vendor-dashboard', vendorRoute);
+app.use('/vendor', vendorRoute);
 
 // Set the layout for the shipper dashboard
-// app.set('layout', './layouts/shipperLayout');
+const shipperRouter = require("./server/routes/shipperRouter")
+app.use("/shipper", shipperRouter);
 
 // Set the routes for the shipper dashboard
+// Set the route for orderRouter
+const orderRouter = require("./server/routes/orderRouter")
+app.use("/order", orderRouter);
 
-// Define the ejs file success and unsuccess
-app.get('/success', (req, res) => {
-    res.render('success.ejs');
-});
+// Product router
 
-app.get('/unsucess', (req, res) => {
-    res.render('unsuccess.ejs');
-});
-
+const cartRoute = require("./server/routes/cartRoute")
+app.use("/home/your-cart", cartRoute);
 
 // Handling non matching request from the client
 
@@ -93,11 +84,11 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 app.use((req, res, next) => {
-    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './layouts/homeLayout' })
+    res.status(404).render('404.ejs', { error: '404 ERROR', layout: './404.ejs' })
 })
 
 app.use((err, req, res, next) => {
-    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './layouts/homeLayout' });
+    res.status(err.status || 500).render('404.ejs', { error: '500 ERROR', layout: './404.ejs' });
 });
 
 app.listen(PORT, () => {

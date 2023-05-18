@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="/css/footer.css">
+
+  </head>
+  <body>
+    <div class="container-xxl px-md-5 shadow-lg">
+      <main>
+        <h1 class="text-center pt-3">My Profile</h1>
+        <button id="back-button" class="mt-4 px-3 py-2 text-dark bg-transparent border-0">
+          <a class="text-decoration-none">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i> <strong>Go Back</strong>
+          </a>
+        </button>
+        <div class="row">
+          <div class="profile-pic img-container col-md-6 d-flex flex-column align-items-center pe-5">
+            <% if (profilePicture) { %>
+              <% const base64Image = profilePicture.data.toString('base64'); %>
+              <% const imageSrc = `data:${profilePicture.contentType};base64,${base64Image}`; %>
+              <% const fileExtension = profilePicture.contentType.split('/')[1]; %>
+              <% const imageSize = 'style="width: 500px; height: 500px;"'; %>
+              <% if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg') { %>
+                <img src="<%= imageSrc %>" alt="Profile Picture" class="img rounded-circle" width="400px" height="400px">
+              <% } else if (fileExtension === 'svg+xml') { %>
+                <object type="image/svg+xml" data="<%= imageSrc %>" style="width: 400px; height: 400px;"></object>
+              <% } else { %>
+                <p>Unsupported image file type.</p>
+              <% } %>
+            <% } else { %>
+              <p>No profile picture uploaded yet.</p>
+            <% } %>
+
+            <button class="btn mt-4 px-3 py-2 bg-dark text-white" onclick="window.location.href='/myProfileUpdate'">Update Profile</button>
+          </div>
+          <form action="" id="personal-info" class="col-md-6">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" value=" <%= userName %>" readonly>
+            <label for="role">Role</label>
+            <input type="text" class="form-control" id="role" value="<%= role %>" readonly>
+            <!-- For vendors -->
+            <% if (role === 'vendor') { %>
+              <label for="bussiness">Business name</label>
+              <input type="text" class="form-control" id="business" value="<%= businessName %>" readonly>
+              <label for="b-address">Business address</label>
+              <input type="text" class="form-control" id="b-address" value="<%= businessAddress %>" readonly>
+            <!-- For customers -->  
+            <% } else if (role === 'customer') { %>
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" value="<%= name %>" readonly>
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" value="<%= address %>" readonly>
+            <!-- For shippers -->
+            <% } else if (role === 'shipper') { %>
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" value="<%= name %>" readonly>
+              <label for="h-name">Distribution hub</label>
+              <input type="text" class="form-control" id="h-name" value="<%= hubName %>" readonly>
+              <label for="h-address">Hub address</label>
+              <input type="text" class="form-control" id="h-address" value="<%= hubAddress %>" readonly>
+            <% } %>
+            <form action="/logout" method="GET">
+              <a href="/logout" class="text-decoration-none btn mt-4 px-3 py-2 bg-dark text-white">
+                Log out
+              </a>
+            </form>
+          </form>
+        </div>
+        <%- include('../partials/footer') %>
+      </main>
+    </div>
+    <script src="/js/back-button.js"></script>
+    <script src="/js/footer.js"></script>
+
+  </body>
+</html>

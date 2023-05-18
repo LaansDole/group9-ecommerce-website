@@ -8,8 +8,6 @@ const fs = require('fs');
 const multer = require("multer");
 
 require('../model/database');
-const Category = require('../model/Category');
-const Product = require('../model/Product');
 
 
 const path = require('path');
@@ -50,12 +48,13 @@ const createVendor = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {
@@ -86,9 +85,10 @@ const createVendor = asyncHandler(async (req, res) => {
         res.redirect('/');
       } else {
         throw new Error('User already exists');
+
       }
     } catch (err) {
-      next(err);
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
@@ -103,12 +103,13 @@ const createCustomer = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {
@@ -141,9 +142,10 @@ const createCustomer = asyncHandler(async (req, res) => {
         res.redirect('/')
       } else {
         throw new Error('User already exists');
+
       }
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
@@ -161,12 +163,13 @@ const createShipper = asyncHandler(async (req, res) => {
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
-      return res.status(400).json({ error: 'Username must contain only letters and digits, have a length from 8 to 15 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
+
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
     if (!passwordRegex.test(password)) {
-      return res.status(400).json({ error: 'Password must contain at least one upper case letter, at least one lower case letter, at least one digit, at least one special character in the set !@#$%^&*, and have a length from 8 to 20 characters.' });
+      return res.status(400).redirect(`${req.originalUrl}?error=Password_length_must_from_8_to_20`);
     }
 
     try {
@@ -200,7 +203,7 @@ const createShipper = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
       }
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).redirect(`${req.originalUrl}?error=Username_already_exists`);
     }
   });
 });
@@ -256,56 +259,9 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       res.status(401).send('Unauthorized');
     }
   } else {
-    res.render('unsuccess');
+    res.redirect(`/?error=Invalid_username_or_password`);
   }
 });
-
-
-// Function to render page
-
-const vendorProduct = async (req, res) => {
-  try {
-    const vendor = await Product.find({ 'v_id': vendorID });
-    res.render('vendor-private.ejs', { title: 'Vendor Dashboard', vendorid });
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-
-  }
-}
-
-// Roles-dashboard, delete below or re-render once done
-const vendor = (req, res) => {
-  res.render('vendor-private.ejs', { user: req.user });
-
-};
-
-const shipper = (req, res) => {
-  res.render('shipper-private.ejs', { user: req.user });
-
-};
-
-const customer = async (req, res) => {
-  try {
-    const limitNumber = 5;
-    const categories = await Category.find({}).limit(limitNumber);
-    const latest = await Product.find({}).limit(limitNumber);
-    const tablet = await Product.find({ 'category': 'Tablet' }).limit(limitNumber);
-    const laptop = await Product.find({ 'category': 'Laptop' }).limit(limitNumber);
-    const phone = await Product.find({ 'category': 'Phone' }).limit(limitNumber);
-
-    const productCategory = { latest, tablet, laptop, phone };
-
-    res.render('home-page/index', { title: 'E-Commerce - Home', categories, productCategory, layout: './layouts/homeLayout' });
-  } catch (error) {
-    res.satus(500).send({ message: error.message || "Error Occured" });
-  }
-}
-
-const myProfile = (req, res) => {
-  const userId = req.session.userId; // get user id from session or database
-  res.render('myProfile', { userId: userId });
-
-};
 
 const success = (req, res) => {
   res.render('success.ejs');
@@ -352,7 +308,7 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
     });
-    res.render('login-signup-page/login');
+    res.redirect('/').render('login-signup-page/login', { layout: './layouts/loginLayout' });
     res.sendStatus(204); //Forbidden
   }
   await User.findOneAndUpdate(refreshToken, {
@@ -403,7 +359,7 @@ const getaUser = asyncHandler(async (req, res) => {
         const imageType = profilePicture.contentType.split('/')[1];
         image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
       }
-      res.render('myProfile.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      res.render('layouts/myProfile.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfile' });
 
     } catch (error) {
       throw new Error(error);
@@ -496,7 +452,7 @@ const myProfileUpdate = asyncHandler(async (req, res) => {
         const imageType = profilePicture.contentType.split('/')[1];
         image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
       }
-      res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
+      res.render('layouts/myProfileUpdate', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfileUpdate' });
 
     } catch (error) {
       throw new Error(error);
@@ -550,21 +506,21 @@ const profileUpdateFunction = asyncHandler(async (req, res) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       validateMongoDbId(decoded?.id);
       const user = await User.findById(decoded?.id);
-      const { userName, businessName, businessAddress, name, address, hubName, hubAddress, role,profilePicture } = user;
+      const { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, profilePicture } = user;
       // console.log(user);
       let image;
       if (profilePicture && profilePicture.data && profilePicture.contentType) {
-      const imageBuffer = profilePicture.data;
-      const imageType = profilePicture.contentType.split('/')[1];
-      image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
-    }
-      res.render('myProfileUpdate.ejs', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture });
-      
+        const imageBuffer = profilePicture.data;
+        const imageType = profilePicture.contentType.split('/')[1];
+        image = `data:image/${imageType};base64,${Buffer.from(imageBuffer).toString('base64')}`;
+      }
+      res.render('layouts/myProfileUpdate', { userName, businessName, businessAddress, name, address, hubName, hubAddress, role, image, profilePicture, layout: './layouts/myProfileUpdate' });
+
     } catch (error) {
       throw new Error(error);
     }
   } else {
-    res.redirect('/login');
+    res.redirect(`${req.originalUrl}`);
   }
 });
 
@@ -643,13 +599,9 @@ module.exports = {
   updateProfilePicture,
   blockUser,
   unblockUser,
-  vendor,
   handleRefreshToken,
   logout,
   success,
-  shipper,
-  customer,
-  myProfile,
   upload,
   updateAddress,
   updateName,

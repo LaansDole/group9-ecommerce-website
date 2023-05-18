@@ -1,7 +1,24 @@
 <h1 class="pb-4">Search Results</h1>
 
+<form method="POST" action="/home/search" class="mb-3">
+  <div class="row">
+    <div class="col">
+      <input type="text" name="searchTerm" class="form-control" placeholder="Search product model" required>
+    </div>
+    <div class="col">
+      <input type="number" name="minPrice" class="form-control" placeholder="Minimum price">
+    </div>
+    <div class="col">
+      <input type="number" name="maxPrice" class="form-control" placeholder="Maximum price">
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>
+
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-  <% if(product != '') { %>
+  <% if(product.length > 0) { %>
     <% product.forEach(function(product, index){ %>
     <a href="/home/product/<%= product._id %>" class="col text-center category__link">
       <div class="category__img category__img--large shadow">

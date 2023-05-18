@@ -1,0 +1,46 @@
+<h1 class="text-center lh-base mb-3">Order Details</h1>
+<div class="text-center mb-2">
+  <a href="/shipper">Back to Shipper Dashboard</a>
+</div>
+<main class="ord-details container w-50">
+  <h2 class="pt-3 ps-3 lh-base text-center"><%= orderId %></h2>
+  <h5 class="pt-3 ps-3 fw-light"><img src="/img/customer-icon.png" alt="Customer icon">Customer Name:</h5>
+  <h5 class="text-center"><%= customerName %></h5>
+  <h5 class="pt-3 ps-3 fw-light"><img src="/img/map-icon.png" alt="Location icon">Customer Address:</h5>
+  <h5 class="text-center"><%= customerAddress %></h5>
+
+  <h5 class="pt-3 ps-3 fw-light"><img src="/img/loading-bar.png" alt="Loading bar">Order status:</h5>
+  <h5 class="text-center"><%= orderStatus %></h5>
+  <!-- <p>User: <%= user %></p> -->
+  <h5 class="pt-3 ps-3 pb-2">Items</h5>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr class="bg-dark text-white fw-bold">
+          <td>Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach((product)=> { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.quantity %></td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <h5 class="pt-3 ps-3 fw-light">Total price:</h5>
+  <h5 class="text-center total-price">$<%= totalPrice %></h5> 
+  <div class="d-flex justify-content-center mt-3">
+    <form method="POST" action="/shipper/<%= orderId %>/delivered">
+      <button class="btn btn-primary text-white fw-bold mb-1 me-1" type="submit">Accept</button>
+    </form>
+    <form method="POST" action="/shipper/<%= orderId %>/cancel">
+      <button class="btn btn-dark text-white fw-bold mb-1" type="submit">Cancel</button>
+    </form>
+  </div>
+</main>

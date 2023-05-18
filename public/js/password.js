@@ -1,4 +1,5 @@
-const form = document.querySelector('#validForm');
+const signupForm = document.querySelector('#signupForm');
+const loginForm = document.querySelector('#loginForm');
 
 const setErrorMessage = message => {
     const errorMessageContainer = document.querySelector('.error');
@@ -6,10 +7,10 @@ const setErrorMessage = message => {
     errorMessageContainer.style.display = 'block';
 };
 
-form.addEventListener('submit', e => {
+signupForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    const passwordValue = form.querySelector('#password').value.trim();
+    const passwordValue = signupForm.querySelector('#password').value.trim();
 
     const lower = new RegExp("(?=.*[a-z])");
     const upper = new RegExp("(?=.*[A-Z])");
@@ -26,13 +27,44 @@ form.addEventListener('submit', e => {
 
         setErrorMessage('Invalid Password');
     } else {
-        form.submit();
+        window.alert('Success! Please go back and login again!');
+        signupForm.submit();
     }
 
-    const usernameValue = form.querySelector('#userName').value.trim();
+    const usernameValue = signupForm.querySelector('#userName').value.trim();
 
     if (usernameValue == "" && passwordValue == "") {
-        alert('Please fill out all the required fields correctly');
+        window.alert('Please fill out all the required fields correctly');
+    }
+});
+
+loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const passwordValue = loginForm.querySelector('#password').value.trim();
+
+    const lower = new RegExp("(?=.*[a-z])");
+    const upper = new RegExp("(?=.*[A-Z])");
+    const number = new RegExp("(?=.*[0-9])");
+    const special = new RegExp("(?=.*[!@#$%^&*])");
+    const length = new RegExp("(?=.{8,})");
+
+    if (passwordValue === "" ||
+        !lower.test(passwordValue) ||
+        !upper.test(passwordValue) ||
+        !number.test(passwordValue) ||
+        !special.test(passwordValue) ||
+        !length.test(passwordValue)) {
+
+        setErrorMessage('Invalid Password');
+    } else {
+        loginForm.submit();
+    }
+
+    const usernameValue = loginForm.querySelector('#userName').value.trim();
+
+    if (usernameValue == "" && passwordValue == "") {
+        window.alert('Please fill out all the required fields correctly');
     }
 });
 

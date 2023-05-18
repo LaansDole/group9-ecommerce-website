@@ -1,0 +1,141 @@
+.sidebar {
+  position: fixed;
+  background-color: var(--secondary-color);
+  height: 100%;
+  width: 20%;
+}
+
+.navbar-toggler {
+  color: white;
+  margin: 1rem;
+  display: none;
+}
+
+.sidebar h2 {
+  color: var(--hover-color);
+}
+
+.sidebar-list {
+  list-style: none;
+}
+
+.sidebar-list a {
+  text-decoration: none;
+  color: #f6f7f9;
+}
+
+.sidebar-list a:hover {
+  color: var(--hover-color);
+}
+
+.sidebar-list li {
+  padding-top: 50px;
+}
+
+.dashboard {
+  margin-left: 20%;
+}
+
+.cards-container {
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 5rem;
+}
+
+.order-card {
+  background-color: #f6f7f9;
+  border-radius: 30px;
+  display: inline-block;
+  padding-right: 5rem;
+}
+
+.card-heading {
+  font-weight: lighter;
+  letter-spacing: normal;
+}
+
+.order-id {
+  color: var(--primary-color);
+  font-size: 1.3em;
+}
+
+.active-status {
+  color: var(--primary-color);
+  font-size: 1.1em;
+}
+
+.btn-close {
+  margin-left: 90%;
+}
+
+.ord-details {
+  background: #f5f7f9;
+  border-radius: 25px;
+}
+
+
+.ord-details h2,
+.ord-details h5 {
+  letter-spacing: normal;
+}
+
+.ord-details h2 {
+  color: var(--primary-color);
+}
+
+
+.total-price {
+  color: var(--price-color);
+}
+
+#status {
+  width: 20%;
+  margin: 2rem 0 2rem 4rem;
+  height: 2rem;
+  border-radius: 30px;
+}
+
+
+@media (max-width: 1023px) {
+  .navbar-toggler {
+    display: block;
+  }
+
+  .sidebar {
+    width: 15%;
+  }
+
+  .title,
+  .sidebar h2 {
+    display: none;
+  }
+
+  .icon {
+    margin-left: -1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    margin-left: 2rem;
+  }
+
+  .ord-details {
+    bottom: 30%;
+    left: 20%;
+    width: 350px;
+  }
+
+  .general-info {
+    flex-flow: column wrap;
+  }
+
+  .btn-close {
+    margin-left: 80%;
+  }
+
+  #status {
+    width: 30%;
+  }
+}

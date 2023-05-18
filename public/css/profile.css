@@ -1,0 +1,111 @@
+
+h1 {
+    color: #0203AC;;
+}
+.profile-pic {
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.profile-pic img {
+    border: 2px solid black;
+    background-color: whitesmoke;
+}
+
+#personal-info {
+    font-size: larger;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+input {
+    margin-top: 1rem;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+
+}
+
+#personal-info label {
+    margin-top: 1rem;
+    font-weight: lighter;
+}
+
+.btn {
+    font-size: large;
+    transition: 0.3s linear;
+}
+
+.btn:hover {
+    background-color: var(--hover-color);
+}
+
+@media (max-width: 1023px) {
+    #personal-info input {
+        width: 75%;
+    }
+
+    .profile-pic img {
+        width: 300px;
+        height: 300px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #personal-info {
+        align-items: center;
+    }
+}
+
+
+/* Update profile */
+#update-form {
+    display: flex;
+    flex-flow: column wrap;
+    background: #f6f7f9;
+    width: 50%;
+    border-radius: 30px;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+#update-form input {
+    margin-bottom: 2rem;
+}
+
+#update-form .btn {
+    display: inline-block;
+    background-size: contain;
+    margin-right: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+
+}
+.submit {
+    background: #0203ac;
+}
+
+@media (max-width: 1023px) {
+    #update-form input {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    #update-form {
+        font-size: small;
+    }
+
+    .buttons {
+        flex-flow: column wrap;
+    }
+
+    #update-form .btn {
+        margin-bottom: 1rem;
+    }
+    
+}

@@ -1,31 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Update Product</title>
-  </head>
-  <body>
-    <h1>Update Product</h1>
-    <form action="/home/product/<%= product._id %>/update" method="POST">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" value="<%= product.title %>">
-      <br>
-      <label for="price">Price:</label>
-      <input type="number" id="price" name="price" min="0" value="<%= product.price %>">
-      <br>
-      <label for="description">Description:</label>
-      <textarea id="description" name="description"><%= product.description %></textarea>
-      <br>
-      <br>
-      <label for="category">Categories:</label>
-      <select id="category" name="category">
-        <option value="">Select a category</option>
-        <option value="eletrics" <% if (product.categories === "eletrics") { %>selected<% } %>>Eletrics</option>
-        <option value="beauty products" <% if (product.categories === "beauty products") { %>selected<% } %>>Beauty Products</option>
-        <option value="toys" <% if (product.categories === "toys") { %>selected<% } %>>Toys</option>
-      </select>
-      <br>
-      <input type="submit" value="Update">
+<div class="px-4 py-5 text-center">
+  <h1 class="display-5 fw-bold">Update Your Product</h1>
+</div>  
+<div class="row justify-content-center">
+  <div class="col-8">
+
+    <form action="/vendor/<%= product._id %>/update" method="POST">
+      <div class="row g-3">
+
+        <div class="col-12">
+          <label for="name" class="form-label">Product Name</label>
+          <input type="text" id="title" name="name" class="form-control" placeholder="<%= product.name %>" required>
+        </div>
+        
+        <div class="col-12">
+          <label for="price" class="form-label fs-5">Price</label> $
+          <input type="number" id="price" name="price" min="0" class="form-control bg-light" placeholder="<%= product.price %>" required>
+        </div>
+
+        <div class="col-12">
+          <label for="description" class="form-label fs-5">Description</label>
+          <textarea name="description" id="description" class="form-control bg-light" cols="30" rows="4" placeholder="<%= product.description %>" required></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="category fs-5">Select Category</label>
+          <select class="form-select form-control bg-light" name="category" aria-label="Category" required>
+            <option selected><%= product.category  %></option>
+            <option value="Tablet" <% if (product.categories === "Tablet") { %>selected<% } %>>Tablet</option>
+            <option value="Laptop" <% if (product.categories === "Laptop") { %>selected<% } %>>Laptop</option>
+            <option value="Phone" <% if (product.categories === "Phone") { %>selected<% } %>>Phone</option>
+            <option value="Sound" <% if (product.categories === "Sound") { %>selected<% } %>>Sound</option>
+            <option value="Keyboard" <% if (product.categories === "Keyboard") { %>selected<% } %>>Keyboard</option>
+          </select>
+        </div>
+
+        <div class="col-12 text-center">
+          <input type="submit" class="btn btn-primary px-2 py-3 fs-5 mb-5" value="Update"></input>
+        </div>
+
+      </div>
     </form>
-  </body>
-</html>
+  </div>
+
+</div>

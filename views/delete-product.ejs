@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Delete Product</title>
-  </head>
-  <body>
-    <h1>Delete Product</h1>
-    <form action="/home/product/<%= product._id %>/delete" method="POST">
-      <p>Are you sure you want to delete the product "<%= product.title %>"?</p>
-      <input type="submit" value="Delete">
-    </form>
-  </body>
-</html>
+<div class="p-5">
+  <form action="/vendor/<%= product._id %>/delete" method="POST">
+    <h1>Are you sure you want to delete the product "<%= product.name %>"?</h1>
+    <input class="btn btn-primary px-2 py-3 fs-5 mt-5" type="submit" value="Delete">
+  </form>
+</div>

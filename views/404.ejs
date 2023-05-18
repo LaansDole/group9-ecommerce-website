@@ -1,36 +1,63 @@
-<div class="page d-flex flex-wrap">
-  <div class="image-container bg-position-center bg-no-repeat bg-cover flex-grow-1 flex-shrink-1 vh-100 position-relative">
-    <div
-      class="time text-white text-uppercase w-50 d-flex justify-content-center position-absolute top-50 start-50 translate-middle text-align-center">
-      <span class="ps-4 fs-4">
-        <div class="fs-2" id="days"></div>
-        Days
-      </span>
-      <span class="ps-4 fs-4">
-        <div class="fs-2 ps-3" id="hours"></div>
-        Hours
-      </span>
-      <span class="ps-4 fs-4">
-        <div class="fs-2 ps-3" id="minutes"></div>
-        Minutes
-      </span>
-      <span class="ps-4 fs-4">
-        <div class="fs-2 ps-3" id="seconds"></div>
-        Seconds
-      </span>
-    </div>
-  </div>
-  <div class="flex-grow-1 flex-shrink-1 vh-100 position-relative">
-    <div class="container position-absolute top-50 start-50 translate-middle text-align-center">
-      <h2 class="fs-2 text-center text-dark border-bottom-0">Error: <%= typeof error != 'undefined' ? error: 'ERROR' %></h2>
-      <h6 class="fw-light text-center pt-2">Subscribe to get notification it is fixed</h6>
-        <form id="newsletter" class="mt-4 d-flex flex-column justify-content-center align-items-center">
-          <input class="form-control pt-2 pb-2 rounded-3" type="text" placeholder="Enter Your Email" />
-          <button type="button" class="btn text-white btn-dark mt-3 pt-2 pb-2 w-50 cursor-pointer rounded-3">Subscribe</button>
-        </form>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/header') %>
+    <!-- This part contains internal files -->
+    <link rel="stylesheet" href="/css/404.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    
+    <div class="container-xxl px-md-5 shadow-lg">
 
-<script src="/js/404.js"></script>
-<script src="/js/api/unsplashAPI.js"></script>
+      <main>
+        <button id="back-button" class="mt-4 px-3 py-2 text-dark bg-transparent border-0">
+          <a class="text-decoration-none">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i> <strong>Go Back</strong>
+          </a>
+        </button>
+        <div class="page d-flex flex-wrap">
+          <div class="image-container bg-position-center bg-no-repeat bg-cover flex-grow-1 flex-shrink-1 vh-100 position-relative">
+            <div
+              class="time text-white text-uppercase w-50 d-flex justify-content-center position-absolute top-50 start-50 translate-middle text-align-center">
+              <span class="ps-4 fs-4">
+                <div class="fs-2" id="days"></div>
+                Days
+              </span>
+              <span class="ps-4 fs-4">
+                <div class="fs-2 ps-3" id="hours"></div>
+                Hours
+              </span>
+              <span class="ps-4 fs-4">
+                <div class="fs-2 ps-3" id="minutes"></div>
+                Minutes
+              </span>
+              <span class="ps-4 fs-4">
+                <div class="fs-2 ps-3" id="seconds"></div>
+                Seconds
+              </span>
+            </div>
+          </div>
+          <div class="flex-grow-1 flex-shrink-1 vh-100 position-relative">
+            <div class="container position-absolute top-50 start-50 translate-middle text-align-center">
+              <h2 class="fs-2 text-center text-dark border-bottom-0">Error: <%= typeof error != 'undefined' ? error: 'ERROR' %></h2>
+              <h6 class="fw-light text-center pt-2">Subscribe to get notification it is fixed</h6>
+                <form id="newsletter" class="mt-4 d-flex flex-column justify-content-center align-items-center">
+                  <input class="form-control pt-2 pb-2 rounded-3" type="text" placeholder="Enter Your Email" />
+                  <button type="button" class="btn text-white btn-dark mt-3 pt-2 pb-2 w-50 cursor-pointer rounded-3">Subscribe</button>
+                </form>
+            </div>
+          </div>
+        </div>    
+      </main>
+
+      <%- include('./partials/footer') %>
+    </div>
+    <script src="/js/back-button.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/404.js"></script>
+    <script src="/js/api/unsplashAPI.js"></script>
+  </body>
+</html>
+
