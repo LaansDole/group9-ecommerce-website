@@ -102,7 +102,7 @@ exports.searchProduct = async (req, res) => {
     let product = await Product.find(query);
     res.render('home-page/search', { title: 'E-Commerce - Search', product, cartItemCount, layout: './layouts/homeLayout' });
   } catch (error) {
-    res.status(500).send({ message: error.message || "Error Occurred" });
+    res.status(500).redirect(`/home/search?error=Product_not_found`);
   }
 }
 
