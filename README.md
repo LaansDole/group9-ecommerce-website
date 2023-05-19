@@ -1,12 +1,14 @@
 # Group 9 E-commerce Website
-
-### Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
-#### Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to `Technologies` section below.
-### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
-### Link to the Presentation: https://youtu.be/HI9ww7b5c0c
-
-#### Project start date: 24/04/2023
-#### Project end date: 20/05/2023
+<hr>
+<h3>Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/</h3>
+<strong>Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to Technologies section below.</strong>
+<hr>
+<h3> Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/ </h3>
+<hr>
+<h3>Link to the Presentation: https://youtu.be/HI9ww7b5c0c </h3>
+<hr>
+- Project start date: 24/04/2023
+- Project end date: 20/05/2023
 
 #### If you encounter this error: EADDRINUSE, Address already in use, do as below:
 ```bash
