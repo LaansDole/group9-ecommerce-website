@@ -143,6 +143,7 @@ In this project, with Lazada's permission, you are working on a simplified and s
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
+- Management: [Trello Board](https://trello.com/invite/b/YPDCAFvR/ATTI3c6171182322837ae156161a1d76826bB17C326E/fullstack-web-project)
 - Other resources: MDN Web Docs, RMIT Canvas, NPM Package, ChatGPT, Packages' Docs
 - Packages: Refer to package.json and package-lock.json
 
