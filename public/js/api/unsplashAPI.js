@@ -19,9 +19,7 @@ function setRandomBackground() {
         })
         .catch(error => {
             console.log("Error fetching random image:", error);
-            // Handle the error appropriately, e.g., set a default background image
-            const imageContainer = document.querySelector('.image-container');
-            imageContainer.style.backgroundImage = "url('')";
+            
         });
 }
 

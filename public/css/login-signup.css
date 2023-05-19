@@ -311,7 +311,11 @@ input[type="checkbox"].toggle:checked+label::after {
     font-family: fontAwesome;
 }
 
-
+.error-message {
+    display: none;
+    color: red;
+  }
+  
 /* Responsive Styling */
 @media (max-width: 1280px) {
     #header {

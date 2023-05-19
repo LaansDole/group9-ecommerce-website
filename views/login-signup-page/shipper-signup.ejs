@@ -1,4 +1,4 @@
-<p class="title">Sign Up as</p>
+<p class="title">Sign Up as Shipper</p>
 
 <%- include ('../partials/signup-role-btn') %>
 
@@ -11,6 +11,7 @@
   <div class="form-control">
     <label>Your name</label>
     <input type="text" placeholder="Enter your name" name="name" required/>
+    <div class="error-message" id="nameErrorShipper" style="display: none;"></div>
   </div>
   <div class="form-control">
     <label for="distribution-hub">Distribution Hub:</label>
@@ -26,6 +27,7 @@
   <button class="submit" type="submit">Register</button>
 </form>
 <script src="/js/shipper-create.js"></script>
+<script src="/js/validateShipper.js"></script>
 
 
 

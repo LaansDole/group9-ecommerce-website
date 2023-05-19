@@ -1,7 +1,9 @@
 # Group 9 E-commerce Website
 
-## Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
-## Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
+### Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
+#### Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to `Technologies` section below.
+### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
+
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
@@ -136,11 +138,12 @@ In this project, with Lazada's permission, you are working on a simplified and s
 - Frontend: EJS, Bootstrap CSS, CSS, JavaScript
 - Backend: NodeJS, ExpressJS
 - Database: MongoDB
-- Hosting: [Back4App](https://containers.back4app.com/)
+- Hosting: [Back4App](https://containers.back4app.com/) - a cloud service that helps developers deploy, run, scale, control, and stop containers by applying virtualization on container level.
 
 ### Supporting tools used
 
 - UI Prototype: Canva, Codepen, Dribble, Figma
+- Management: [Trello Board](https://trello.com/invite/b/YPDCAFvR/ATTI3c6171182322837ae156161a1d76826bB17C326E/fullstack-web-project)
 - Other resources: MDN Web Docs, RMIT Canvas, NPM Package, ChatGPT, Packages' Docs
 - Packages: Refer to package.json and package-lock.json
 

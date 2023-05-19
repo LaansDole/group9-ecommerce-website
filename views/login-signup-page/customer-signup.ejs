@@ -1,4 +1,4 @@
-<p class="title">Sign Up as</p>
+<p class="title">Sign Up as Customer</p>
 
 <%- include ('../partials/signup-role-btn') %>
 
@@ -10,13 +10,14 @@
   <div class="form-control"> 
     <label>Name</label>
     <input type="text" placeholder="Enter your name" name="name" required>
+    <div class="error-message" id="nameErrorCustomer" style="display: none;"></div>
   </div>
   <div class="form-control"> 
     <label>Address</label> 
     <input type="text" placeholder="Enter address" name="address" required>
+    <div class="error-message" id="addressErrorCustomer" style="display: none;"></div>
   </div>
   <button class="submit" type="submit">Register</button>
 </form>
 
-
-
+<script src="/js/validateCustomer.js"></script>

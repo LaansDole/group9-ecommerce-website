@@ -4,6 +4,8 @@
 
 .image-container {
   background-size: cover;
+  background-image: url('../img/placeholderAPI.jpg');
+  background-position: center;
 }
 
 .btn:hover {

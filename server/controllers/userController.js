@@ -21,7 +21,7 @@ exports.registerCustomer = async (req, res) => {
     try {
         res.render('./login-signup-page/customer-signup.ejs', {
             title: "Customer Register",
-            error: req.query.error === 'undefined' ? ('Error: ' + `${req.query.error}`) : '',
+            error: req.query.error === undefined ? '' : ('Error: ' + `${req.query.error}`),
             layout: './layouts/loginLayout'
         });
     } catch (error) {
@@ -33,7 +33,7 @@ exports.registerVendor = async (req, res) => {
     try {
         res.render('./login-signup-page/vendor-signup.ejs', {
             title: "Vendor Register",
-            error: req.query.error === 'undefined' ? ('Error: ' + `${req.query.error}`) : '',
+            error: req.query.error === undefined ? '' : ('Error: ' + `${req.query.error}`),
             layout: './layouts/loginLayout'
         });
     } catch (error) {
@@ -45,7 +45,7 @@ exports.registerShipper = async (req, res) => {
     try {
         res.render('./login-signup-page/shipper-signup.ejs', {
             title: "Shipper Register",
-            error: req.query.error === 'undefined' ? ('Error: ' + `${req.query.error}`) : '',
+            error: req.query.error === undefined ? '' : ('Error: ' + `${req.query.error}`),
             layout: './layouts/loginLayout'
         });
     } catch (error) {
