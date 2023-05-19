@@ -1,20 +1,12 @@
-// const hubNameSelect = document.getElementById('hubName');
-//     const hubAddressInput = document.getElementById('hubAddress');
-  
-//     hubNameSelect.addEventListener('change', (event) => {
-//       const hubName = event.target.value;
-//       let hubAddress = '';
-  
-//       if (hubName === 'HCM') {
-//         hubAddress = 'District 3, HCM city';
-//       } else if (hubName === 'DN') {
-//         hubAddress = 'Some address in DN city';
-//       } else if (hubName === 'HN') {
-//         hubAddress = 'Some address in HN city';
-//       }
-  
-//       hubAddressInput.value = hubAddress;
-//     });
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Do Le Long An,Truong Hong Van,Bui Tuan Anh,Lao Vinh Khang,Pham Le Quynh Anh
+// ID: s3963207,s3957034,s3970375,s3891925,s3927427
+// Acknowledgement: MDN Web Docs, RMIT Canvas, ChatGPT, NPM Packages' Docs
+
+
 
 
 const hubNameSelect = document.getElementById('hubName');

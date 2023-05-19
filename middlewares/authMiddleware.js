@@ -1,3 +1,12 @@
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Do Le Long An,Truong Hong Van,Bui Tuan Anh,Lao Vinh Khang,Pham Le Quynh Anh
+// ID: s3963207,s3957034,s3970375,s3891925,s3927427
+// Acknowledgement: MDN Web Docs, RMIT Canvas, ChatGPT, NPM Packages' Docs
+
+
 const User = require('../server/model/userModel');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require("express-async-handler");
@@ -6,24 +15,7 @@ const validateMongoDbId = require('../utils/validateMongodbId');
 
 
 
-// const authMiddleware = asyncHandler(async (req, res, next) => {
-//   let token;
-//   if (req?.headers?.authorization?.startsWith('Bearer')) {
-//       token = req.headers.authorization.split(' ')[1];
-//       try {
-//           if (token) {
-//               const decoded = jwt.verify(token,process.env.JWT_SECRET);
-//               const user = await User.findById(decoded?.id);
-//               req.user = user;
-//               next();
-//           }
-//       } catch (error) {
-//           throw new Error("Not Authorized token expired, Please login again");
-//       }
-//   } else {
-//       throw new Error("There is no token attached to the header");
-//   }
-// });
+
 
 
 
