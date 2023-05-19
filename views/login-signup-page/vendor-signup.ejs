@@ -1,23 +1,24 @@
-<p class="title">Sign Up as</p>
+<p class="title">Sign Up as Vendor</p>
 
 <%- include ('../partials/signup-role-btn') %>
 
 <div class="seperator"></div>
 
 <form id="signupForm" class="login-form" action="/register-vendor" method="post" enctype="multipart/form-data">
-  
+
   <%- include ('../partials/common-signup') %>
 
-  <div class="form-control"> 
+  <div class="form-control">
     <label>Business Name</label>
     <input type="text" placeholder="Enter your name" name="businessName" required>
+    <div class="error-message" id="nameError" style="display: none;"></div>
   </div>
-  <div class="form-control"> 
-    <label>Business Address</label> 
+  <div class="form-control">
+    <label>Business Address</label>
     <input type="text" placeholder="Enter address" name="businessAddress" required>
+    <div class="error-message" id="addressError" style="display: none;"></div>
   </div>
   <button class="submit" type="submit">Register</button>
 </form>
 
-
-
+<script src="/js/validateVendor.js"></script>

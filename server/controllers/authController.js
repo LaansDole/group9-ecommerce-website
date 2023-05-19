@@ -45,6 +45,13 @@ const createVendor = asyncHandler(async (req, res) => {
     }
 
     const { businessName, userName, businessAddress, password } = req.body;
+    if (businessName.length < 5) {
+      return res.status(400).redirect(`${req.originalUrl}?error=BusinessName_length_must_be_at_least_5_characters`);
+    }
+
+    if (businessAddress.length < 5) {
+      return res.status(400).redirect(`${req.originalUrl}?error=BusinessAddress_length_must_be_at_least_5_characters`);
+    }
 
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
@@ -100,7 +107,13 @@ const createCustomer = asyncHandler(async (req, res) => {
     }
 
     const { name, userName, address, password } = req.body;
+    if (name.length < 5) {
+      return res.status(400).redirect(`${req.originalUrl}?error=Name_length_must_be_at_least_5_characters`);
+    }
 
+    if (address.length < 5) {
+      return res.status(400).redirect(`${req.originalUrl}?error=Address_length_must_be_at_least_5_characters`);
+    }
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
       return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
@@ -160,7 +173,9 @@ const createShipper = asyncHandler(async (req, res) => {
     }
 
     const { userName, password, hubName, hubAddress, name } = req.body;
-
+    if (name.length < 5) {
+      return res.status(400).redirect(`${req.originalUrl}?error=Name_length_must_be_at_least_5_characters`);
+    }
     const usernameRegex = /^[a-zA-Z0-9]{8,15}$/;
     if (!usernameRegex.test(userName)) {
       return res.status(400).redirect(`${req.originalUrl}?error=Username_length_must_from_8_to_15_and_no_speacial_character`);
