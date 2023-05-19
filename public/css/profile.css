@@ -9,6 +9,8 @@ h1 {
 .profile-pic img {
     border: 2px solid black;
     background-color: whitesmoke;
+    width: 400px;
+    height: 400px;
 }
 
 #personal-info {

@@ -12,9 +12,7 @@
       <main>
         <h1 class="text-center pt-3">My Profile</h1>
         <button id="back-button" class="mt-4 px-3 py-2 text-dark bg-transparent border-0">
-          <a class="text-decoration-none">
             <i class="fa-sharp fa-solid fa-arrow-left"></i> <strong>Go Back</strong>
-          </a>
         </button>
         <div class="row">
           <div class="profile-pic img-container col-md-6 d-flex flex-column align-items-center pe-5">
@@ -24,7 +22,7 @@
               <% const fileExtension = profilePicture.contentType.split('/')[1]; %>
               <% const imageSize = 'style="width: 500px; height: 500px;"'; %>
               <% if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg') { %>
-                <img src="<%= imageSrc %>" alt="Profile Picture" class="img rounded-circle" width="400px" height="400px">
+                <img src="<%= imageSrc %>" alt="Profile Picture" class="img rounded-circle">
               <% } else if (fileExtension === 'svg+xml') { %>
                 <object type="image/svg+xml" data="<%= imageSrc %>" style="width: 400px; height: 400px;"></object>
               <% } else { %>
@@ -36,7 +34,7 @@
 
             <button class="btn mt-4 px-3 py-2 bg-dark text-white" onclick="window.location.href='/myProfileUpdate'">Update Profile</button>
           </div>
-          <form action="" id="personal-info" class="col-md-6">
+          <form id="personal-info" class="col-md-6">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" value=" <%= userName %>" readonly>
             <label for="role">Role</label>
@@ -61,12 +59,10 @@
               <input type="text" class="form-control" id="h-name" value="<%= hubName %>" readonly>
               <label for="h-address">Hub address</label>
               <input type="text" class="form-control" id="h-address" value="<%= hubAddress %>" readonly>
-            <% } %>
-            <form action="/logout" method="GET">
-              <a href="/logout" class="text-decoration-none btn mt-4 px-3 py-2 bg-dark text-white">
-                Log out
-              </a>
-            </form>
+            <% } %>  
+            <a href="/logout" class="text-decoration-none btn mt-4 px-3 py-2 bg-dark text-white">
+              Log out
+            </a>
           </form>
         </div>
         <%- include('../partials/footer') %>

@@ -3,7 +3,7 @@
 ### Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/
 #### Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to `Technologies` section below.
 ### Link to the GitHub repository: https://github.com/LaansDole/Group9_E-commerce_Website/
-
+### Link to the Presentation: https://youtu.be/HI9ww7b5c0c
 
 #### Project start date: 24/04/2023
 #### Project end date: 20/05/2023
@@ -170,7 +170,30 @@ $ npm start
 
 # OR Start with node
 $ node index.js
+```
 
+## Test accounts
+1. Customer:
+```
+username: customerTest
+password: @Rmit2023
+```
+2. Vendor:
+```
+username: vendorTest
+password: @Rmit2023
+```
+3. Shipper:
+```
+# Hub: Giao Hang Tiet Kiem
+username: shipperghtk
+password: @Rmit2023
+
+# Hub: Giao Hang Nhanh
+username: shipperghn
+password: @Rmit2023
+
+...
 ```
 
 ## License
