@@ -1,14 +1,19 @@
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Do Le Long An,Truong Hong Van,Bui Tuan Anh,Lao Vinh Khang,Pham Le Quynh Anh
+// ID: s3963207,s3957034,s3970375,s3891925,s3927427
+// Acknowledgement: MDN Web Docs, RMIT Canvas, ChatGPT, NPM Packages' Docs
+
+
 const Product = require("../model/Product");
 const asyncHandler = require("express-async-handler");
 //call asyncHandler is middleware to resolve all errors inside path between Product and vendorController
 //create new product in 'create product'
 const User = require("../model/userModel");
 
-// const viewProduct = async (req, res) => {
-//   Product.find({})
-//     .then((products) => res.render('view-product', { products }))
-//     .catch(error => res.send(error))
-// };
+
 const viewProduct = asyncHandler(async (req, res, next) => {
   try {
     const link = req.originalUrl;
