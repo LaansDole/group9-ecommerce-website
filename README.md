@@ -1,4 +1,4 @@
-# Group 9 E-commerce Website
+# Group 9 (CSS:GO) E-commerce Website
 <h3>Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/</h3>
 <strong>Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to Technologies section below.</strong>
 <hr>
