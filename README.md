@@ -1,5 +1,4 @@
 # Group 9 E-commerce Website
-<hr>
 <h3>Link to the website: https://group9ecommerceweb-dolelongan.b4a.run/</h3>
 <strong>Disclaimer: As we are using a free tier service, you will need to wait around a minute when you first open the link. After that, the link works smoothly. For more information, refer to Technologies section below.</strong>
 <hr>
@@ -9,14 +8,6 @@
 <hr>
 - Project start date: 24/04/2023
 - Project end date: 20/05/2023
-
-#### If you encounter this error: EADDRINUSE, Address already in use, do as below:
-```bash
-# Display the processes or applications that are currently using the network port 3000
-$ sudo lsof -i :3000
-# Check for the PID on the screeen
-$ kill -9 <PID>
-```
 
 ## Contribution
 
@@ -80,7 +71,7 @@ The uploaded images by users are stored in this directory, website local storage
 Each controller is responsible for the GET and POST method of the pages, which is then imported in `server/routes`. In addition, it defines the objects to go in the rendered `.ejs` file.
 
 8. `server/model`
-The directory contains the schema model for the `Product`, `Cart`, `Order`, etc. for the BE to work with website database.
+The directory contains the schema model for the `Product`, `Cart`, `Order`, etc. for the Backend to work with website database.
 
 9. `server/routes` 
 This stores the routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
@@ -172,6 +163,14 @@ $ npm start
 
 # OR Start with node
 $ node index.js
+```
+### To resolve this error: 
+<i>EADDRINUSE, Address already in use</i>
+```bash
+# Display the processes or applications that are currently using the network port 3000
+$ sudo lsof -i :3000
+# Check for the PID on the screeen
+$ kill -9 <PID>
 ```
 
 ## Test accounts
