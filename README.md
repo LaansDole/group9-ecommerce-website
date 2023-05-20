@@ -71,7 +71,7 @@ The uploaded images by users are stored in this directory, website local storage
 Each controller is responsible for the GET and POST method of the pages, which is then imported in `server/routes`. In addition, it defines the objects to go in the rendered `.ejs` file.
 
 8. `server/model`
-The directory contains the schema model for the `Product`, `Cart`, `Order`, etc. for the BE to work with website database.
+The directory contains the schema model for the `Product`, `Cart`, `Order`, etc. for the Backend to work with website database.
 
 9. `server/routes` 
 This stores the routes of the layouts. It works with the `controllers` and `middleware` to define the page route and control user access to each pages.
